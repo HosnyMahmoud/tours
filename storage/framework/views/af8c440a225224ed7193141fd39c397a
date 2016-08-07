@@ -1,0 +1,59 @@
+<?php $__env->startSection('title'); ?>
+		انواع السيارات
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/cars_brand/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+		
+	</div>
+
+	<br>
+	<?php if(Session::has('msg')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('msg')); ?>
+
+		</div>
+	<?php endif; ?>
+
+	<br>
+	<div class="panel panel-primary">
+		<div class="panel-heading">جميع الأنواع</div>
+		<div class="panel-body">
+			<?php if($brands->total() > 0): ?>
+				<table class="table table-bordered">
+					<tr>
+						<th>الأسم</th>								
+						<th>خيارات</th>								
+					</tr>
+				<?php foreach($brands as $brand): ?>
+					<tr>
+						<td><?php echo e($brand->brand_name); ?></td>		
+						<td>	
+							<?php echo Form::open(['method' => 'DELETE' ,'action'=>['CarsBrandCtrl@destroy',$brand->id]]); ?>
+
+									<a href="<?php echo Url('/'); ?>/admin/cars_brand/<?php echo e($brand->id); ?>/edit" class="btn btn-info">تعديل</a>
+									<?php echo Form::submit('حذف' , ['class'=>'btn btn-danger','onClick' =>'return confirm("سيتم حذف البراند و كل الموديلات الخاصة بة هل انت متأكد من الحذف ؟")']); ?>
+
+							<?php echo Form::close(); ?>
+
+						</td>								
+					</tr>
+				<?php endforeach; ?>
+				</table>
+				<?php echo $brands->render(); ?>
+
+			<?php else: ?>
+				<div class="alert alert-danger">No Record To Show .</div> 
+
+			<?php endif; ?>
+		</div>	
+	</div>
+	
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

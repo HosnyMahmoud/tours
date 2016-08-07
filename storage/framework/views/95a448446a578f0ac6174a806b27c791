@@ -1,0 +1,54 @@
+<?php $__env->startSection('title'); ?>
+	<?php echo e('العروض'); ?>	
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+		
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/offers/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+		<br />
+		<br />
+
+		<?php if(Session::has('msg')): ?>
+			<div class="alert alert-success">
+				<?php echo e(Session::get('msg')); ?>
+
+			</div>
+		<?php endif; ?>
+		
+	</div>
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>عدد الليالي</th>
+				<th>نوع العرض</th>
+				<th>خيارات</th>
+			</tr>
+			<?php foreach($offers as $offer): ?>
+			
+			<tr>
+				<td><?php echo e($offer->id); ?></td>
+				<td><?php echo e($offer->nights); ?></td>
+				<td><?php echo e($offer->type); ?></td>
+				<td>
+					
+					<?php echo Form::open(['method'=>'DELETE', 'action'=>['OffersCtrl@destroy', $offer->id ]]); ?>
+
+							<a href="<?php echo Url('/'); ?>/admin/offers/<?php echo e($offer->id); ?>/edit" class="btn btn-info">تعديل</a>
+							<?php echo Form::submit('حذف', [ 'class'=> 'btn btn-danger', 'onClick'=>'return confirm("سيتم حذف هذا العرض هل انت متأكد من الحذف ؟")'] ); ?>
+
+					<?php echo Form::close(); ?>
+
+
+				</td>
+			</tr>
+			
+			<?php endforeach; ?>				
+		</table>
+
+		<div class="paginate"><?php echo e($offers->render()); ?></div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,43 @@
+<?php $__env->startSection('title'); ?>
+		المديرين 
+<?php $__env->stopSection(); ?>
+	<?php $__env->startSection('content'); ?>
+	<a href="<?php echo Url('/'); ?>/admin/admins/create" class="btn btn-success"><i class="fa fa-plus"></i></a>
+	<br>
+		<table class="table table-responsive table-striped">
+			<thead>
+				<th>#</th>
+				<th>الاسم</th>
+				<th>البريد الالكترونى</th>
+				<th colspan="2">خيارات</th>
+			</thead>
+			<tbody>
+				<?php foreach($admins as $admin): ?>
+				<tr>
+					<td><?php echo e($admin->id); ?></td>
+					<td><?php echo e($admin->name); ?></td>
+					<td><?php echo e($admin->email); ?></td>
+					<td>
+						 <a href="<?php echo e(Url('/')); ?>/admin/admins/<?php echo e($admin->id); ?>/edit" class="btn btn-warning">تعديل</a> 
+					</td>
+					<td>
+
+						<?php echo Form::open(['method'=>'DELETE' , 'action' => ['AdminsCtrl@destroy' , $admin->id] ]); ?>
+
+						<?php if(Auth::admin()->get()->id == $admin->id): ?>
+							<?php echo Form::submit('حذف', ['class'=>'btn btn-danger disabled'] ); ?>
+
+							<?php else: ?>
+							<?php echo Form::submit('حذف', ['class'=>'btn btn-danger','onClick' =>'return confirm("سيتم حذف كل بيانات هذا العضو هل انت متأكد من الحذف ؟")'] ); ?>
+
+						<?php endif; ?>
+						<?php echo Form::close(); ?>
+
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
