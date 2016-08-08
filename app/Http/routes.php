@@ -39,8 +39,11 @@ Route::group(['prefix'=>'api'],function(){
 		Route::get('travels','Api\TravelsCtrl@getTravels'); 
 		Route::post('travel/reserv','Api\TravelsCtrl@ReservTravel'); 
 	// Travels ..
-	
 
+	// Messages
+		Route::get('messages','Api\MessagesCtrl@get_msgs'); 
+		Route::post('messages/send','Api\MessagesCtrl@send'); 
+	// Messages ..
 
 });
 
@@ -75,7 +78,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::resource('countries','CountriesCtrl');
 	Route::resource('cities','CitiesCtrl');
 	
-
+	
 });
 
 
