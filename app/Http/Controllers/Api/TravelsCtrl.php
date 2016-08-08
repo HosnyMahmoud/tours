@@ -54,6 +54,7 @@ class TravelsCtrl extends Controller {
 	$countries = Countries::all() ;
 	$cities    = Cities::all() ;
 	foreach ($travels as $travel) {
+
 		if(Carbon::now() <= $travel->date_to)
 		{
 
@@ -75,6 +76,8 @@ class TravelsCtrl extends Controller {
 		}
 		$i++ ; // increment counter ..
 	}
+
+	rsort($data) ;
 	return response()->json(['status'=>'200' , 'data'=>$data] , 200);
 			
 	}
