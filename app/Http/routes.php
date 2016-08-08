@@ -33,14 +33,13 @@ Route::group(['prefix'=>'api'],function(){
 		Route::get('cars/brand','Api\BrandCtrl@getBrand'); 
 		Route::get('cars/offers','Api\OffersCtrl@searchOffers'); 
 		Route::post('cars/reserv','Api\OffersCtrl@offersReserv'); 
-		Route::get('cars/number','Api\CarsCtrl@nums'); 
 	/* End Cars Api Route */
 	
-	// Special Offers . 
-		Route::get('offers/special','Api\specialOffersCtrl@getSpecialOffers'); 
-
-		Route::post('special/reserv','Api\specialOffersCtrl@ReservSpecialOffers'); 
-	// Special Offers . 
+	// Travels ..
+		Route::get('travels','Api\TravelsCtrl@getTravels'); 
+		Route::post('travel/reserv','Api\TravelsCtrl@ReservTravel'); 
+	// Travels ..
+	
 
 
 });

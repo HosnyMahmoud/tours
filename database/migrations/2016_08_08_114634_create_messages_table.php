@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReservSpecialOffersTable extends Migration {
+class CreateMessagesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,17 +12,17 @@ class CreateReservSpecialOffersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('reservOffers', function(Blueprint $table)
+		Schema::create('messages', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('offer_id');
+			$table->text('msg');
 			$table->integer('user_id');
-			$table->timestamp('date_from');
-			$table->timestamp('date_to');
+			$table->integer('admin_id');
+			$table->integer('sender') ;
+			$table->integer('status') ;
 			$table->timestamps();
 		});
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -31,7 +31,7 @@ class CreateReservSpecialOffersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('reservOffers');
+		Schema::drop('messages');
 	}
 
 }

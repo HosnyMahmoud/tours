@@ -21,7 +21,7 @@ class CreateOffersTable extends Migration {
 			$table->text('desc_en');
 			$table->integer('hotel_id');
 			$table->integer('nights');
-			$table->string('type');
+			$table->intrger('type');
 			$table->text('desc');
 			$table->integer('country_id');
 			$table->integer('city_id');
