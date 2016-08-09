@@ -45,6 +45,12 @@ Route::group(['prefix'=>'api'],function(){
 		Route::post('messages/send','Api\MessagesCtrl@send'); 
 	// Messages ..
 
+	// WishList
+		Route::get('wishlist','Api\WishListCtrl@getWishList'); 
+		Route::post('wishlist/add','Api\WishListCtrl@send'); 
+	// WishList ..
+		
+
 });
 
 
