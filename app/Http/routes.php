@@ -47,9 +47,14 @@ Route::group(['prefix'=>'api'],function(){
 
 	// WishList
 		Route::get('wishlist','Api\WishListCtrl@getWishList'); 
-		Route::post('wishlist/add','Api\WishListCtrl@send'); 
+		Route::post('wishlist/add','Api\WishListCtrl@addToWishList'); 
 	// WishList ..
-		
+	
+	// Special Offers
+		Route::get('offers/get','Api\SpecialOffersApi@getSpecialOffers'); 
+		Route::post('offer/reserv','Api\SpecialOffersApi@ReservSpecialOffers'); 
+	// Special Offers
+	
 
 });
 

@@ -49,6 +49,7 @@ class HotelsController extends Controller {
 			$img->resize(300, 200);
 			$img->save('uploads/hotels/logo/thumb/'.$file_name);
 		//Image Proccess
+			
 		$request->merge(['logo'=>$file_name]);
 		}
 		if($request->hasFile('image'))

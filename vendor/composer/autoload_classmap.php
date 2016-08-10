@@ -17,6 +17,8 @@ return array(
     'CreateHotelsTable' => $baseDir . '/database/migrations/2016_07_19_130348_create_hotels_table.php',
     'CreateMessagesTable' => $baseDir . '/database/migrations/2016_08_08_114634_create_messages_table.php',
     'CreateSettingsTable' => $baseDir . '/database/migrations/2016_06_26_063535_create_settings_table.php',
+    'CreateSpecialOfferReservsTable' => $baseDir . '/database/migrations/2016_08_10_111043_create_special_offer_reservs_table.php',
+    'CreateSpecialOffersTable' => $baseDir . '/database/migrations/2016_08_09_111935_create_special_offers_table.php',
     'CreateTravelsTable' => $baseDir . '/database/migrations/2016_07_20_130600_create_travels_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateWishListsTable' => $baseDir . '/database/migrations/2016_08_09_085755_create_wish_lists_table.php',
