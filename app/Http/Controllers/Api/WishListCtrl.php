@@ -9,6 +9,7 @@ use App\CarsOffers ;
 use App\Hotel ;
 use App\Travels ;
 use App\WishList ;
+use App\SpecialOffers ;
 use Validator ;
 use Auth ;
 
@@ -44,7 +45,7 @@ class WishListCtrl extends Controller {
 		
 		$records = WishList::where('user_id',Auth::client()->get()->id)->get() ;
 		foreach ($records as $rec) {
-			   $data[$i]['id'] = $rec['id'];
+			    $data[$i]['id'] = $rec['id'];
 			if ($rec->type == 0) {
 				$getTable = CarsOffers::where('id',$rec->list_id)->first();
 				$data[$i]['item_id'] 	    = $getTable['id'];
@@ -66,12 +67,12 @@ class WishListCtrl extends Controller {
 				$data[$i]['type']	        = 'Travel';			
 			}
 
-			/*if ($rec->type == 3) { // offers
-				$getTable = ::where('id',$rec->list_id)->first();
+			if ($rec->type == 3) { // offers
+				$getTable = SpecialOffers::where('id',$rec->list_id)->first();
 				$data[$i]['item_id'] 	    = $getTable['id'];
 				$data[$i]['name']	        = $getTable['name_'.$bag->lang];	
 				$data[$i]['type']	        = 'Travel';			
-			}		*/
+			}		
 
 			/*if ($rec->type == 3) { // air lines
 				$getTable = ::where('id',$rec->list_id)->first();
@@ -90,7 +91,8 @@ class WishListCtrl extends Controller {
 			return response()->json(['status' => '401' , 'data'=> 'no data to show'] , 401);
 		}
 
-		return response()->json(['status' => '200' , 'data'=> $data] , 200);
+
+		return response()->json(['status' => '200' , 'data'=>array_reverse($data)] , 200);
 	}
 
 
@@ -114,12 +116,22 @@ class WishListCtrl extends Controller {
 			return response()->json(['status' => '401','message'=>'Unauthorized : wrong secret key'],401);
 		}
 
-		$bag->merge(['user_id'=>Auth::client()->get()->id]) ;
-		$bag->merge(['list_id'=>$bag->item_id]);
 
-		WishList::create($bag->all()) ;
+		$check = WishList::where('user_id',Auth::client()->get()->id)
+						 ->where('list_id',$bag->item_id)
+						 ->where('type',$bag->type)->first() ;
 
-		return response()->json(['status' => '200','message'=>'Added to wish list successfully'],401);
+		if(count($check) == 0)				 
+		{
+			$bag->merge(['user_id'=>Auth::client()->get()->id]) ;
+			$bag->merge(['list_id'=>$bag->item_id]);
+
+			WishList::create($bag->all()) ;
+
+			return response()->json(['status' => '200','message'=>'Added to wish list successfully'],200);
+		}
+			
+		return response()->json(['status' => '401','message'=>'Already exists in your wishlist !'],401);
 
 
 	}

@@ -15,7 +15,7 @@ class Authenticate {
 	 */
 	public function __construct()
 	{
-		$this->auth = Auth::client();
+		$this->auth = Auth::admin();
 	}
 	/**
 	 * Handle an incoming request.

@@ -15,10 +15,16 @@ class CreateSpecialOffersTable extends Migration {
 		Schema::create('special_offers', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('travel_id');
-			$table->decimal('new_price');
+			$table->integer('name_ar');
+			$table->integer('name_en');
+			$table->decimal('price');
+			$table->integer('num_of_persons');
+			$table->string('images');
+			$table->integer('status');
 			$table->timestamp('date_from');
 			$table->timestamp('date_to');
+			$table->text('desc_ar');
+			$table->text('desc_en');
 			$table->timestamps();
 		});
 	}

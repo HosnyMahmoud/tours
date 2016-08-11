@@ -4,12 +4,12 @@ return [
         'multi' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model' => 'App\Admin',
+                'model'  => 'App\Admin',
             ],
             'client' => [
                 'driver' => 'eloquent',
-                'model' => 'App\User',
-                'email' => 'client.emails.password',
+                'model'  => 'App\User',
+                'email'  => 'client.emails.password',
             ]
         ],
 

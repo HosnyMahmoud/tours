@@ -155,6 +155,12 @@ class HotelsCtrl extends Controller {
 			}
 		$i++;
 		}
+		
+		if(count($data) == 0)
+		{
+			return response()->json(['status'=>'401' , 'message'=>'No Data To Show '] , 401);
+		}
+
 		return response()->json(['status'=>'200' , 'data'=>$data] , 200);
 			
 	}
