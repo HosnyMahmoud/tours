@@ -1,0 +1,16 @@
+<?php $__env->startSection('tilte'); ?>
+	<?php echo e('تعديل الفندق'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+		
+	<?php echo Form::model($hotel,[ 'action'=>['HotelsController@update', $hotel->id],'method' => 'PUT', 'class' => 'form-horizontal', 'files'=>true]); ?>
+
+		<?php echo $__env->make('admin.hotels._form',['btnName' => 'حفظ التعديلات', 'type'=> 'edit'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<?php echo Form::close(); ?>		
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

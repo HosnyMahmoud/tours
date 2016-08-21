@@ -1,0 +1,59 @@
+<?php $__env->startSection('title'); ?>
+		الأعضاء
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/users/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+		
+	</div>
+
+	<br>
+	<?php if(Session::has('msg')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('msg')); ?>
+
+		</div>
+	<?php endif; ?>
+
+	<br>
+	<div class="panel panel-primary">
+		<div class="panel-heading">جميع المستخدمين</div>
+		<div class="panel-body">
+			<?php if($users->total() > 0): ?>
+				<table class="table table-bordered">
+					<tr>
+						<th>الأسم</th>								
+						<th>البريد الأليكتروني</th>								
+						<th>رقم الموبايل</th>								
+						<th>خيارات</th>								
+					</tr>
+				<?php foreach($users as $user): ?>
+					<tr>
+						<td><?php echo e($user->name); ?></td>		
+						<td><?php echo e($user->email); ?></td>		
+						<td><?php echo e($user->mobile); ?></td>		
+						<td>					
+							<?php echo Form::open(['method' => 'DELETE' ,'action'=>['UsersCtrl@destroy',$user->id]]); ?>
+
+								<a href="<?php echo Url('/'); ?>/admin/users/<?php echo e($user->id); ?>/edit" class="btn btn-info">تعديل</a>
+									<?php echo Form::submit('حذف' , ['class'=>'btn btn-danger','onClick' =>'return confirm("سيتم حذف هذا العضو هل انت متأكد من الحذف ؟")']); ?>
+
+							<?php echo Form::close(); ?>
+
+						</td>								
+					</tr>
+				<?php endforeach; ?>
+				</table>
+				<?php echo $users->render(); ?>
+
+			<?php else: ?>
+				<div class="alert alert-danger">لا توجد بيانات لعرضها.</div> 
+
+			<?php endif; ?>
+		</div>	
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

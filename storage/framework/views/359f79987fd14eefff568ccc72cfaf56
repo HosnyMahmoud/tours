@@ -1,0 +1,15 @@
+<?php $__env->startSection('title'); ?>
+		تعديل المحافظات
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<?php echo Form::model($city ,['method'=>'PATCH','action'=>['CitiesCtrl@update',$city->id],'files'=>true]); ?>
+
+		<?php echo $__env->make('admin.countries.cities._form',['btnName'=>'حفظ'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

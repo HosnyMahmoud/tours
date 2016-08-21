@@ -1,0 +1,19 @@
+<?php $__env->startSection('title'); ?>
+	<?php echo e('اضافة فندق جديد'); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+
+	<?php echo Form::open(['method' => 'POST', 'action'=>'HotelsController@store' , 'class' => 'form-horizontal','files'=>true]); ?>
+
+			
+			<?php echo $__env->make('admin.hotels._form' ,[ 'btnName'=>'أضافة','type'=>'add'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		
+	<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
