@@ -15,6 +15,10 @@ Route::get('notification' , function(){
 
 			//}
 		});
+Route::get('/',function()
+{
+	return View('front.layout');
+});
 //---------------------- api -----------------------------//
 Route::group(['prefix'=>'api'],function(){
 
