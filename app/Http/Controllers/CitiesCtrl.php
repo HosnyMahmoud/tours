@@ -16,9 +16,8 @@ class CitiesCtrl extends Controller {
 	 */
 	public function index()
 	{
-		$cities  = Cities::paginate(20) ;
 		$country = Countries::all() ; 
-		return view('admin.countries.cities.index' ,compact('cities','country')) ;
+		return view('admin.countries.cities.index' ,compact('country')) ;
 	}
 
 	/**

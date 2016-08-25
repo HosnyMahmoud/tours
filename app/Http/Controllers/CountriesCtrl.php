@@ -5,7 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Countries ;
-use App\Cities ;
+use App\Cities;
+use Validator; 
 
 class CountriesCtrl extends Controller {
 
@@ -18,6 +19,12 @@ class CountriesCtrl extends Controller {
 	{
 		$countries = Countries::paginate(20) ;
 		return view('admin.countries.countries.index' , compact('countries')) ;
+	}
+
+	public function show($id)
+	{
+		$cities = Cities::where('country_id',$id)->paginate(20);
+		return view('admin.countries.cities.index' , compact('cities')) ;
 	}
 
 	/**
@@ -36,10 +43,16 @@ class CountriesCtrl extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
-	{
-		Countries::create($request->all());
-		 return redirect()->to(Url('/').'/admin/countries')->with(['msg'=>'تمت الأضافة بنجاح']) ;
+	public function store(Request $bag)
+	{	
+		$validation = Validator::make($bag->all(),Countries::rules('add')) ;
+		if($validation->fails())
+		{
+			return redirect()->back()->withErrors($validation)->withInput() ;
+		}
+
+		Countries::create($bag->all());
+		return redirect()->to(Url('/').'/admin/countries')->with(['msg'=>'تمت الأضافة بنجاح']) ;
  	}
 
 	
@@ -51,6 +64,7 @@ class CountriesCtrl extends Controller {
 	 */
 	public function edit($id)
 	{
+		// Countries 
 		$country = Countries::findOrFail($id);
 		return view('admin.countries.countries.edit' , compact('country')) ;
 	}
@@ -63,6 +77,13 @@ class CountriesCtrl extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
+
+		$validation = Validator::make($bag->all(),Countries::rules('add')) ;
+		if($validation->fails())
+		{
+			return redirect()->back()->withErrors($validation)->withInput() ;
+		} 
+		
 		Countries::findOrFail($id)->update($request->all()) ;
 		return redirect()->to(Url('/').'/admin/countries')->with(['msg'=> 'تمت الأضافة بنجاح']) ;
 	}

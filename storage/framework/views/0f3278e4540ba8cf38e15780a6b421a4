@@ -1,0 +1,15 @@
+<?php $__env->startSection('title'); ?>
+	اضافة دولة جديدة
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	
+	<?php echo Form::open(['action'=>'CountriesCtrl@store','class'=>'form-horizontal']); ?>
+
+		<?php echo $__env->make('admin.countries.countries._form',['btnName'=>'إضافه'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo Form::close(); ?>
+
+	
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

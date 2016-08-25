@@ -16,7 +16,7 @@ class CreateCarsModelTabel extends Migration {
 		{
 			$table->increments('id');
 			$table->string('model_name');
-			$table->string('price');
+			$table->decimal('price');
 			$table->integer('brand_id');
 			$table->integer('country_id');
 			$table->integer('city_id');

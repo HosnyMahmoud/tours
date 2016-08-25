@@ -1,25 +1,21 @@
 @extends('admin.layout')
-@section('title')
+@section('title' , 'ألدول و المحافظات')
 		الدول
 @endsection
 
 @section('content')
-
 	<div>
 		<a href="{!!Url('/')!!}/admin/countries/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
-		
 	</div>
-
 	<br>
 	@if(Session::has('msg'))
 		<div class="alert alert-success">
 			{{Session::get('msg')}}
 		</div>
 	@endif
-
 	<br>
 	<div class="panel panel-primary">
-		<div class="panel-heading">الدول</div>
+		<div class="panel-heading">الدول / المحافظات</div>
 		<div class="panel-body">
 			@if($countries->total() > 0)
 				<table class="table table-bordered">
@@ -30,10 +26,17 @@
 					</tr>
 				@foreach($countries as $country)
 					<tr>
-						<td>{{ $country->name_ar }}</td>		
-						<td>{{ $country->name_en }}</td>		
 						<td>
-							
+							<a href="{!!Url('/')!!}/admin/countries/{{$country->id}}" class="btn btn-info">
+								{{ $country->name_ar }}
+							</a>
+						</td>		
+						<td>
+							<a href="{!!Url('/')!!}/admin/countries/{{$country->id}}" class="btn btn-info">
+								{{ $country->name_en }}
+							</a>
+						</td>		
+						<td>
 							{!! Form::open(['method' => 'DELETE' ,'action'=>['CountriesCtrl@destroy',$country->id]]) !!}
 									<a href="{!!Url('/')!!}/admin/countries
 									/{{ $country->id }}/edit" class="btn btn-info">تعديل</a>
@@ -46,12 +49,7 @@
 				{!!$countries->render()!!}
 			@else
 				<div class="alert alert-danger">No Record To Show .</div> 
-
 			@endif
 		</div>	
 	</div>
-	
-
-
-
 @stop

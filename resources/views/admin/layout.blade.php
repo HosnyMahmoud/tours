@@ -205,32 +205,56 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
 				<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 				<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+
+				<!-- ********************************************* -->
+
 				<ul class="page-sidebar-menu  page-sidebar-menu-compact" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+					
+					<!-- Home Page  -->
 					<li class="start {{Request::is('admin') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin">
 						<i class="icon-home"></i>
 						<span class="title">الرئيسيه</span>
 						</a>
 					</li>
-					<li class="start {{Request::is('admin/settings*') ? 'active' : ''}}">
+					
+					<!-- Countries and Cities -->	
+					<li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/countries">
+						<i class="icon-users"></i>
+						<span class="title">الدول والمحافظات</span>
+						</a>
+					</li>
+					
+					<li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/cars_brand">
+						<i class="icon-users"></i>
+						<span class="title">السيارات</span>
+						</a>
+					</li> 
+
+					<!-- Settings -->
+					<!-- <li class="start {{Request::is('admin/settings*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/settings">
 						<i class="fa fa-server"></i>
 						<span class="title">الإعدادات</span>
 						</a>
-					</li>
-					<li class="{{Request::is('admin/users*') ? 'active' : ''}}">
+					</li> -->
+				
+					<!-- <li class="{{Request::is('admin/users*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/users">
 						<i class="icon-user"></i>
 						<span class="title">الإعضاء</span>
 						</a>
-					</li>
-					<li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
+					</li> -->
+
+					<!-- <li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/admins">
 						<i class="icon-users"></i>
 						<span class="title">المديرين</span>
 						</a>
-					</li>
-
+					</li> -->
+				
 					<!-- <li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/cars">
 						<i class="icon-users"></i>
@@ -238,27 +262,8 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li> -->
 						
-					<li class="last">
-						<a href="javascript:;">
-						<i class="icon-pointer"></i>
-						<span class="title">السيارات</span>
-						<span class="arrow "></span>
-						</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="{!!Url('/')!!}/admin/cars_brand">
-									الأنواع
-								</a>
-							</li>
-							<li>
-								<a href="{!! Url('/') !!}/admin/cars_models">
-									الموديلات
-								</a>
-							</li>
-						</ul>
-					</li> 
 
-					<li class="last">
+					<!-- <li class="last">
 						<a href="javascript:;">
 						<i class="icon-pointer"></i>
 						<span class="title">الدول والمحافظات</span>
@@ -276,26 +281,28 @@ License: You must have a valid license purchased only from themeforest(the above
 								</a>
 							</li>
 						</ul>
-					</li> 
+					</li>  -->
 																															
-					<li class="{{Request::is('admin/hotels*') ? 'active' : ''}}">
+					<!-- <li class="{{Request::is('admin/hotels*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/hotels">
 						<i class="icon-users"></i>
 						<span class="title">الفنادق</span>
 						</a>
 					</li>
-
+									
 					<li class="{{Request::is('admin/offers*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/offers">
 						<i class="icon-users"></i>
 						<span class="title">العروض</span>
 						</a>
-					</li>
-
+					</li> -->
+				
 				</ul>
 				<!-- END SIDEBAR MENU -->
 			</div>
 		</div>
+				<!-- ********************************************* -->
+
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">

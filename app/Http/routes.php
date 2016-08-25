@@ -75,6 +75,9 @@ Route::group(['prefix'=>'api'],function(){
 
 });
 
+/**
+	*********  Start Application Route  *************
+ */
 
 Route::get('admin/login','LoginCtrl@showAdminLogin');
 Route::post('admin/login','LoginCtrl@postAdminLogin');
@@ -86,6 +89,16 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 		return View('admin.layout');
 	});
 
+	// Countries and cities .
+	Route::resource('countries','CountriesCtrl');
+	Route::resource('cities','CitiesCtrl');
+	// Countries and cities .
+	
+	// Cars  
+	Route::resource('cars_brand','CarsBrandCtrl');
+	Route::resource('cars_models','CarsModelsCtrl');
+	// Cars  
+	
 	Route::resource('admins','AdminsCtrl');
 
 	Route::resource('areas','AreasCtrl');
@@ -94,8 +107,6 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::resource('users','UsersCtrl');
 	Route::resource('salons','SalonsCtrl');
 
-	Route::resource('cars_brand','CarsBrandCtrl');
-	Route::resource('cars_models','CarsModelsCtrl');
 	
 
 	Route::get('hotels/delete_img/{id}/{img_name}','HotelsController@img_delete');
@@ -103,12 +114,12 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::resource('offers','OffersCtrl');
 	Route::resource('cars','CarsCtrl');
 	
-	Route::resource('countries','CountriesCtrl');
-	Route::resource('cities','CitiesCtrl');
-	
 	
 });
 
+/**
+	*********  End Application Route  *************
+ */
 
 /*
 //---------------------- notefication -----------------------------//

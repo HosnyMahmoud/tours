@@ -18,11 +18,24 @@ class CarsBrandCtrl extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		$brands = CarsBrands::paginate(20);
+	{	
+		$brands    = CarsBrands::paginate(20);
 		$countries = Countries::all();
 		$cities    = Cities::all();
+
+		// Return Views index 
 		return view('admin.cars.cars_brand.index' , compact('brands','countries','cities')) ;
+	}
+
+
+	public function show($id)
+	{	
+		$models    = CarsModels::where('brand_id',$id)->paginate(20) ;
+		$countries = Countries::all();
+		$cities    = Cities::all();
+
+		// Return Views index 
+		return view('admin.cars.cars_models.index' , compact('models','countries','cities')) ;
 	}
 
 	/**
@@ -62,8 +75,7 @@ class CarsBrandCtrl extends Controller {
 	 */
 	public function edit($id)
 	{	
-		$brand = CarsBrands::findOrFail($id);
-		
+		$brand     = CarsBrands::findOrFail($id);
 		$countries = Countries::lists('name_ar','id') ;
 		$cities    = Cities::lists('name_ar','id') ;
 
@@ -79,7 +91,6 @@ class CarsBrandCtrl extends Controller {
 	public function update(Request $request, $id)
 	{
 		
-			
 		$request->merge(['slug_ar'=>$this->make_slug($request->brand_name)]) ;
 		$request->merge(['slug_en'=>$this->make_slug($request->brand_name)]) ;
 		$data = $request->all();

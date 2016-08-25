@@ -29,7 +29,12 @@
 					</tr>
 				<?php foreach($brands as $brand): ?>
 					<tr>
-						<td><?php echo e($brand->brand_name); ?></td>		
+						<td>
+							<a href="<?php echo Url('/'); ?>/admin/cars_brand/<?php echo e($brand->id); ?>" class="btn btn-info">
+								<?php echo e($brand->brand_name); ?>
+
+							</a>
+						</td>		
 						<td>	
 							<?php echo Form::open(['method' => 'DELETE' ,'action'=>['CarsBrandCtrl@destroy',$brand->id]]); ?>
 

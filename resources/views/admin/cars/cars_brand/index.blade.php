@@ -29,7 +29,11 @@
 					</tr>
 				@foreach($brands as $brand)
 					<tr>
-						<td>{{ $brand->brand_name }}</td>		
+						<td>
+							<a href="{!!Url('/')!!}/admin/cars_brand/{{ $brand->id }}" class="btn btn-info">
+								{{ $brand->brand_name }}
+							</a>
+						</td>		
 						<td>	
 							{!! Form::open(['method' => 'DELETE' ,'action'=>['CarsBrandCtrl@destroy',$brand->id]]) !!}
 									<a href="{!!Url('/')!!}/admin/cars_brand/{{ $brand->id }}/edit" class="btn btn-info">تعديل</a>
