@@ -101,22 +101,33 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	// Cars  
 	Route::resource('cars_brand','CarsBrandCtrl');
 	Route::resource('cars_models','CarsModelsCtrl');
+	// Offer
+	Route::resource('carsOffers','CarsOffersCtrl');
 	// Cars  
 	
+	// Hotels
+	Route::get('hotels/delete_img/{id}/{img_name}','HotelsController@img_delete');
+	Route::resource('hotels','HotelsController');
+	// Hotels
+	
+	// Settings 
+	Route::resource('settings','SettingsCtrl');
+	// Settings 
+	
+	// Admins 
 	Route::resource('admins','AdminsCtrl');
+	// Admins 
+
+
 
 	Route::resource('areas','AreasCtrl');
-	Route::resource('settings','SettingsCtrl');
 
 	Route::resource('users','UsersCtrl');
 	Route::resource('salons','SalonsCtrl');
 
 	
 
-	Route::get('hotels/delete_img/{id}/{img_name}','HotelsController@img_delete');
-	Route::resource('hotels','HotelsController');
 	Route::resource('offers','OffersCtrl');
-	Route::resource('cars','CarsCtrl');
 	
 	
 });

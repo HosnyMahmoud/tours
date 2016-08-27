@@ -4,10 +4,23 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+use Auth ;
+
 abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 
+
+	/*public function check_pre($rule)
+	{
+		$pre = Auth::admin()->get()->pre ; 		
+		if (in_array($rule, explode('|', $pre))) {
+
+			return true ;			
+		}
+
+		return false ;
+	}*/
 
 	public function make_slug($string = null, $separator = "-") {
 	    if (is_null($string)) {

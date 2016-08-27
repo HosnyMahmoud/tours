@@ -12,7 +12,7 @@ class SpecialOffers extends Model {
 				'price', 
 				'desc_ar', 
 				'desc_en', 
-				'status', // Will bb to active offer to start reserv or no .
+				'status', // Will be to active offer to start reserv or no .
 				'num_of_persons', 
 				'images', 
 				'date_from', 

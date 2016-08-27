@@ -15,9 +15,16 @@ class AdminsCtrl extends Controller {
 	 */
 	public function index()
 	{
-		
-		$admins = Admin::all();
-		return View('admin.admins.index',compact('admins'));
+		$pre = Auth::admin()->get()->pre ;
+	
+		if(in_array('|', explode('|', $pre)))
+		{
+			$admins = Admin::all();
+			return View('admin.admins.index',compact('admins'));
+		}
+
+		redirect()->to(Url('/').'/admin')->whit(['msgErr' => 'عفوا , غير مسموح بالتحكم في هذة الصفحة .']) ;
+
 	}
 
 	/**
@@ -38,25 +45,20 @@ class AdminsCtrl extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(Request $bag)
 	{
 			
-		$validator = Validator::make($request->all(),[
-  				'name'            		=> 'required|unique:admins|min:6',
-			    'email'            		=> 'required|email|unique:admins',
-				'password'        		=> 'required|min:6|',
-			],Admin::$rules);
+		$validator = Validator::make($bag->all(),Admin::rules('add'),Admin::msg());
 		if($validator->fails()){
 			return redirect()->back()->withErrors($validator)->withInput();
-		}else{
-			 $add =  Admin::create([
-			    	'name'=>$request->name,
-			    	'email'=>$request->email,
-			    	'password'=>bcrypt($request->password),
-			    	'pre'=>implode('|', $request->pre)
-			    	]);
-			return redirect()->back()->with('msg','success');
-		}
+		}	
+	    	
+			$bag->merge(['pre'      => implode('|', $bag->pre)]) ;
+			$bag->merge(['password' => bcrypt($bag->password) ]) ;
+			
+			Admin::create($bag->all());
+			return redirect()->to(Url('/').'/admin/admins')->with('msg','success');
+		
 	}
 
 	public function edit($id)
@@ -67,39 +69,34 @@ class AdminsCtrl extends Controller {
 		return View('admin.admins.edit',compact('admin','type','pre'));
 	}
 
-	public function update(Request $request, $id)
+	public function update(Request $bag, $id)
 	{	
 			
-		$admin = Admin::findOrFail($id);
-		$validator = Validator::make($request->all(),[
-			'name'            		=> 'required|min:6',
-		    'email'            		=> 'required|email',
-			'password'        		=> 'min:6',
-			],Admin::$rules);
-		if($validator->fails()){
+		$validator = Validator::make($bag->all(),Admin::rules('edit', $id),Admin::msg());
+		if($validator->fails())
+		{
 			return redirect()->back()->withErrors($validator)->withInput();
+		}	
+		$admin   = Admin::findOrFail($id);
+
+		if($bag->has('pre'))
+		{
+			$bag->merge(['pre'=>implode('|',$bag->pre)]);
 		}else{
-			if($request->has('pre'))
-			{
-				$request->merge(['pre'=>implode('|',$request->pre)]);
-			}else{
-				$request->merge(['pre'=>'']);
-				
-			}
-
-			if($request->has('password'))
-			{
-				$request->merge(['password'=>bcrypt($request->password)]);
-				$admin->update($request->all());
-				return redirect()->back()->with('msg','Updated Successfuly !!');
-
-			}else{
-				$request->merge(['password'=>$admin->password]);
-				$admin->update($request->all());
-				return redirect()->back()->with('msg','Updated Successfuly !!');
-			}
+			$bag->merge(['pre'=> $admin->pre ]);
 		}
+
+		if($bag->has('password'))
+		{
+			$bag->merge(['password'=>bcrypt($bag->password)]);
+			
+		}else{
+			$bag->merge(['password'=>$admin->password]);
+		}
+			$admin->update($bag->all());
+			return redirect()->back()->with('msg','Updated Successfuly !!');
 	}
+	
 
 	/**
 	 * Remove the specified resource from storage.
@@ -109,7 +106,6 @@ class AdminsCtrl extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
 		$admin = Admin::findOrFail($id);
 		$admin->delete();
 		return redirect()->back()->with('msg','Deleted Successfuly !!');

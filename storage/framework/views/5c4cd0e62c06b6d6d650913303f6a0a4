@@ -61,6 +61,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <?php echo Html::style('back/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css'); ?>
 
+
 <!-- BEGIN THEME STYLES -->
 <?php echo Html::style('back/assets/global/css/components-md-rtl.css'); ?>
 
@@ -212,8 +213,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEADER -->
 <div class="clearfix">
 </div>
+
+
 <div class="container">
 	<!-- BEGIN CONTAINER -->
+				
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar-wrapper">
@@ -229,8 +233,13 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 
 				<!-- ********************************************* -->
+				<?php 
+					$pre     = Auth::admin()->get()->pre ;
+					$explode = explode('|', $pre)  ;
+				?>
 
 				<ul class="page-sidebar-menu  page-sidebar-menu-compact" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+					
 					
 					<!-- Home Page  -->
 					<li class="start <?php echo e(Request::is('admin') ? 'active' : ''); ?>">
@@ -240,28 +249,56 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 					
+					<?php if(in_array('settings',$explode)): ?>
+						<!-- Settings -->
+						 <li class="start <?php echo e(Request::is('admin/settings*') ? 'active' : ''); ?>">
+							<a href="<?php echo Url('/'); ?>/admin/settings">
+							<i class="fa fa-server"></i>
+							<span class="title">الإعدادات</span>
+							</a>
+						</li> 
+					<?php endif; ?>
+
+					<?php if(in_array('admins',$explode)): ?>
+						<!-- Admin -->
+						<li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
+							<a href="<?php echo Url('/'); ?>/admin/admins">
+							<i class="icon-users"></i>
+							<span class="title">المديرين</span>
+							</a>
+						</li>
+					<?php endif; ?>
+
 					<!-- Countries and Cities -->	
-					<li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
+					<li class="<?php echo e(Request::is('admin/countries*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/countries">
 						<i class="icon-users"></i>
 						<span class="title">الدول والمحافظات</span>
 						</a>
 					</li>
 					
-					<li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
+					<li class="<?php echo e(Request::is('admin/cars_brand*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/cars_brand">
 						<i class="icon-users"></i>
 						<span class="title">السيارات</span>
 						</a>
 					</li> 
-
-					<!-- Settings -->
-					<!-- <li class="start <?php echo e(Request::is('admin/settings*') ? 'active' : ''); ?>">
-						<a href="<?php echo Url('/'); ?>/admin/settings">
-						<i class="fa fa-server"></i>
-						<span class="title">الإعدادات</span>
+					
+					<li class="<?php echo e(Request::is('admin/hotels*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/carsOffers">
+						<i class="icon-users"></i>
+						<span class="title">عروض السيارات</span>
 						</a>
-					</li> -->
+					</li>
+
+					<li class="<?php echo e(Request::is('admin/hotels*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/hotels">
+						<i class="icon-users"></i>
+						<span class="title">الفنادق</span>
+						</a>
+					</li>
+
+						
 				
 					<!-- <li class="<?php echo e(Request::is('admin/users*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/users">
@@ -270,12 +307,6 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li> -->
 
-					<!-- <li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
-						<a href="<?php echo Url('/'); ?>/admin/admins">
-						<i class="icon-users"></i>
-						<span class="title">المديرين</span>
-						</a>
-					</li> -->
 				
 					<!-- <li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/cars">
@@ -305,14 +336,8 @@ License: You must have a valid license purchased only from themeforest(the above
 						</ul>
 					</li>  -->
 																															
-					<!-- <li class="<?php echo e(Request::is('admin/hotels*') ? 'active' : ''); ?>">
-						<a href="<?php echo Url('/'); ?>/admin/hotels">
-						<i class="icon-users"></i>
-						<span class="title">الفنادق</span>
-						</a>
-					</li>
 									
-					<li class="<?php echo e(Request::is('admin/offers*') ? 'active' : ''); ?>">
+					<!--<li class="<?php echo e(Request::is('admin/offers*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/offers">
 						<i class="icon-users"></i>
 						<span class="title">العروض</span>
@@ -456,7 +481,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
 					<div class="col-md-12">
-						 <?php echo $__env->yieldContent('content'); ?>
+	      				<?php echo $__env->yieldContent('content'); ?>
 					</div>
 				</div>
 				<!-- END PAGE CONTENT-->
@@ -559,9 +584,10 @@ License: You must have a valid license purchased only from themeforest(the above
         ComponentsFormTools.init();
 
       });
+	
+	
 
-
-   </script>
+</script>
 
 <!-- END JAVASCRIPTS -->
 </body>
