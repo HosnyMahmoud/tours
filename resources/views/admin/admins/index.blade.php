@@ -35,5 +35,7 @@
 				@endforeach
 			</tbody>
 		</table>
+		<div class="paginate">{!! $admins->render() !!}</div>
+		
 	@endsection
 @stop

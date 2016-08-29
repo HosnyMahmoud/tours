@@ -217,8 +217,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				?>
 
 				<ul class="page-sidebar-menu  page-sidebar-menu-compact" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-					
-					
+				
 					<!-- Home Page  -->
 					<li class="start {{Request::is('admin') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin">
@@ -226,7 +225,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="title">الرئيسيه</span>
 						</a>
 					</li>
-					
+
 					@if(in_array('settings',$explode))
 						<!-- Settings -->
 						 <li class="start {{Request::is('admin/settings*') ? 'active' : ''}}">
@@ -280,6 +279,14 @@ License: You must have a valid license purchased only from themeforest(the above
 						<a href="{!!Url('/')!!}/admin/travels">
 						<i class="icon-users"></i>
 						<span class="title">الرحلات</span>
+						</a>
+					</li>
+					
+					<!-- Special Offers -->
+					<li class="{{Request::is('admin/travels*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/special-offers">
+						<i class="icon-users"></i>
+						<span class="title">العروض الخاصة</span>
 						</a>
 					</li>
 						

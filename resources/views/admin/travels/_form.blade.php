@@ -52,6 +52,7 @@
     @endforeach
 @endif
 <!-- View Images -->
+
 <hr>
 <div class="input_fields_wrap">
 	<div class="form-group{{ $errors->has('imgs[]') ? ' has-error' : '' }}">

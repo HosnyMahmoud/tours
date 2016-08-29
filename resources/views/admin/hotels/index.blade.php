@@ -22,8 +22,6 @@
 				<th>#ID</th>
 				<th>الاسم العربي</th>
 				<th>الاسم الأجليزي</th>
-				<th>الوصف العربي</th>
-				<th>الوصف الأنجليزي</th>
 				<th>النجوم</th>
 				<th>السعر</th>
 				<th>تعديل</th>
@@ -35,8 +33,6 @@
 				<td>{{$hotel->id}}</td>
 				<td>{{$hotel->name_ar}}</td>
 				<td>{{$hotel->name_en}}</td>
-				<td>{{$hotel->desc_ar}}</td>
-				<td>{{$hotel->desc_en}}</td>
 				<td>{{$hotel->stars}}</td>
 				<td>{{$hotel->price}}</td>
 				<td>
@@ -57,7 +53,7 @@
 	</div>
 		
 
-		<div class="paginate">{{ $hotels->render() }}</div>
+		<div class="paginate">{!! $hotels->render() !!}</div>
 
 @endsection
 @stop

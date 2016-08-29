@@ -101,7 +101,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	// Cars  
 	Route::resource('cars_brand','CarsBrandCtrl');
 	Route::resource('cars_models','CarsModelsCtrl');
-	// Offer
+	// Cars Offer //
 	Route::resource('carsOffers','CarsOffersCtrl');
 	// Cars  
 	
@@ -120,17 +120,18 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 
 	// Travels
 	Route::resource('travels','TravelsCtrl');
-	Route::resource('travels/delete_img/{pid}/{name}','TravelsCtrl@delete_img');
+	Route::get('travels/delete_img/{pid}/{name}','TravelsCtrl@delete_img');
 	// Travels
 
+	// Special Offers
+	Route::resource('special-offers','SpecialOffersCtrl');
+	Route::get('special-offers/{id}/activate','SpecialOffersCtrl@startReservOffers');
+	// Special Offers
+	
 	Route::resource('areas','AreasCtrl');
 
 	Route::resource('users','UsersCtrl');
 	Route::resource('salons','SalonsCtrl');
-
-	
-
-	
 	
 	
 });

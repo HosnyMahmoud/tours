@@ -1,0 +1,85 @@
+<?php use Carbon\Carbon ?>
+
+<?php $__env->startSection('title','العروض الخاصة'); ?>
+	
+<?php $__env->startSection('content'); ?>
+		
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/special-offers/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+		<br />
+		<br />
+		
+		<?php echo Form::open(); ?> 
+			<div class="pull-rigth">
+				<select class="form-control" id="sort">
+					<option value="0">العروض المنتهية</option>
+					<option value="1">العروض السارية</option>
+					<option value="2">العروض الغير مفعلة</option>
+				</select>
+			</div>
+		<?php echo Form::close(); ?>
+
+		<br />
+		<?php if(Session::has('msg')): ?>
+			<div class="alert alert-success">
+				<?php echo e(Session::get('msg')); ?>
+
+			</div>
+		<?php endif; ?>
+		
+	</div>
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>الأسم العربي</th>
+				<th>الأسم الأنجلزي</th>
+				<th>السعر</th>
+				<th>بداية من</th>
+				<th>وتنتهي في</th>
+				<th>خيارات</th>
+			</tr>
+			<?php foreach($offers as $offer): ?>
+			
+			<tr <?php if(Carbon::now() >= $offer->date_to): ?><?php echo 'style="background-color:#652424;font-weight: ld;color:#FFFFFF;"'; ?><?php endif; ?> >
+				<td><?php echo e($offer->id); ?></td>
+				<td><?php echo e($offer->name_ar); ?></td>
+				<td><?php echo e($offer->name_en); ?></td>
+				<td><?php echo e($offer->price); ?></td>
+				<td><?php echo e($offer->date_from); ?></td>
+				<td><?php echo e($offer->date_to); ?></td>
+				<td>
+					
+					<?php echo Form::open(['method'=>'DELETE', 'action'=>['SpecialOffersCtrl@destroy', $offer->id ]]); ?>
+
+							<a href="<?php echo Url('/'); ?>/admin/special-offers/<?php echo e($offer->id); ?>/edit" class="btn btn-info">تعديل</a>
+							<?php echo Form::submit('حذف', [ 'class'=> 'btn btn-danger', 'onClick'=>'return confirm("سيتم حذف هذا العرض هل انت متأكد من الحذف ؟")'] ); ?>
+
+							<?php if($offer->status == 0 && Carbon::now() <= $offer->date_to): ?>
+								<a href="<?php echo Url('/'); ?>/admin/special-offers/<?php echo e($offer->id); ?>/activate" class="btn btn-success">تفعيل بدء الحجز</a>
+							<?php endif; ?>
+							<?php if($offer->status == 1 && Carbon::now() <= $offer->date_to): ?>
+								<a href="<?php echo Url('/'); ?>/admin/special-offers/<?php echo e($offer->id); ?>/activate" class="btn btn-info">ايقاف الحجز</a>
+							<?php endif; ?>
+					<?php echo Form::close(); ?>
+
+
+				</td>
+			</tr>
+			
+			<?php endforeach; ?>				
+		</table>
+
+		<div class="paginate"><?php echo $offers->render(); ?></div>
+		
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+        $('#sort').on('change',function() {
+            /*alert($('#sort').val());*/
+            window.location = '<?php echo Url("/"); ?>/admin/special-offers/?sort=' + $('#sort').val();
+        })
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

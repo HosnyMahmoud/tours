@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin;
 use Validator;
+use Auth ;
 class AdminsCtrl extends Controller {
 
 	/**
@@ -17,13 +18,13 @@ class AdminsCtrl extends Controller {
 	{
 		$pre = Auth::admin()->get()->pre ;
 	
-		if(in_array('|', explode('|', $pre)))
+		if(in_array('admins', explode('|', $pre)))
 		{
 			$admins = Admin::all();
 			return View('admin.admins.index',compact('admins'));
 		}
 
-		redirect()->to(Url('/').'/admin')->whit(['msgErr' => 'عفوا , غير مسموح بالتحكم في هذة الصفحة .']) ;
+		redirect()->to(Url('/').'/admin')->with(['msgErr' => 'عفوا , غير مسموح بالتحكم في هذة الصفحة .']) ;
 
 	}
 
