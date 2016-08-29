@@ -34,7 +34,7 @@
 			</tr>
 			@foreach($offers as $offer)
 			
-			<tr @if(Carbon::now() >= $offer->date_to){!!'style="background-color:#652424;font-weight: ld;color:#FFFFFF;"' !!}@endif >
+			<tr @if(Carbon::now() >= $offer->date_to)style="background-color:#652424;font-weight: ld;color:#FFFFFF;" @endif >
 				<td>{{$offer->id}}</td>
 				<td>{{$offer->name_ar}}</td>
 				<td>{{$offer->name_en}}</td>

@@ -30,7 +30,7 @@ class SpecialOffersCtrl extends Controller {
 
 			if($bag->sort == 2)
 			{
-				$offers = SpecialOffers::where('status',0)->where('date_to','<',Carbon::now())->paginate(20);  
+				$offers = SpecialOffers::where('status',0)->where('date_to','>',Carbon::now())->paginate(20);  
 			}
 
 			return view('admin.special_offers.index' , compact('offers','bag'));	

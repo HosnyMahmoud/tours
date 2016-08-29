@@ -37,7 +37,7 @@
 			</tr>
 			<?php foreach($offers as $offer): ?>
 			
-			<tr <?php if(Carbon::now() >= $offer->date_to): ?><?php echo 'style="background-color:#652424;font-weight: ld;color:#FFFFFF;"'; ?><?php endif; ?> >
+			<tr <?php if(Carbon::now() >= $offer->date_to): ?>style="background-color:#652424;font-weight: ld;color:#FFFFFF;" <?php endif; ?> >
 				<td><?php echo e($offer->id); ?></td>
 				<td><?php echo e($offer->name_ar); ?></td>
 				<td><?php echo e($offer->name_en); ?></td>

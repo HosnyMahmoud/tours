@@ -37,14 +37,18 @@
 
 <!-- View Images -->
 @if(@$type == 'edit')
-    @foreach ($exp as $img) 
-      <div style="">
-          <img src="{!!Url('/')!!}/uploads/special_offers/{{ $img }}" class="img-thumbnail" width="150" height="150">
-          <span>
-            <a href="{{Url('admin/special-offers/')}}/delete_img/{{$offer->id}}/{{$img}}"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
-          </span>
-      </div>
-    @endforeach
+    @if($offer->images !== '')
+        @foreach ($exp as $img) 
+          <div style="">
+              <img src="{!!Url('/')!!}/uploads/special_offers/{{ $img }}" class="img-thumbnail" width="150" height="150">
+              <span>
+                <a href="{{Url('admin/special-offers/')}}/delete_img/{{$offer->id}}/{{$img}}"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
+              </span>
+          </div>
+        @endforeach
+    @else
+    <div class="alert alert-info">عفواً لا توجد صور</div>
+    @endif
 @endif
 <!-- View Images -->
 
