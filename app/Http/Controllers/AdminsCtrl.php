@@ -20,7 +20,7 @@ class AdminsCtrl extends Controller {
 	
 		if(in_array('admins', explode('|', $pre)))
 		{
-			$admins = Admin::all();
+			$admins = Admin::paginate(20);
 			return View('admin.admins.index',compact('admins'));
 		}
 
