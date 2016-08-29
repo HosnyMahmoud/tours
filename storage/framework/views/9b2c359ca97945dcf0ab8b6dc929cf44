@@ -1,0 +1,21 @@
+<?php $__env->startSection('title' , 'تعديل العرض'); ?>
+
+<?php $__env->startSection('content'); ?>
+	
+		<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="text-center panel-heading">تعديل عرض : <?php echo e($offerCar->name_offer_ar); ?></div>
+			<div class="panel-body col-md-10">
+				<?php echo Form::model($offerCar,[ 'action'=>['CarsOffersCtrl@update', $offerCar->id],'method' => 'PUT', 'class' => 'form-horizontal', 'files'=>true]); ?>
+
+				<?php echo $__env->make('admin.cars.cars_offers._form',['btnName' => 'حفظ التعديلات', 'type'=> 'edit'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<?php echo Form::close(); ?>
+
+			</div>
+		</div>
+	</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -25,7 +25,7 @@ class CarsOffersCtrl extends Controller {
 		$cars_brand  = CarsBrands::all() ;
 		$cars_models = CarsModels::all() ;
 
-		$carsOffers  = CarsOffers::paginate(5) ;
+		$carsOffers  = CarsOffers::paginate(10) ;
 
 		return view('admin.cars.cars_offers.index' , compact('carsOffers', 'countries', 'cities', 'cars_brand' , 'cars_models'))	;
 	}
@@ -39,10 +39,10 @@ class CarsOffersCtrl extends Controller {
 	{
 		$countries   = Countries::lists('name_ar','id') ;
 		$cities      = Cities::lists('name_ar','id');
-		$cars_brand  = CarsBrands::all() ;
-		$cars_models = CarsModels::all() ;
+		$brands      = CarsBrands::lists('brand_name','id');
+		$models      = CarsModels::lists('model_name','id');
 
-		return view('admin.cars.cars_offers.create' ,compact('carsOffers', 'countries', 'cities', 'cars_brand' , 'cars_models')) ;
+		return view('admin.cars.cars_offers.create' ,compact('carsOffers', 'countries', 'cities', 'brands' , 'models')) ;
 	}
 
 	/**
@@ -52,15 +52,23 @@ class CarsOffersCtrl extends Controller {
 	 */
 	public function store(Request $bag)
 	{	
-		
 		$validation = Validator::make($bag->all(), CarsOffers::rules('add'));
 		
-		dd($bag->all()) ;
+		/*dd($bag->all()) ;*/
 		if($validation->fails())
 		{
  			return redirect()->back()->withErrors($validation)->withInput() ;
 		}
-		
+
+		if($bag->hasFile('img'))
+		{
+			$dest     = 'uploads/cars/cars_offers' ;
+			$fileName = time().'.'.$bag->file('img')->getClientOriginalExtension();
+			$bag->file('img')->move($dest , $fileName) ;
+
+			$bag->merge(['image'=>$fileName]) ;
+		}
+
 		CarsOffers::create($bag->all()) ;
 		return redirect()->to(Url('/').'/admin/carsOffers')->with(['msg' => 'تم الحفظ بنجاح']); 
 	}
@@ -73,7 +81,6 @@ class CarsOffersCtrl extends Controller {
 	 */
 	public function show($id)
 	{
-		//
 	}
 
 	/**
@@ -84,7 +91,14 @@ class CarsOffersCtrl extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$countries   = Countries::lists('name_ar','id') ;
+		$cities      = Cities::lists('name_ar','id');
+		$brands      = CarsBrands::lists('brand_name','id');
+		$models      = CarsModels::lists('model_name','id');
+
+		$offerCar = CarsOffers::findOrFail($id) ;	
+
+		return view('admin.cars.cars_offers.edit',compact('offerCar','countries', 'cities', 'brands' , 'models')) ;
 	}
 
 	/**
@@ -93,9 +107,33 @@ class CarsOffersCtrl extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $bag ,$id)
 	{
-		//
+		$validation = Validator::make($bag->all(), CarsOffers::rules('edit'));
+		
+		/*dd($bag->all()) ;*/
+		if($validation->fails())
+		{
+ 			return redirect()->back()->withErrors($validation)->withInput() ;
+		}
+		// Get Old Data To update it .
+		$car_offer = CarsOffers::findOrFail($id);
+
+		// If Isset image .
+		if($bag->hasFile('img'))
+		{
+			$dest     = 'uploads/cars/cars_offers' ;
+			$fileName = time().'.'.$bag->file('img')->getClientOriginalExtension();
+			$bag->file('img')->move($dest , $fileName) ;
+
+			$bag->merge(['image'=>$fileName]) ;
+		}else
+		{
+			$bag->merge(['image'=>$car_offer->image]) ;
+		}
+
+		$car_offer->update($bag->all()) ;
+		return redirect()->to(Url('/').'/admin/carsOffers')->with(['msg' => 'تم حفظ التعديلات.']); 
 	}
 
 	/**
@@ -106,7 +144,8 @@ class CarsOffersCtrl extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		CarsOffers::findOrFail($id)->delete() ;
+		return redirect()->to(Url('/').'/admin/carsOffers')->with(['msg' => 'تم الحذف بنجاح.']); 
 	}
 
 }

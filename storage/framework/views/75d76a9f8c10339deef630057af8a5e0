@@ -14,6 +14,22 @@
 	<small class="text-danger"><?php echo e($errors->first('offer_name_en')); ?></small>
 </div>
 
+<div class="form-group<?php echo e($errors->has('brand_id') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('brand_id', 'نوع السيارة'); ?>
+
+	<?php echo Form::select('brand_id', $brands, null, ['id' => 'brand_id', 'class' => 'form-control']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('brand_id')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('model_id') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('model_id', 'الموديل'); ?>
+
+	<?php echo Form::select('model_id', $models, null, ['id' => 'model_id', 'class' => 'form-control']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('model_id')); ?></small>
+</div>
+
 <div class="form-group<?php echo e($errors->has('country_id') ? ' has-error' : ''); ?>">
 	<?php echo Form::label('country_id', 'الدولة'); ?>
 
@@ -30,6 +46,8 @@
 	<small class="text-danger"><?php echo e($errors->first('city_id')); ?></small>
 </div>
 
+
+
 <div class="form-group<?php echo e($errors->has('img') ? ' has-error' : ''); ?>">
     <?php echo Form::label('img', 'الصورة'); ?>
 
@@ -42,7 +60,7 @@
 <div class="form-group<?php echo e($errors->has('color') ? ' has-error' : ''); ?>">
     <?php echo Form::label('color', 'لون السيارة'); ?>
 
-    <?php echo Form::text('color', null, ['class' => 'form-control', 'required' => 'required']); ?>
+    <?php echo Form::text('color', null, ['class' => 'form-control']); ?>
 
     <small class="text-danger"><?php echo e($errors->first('color')); ?></small>
 </div>

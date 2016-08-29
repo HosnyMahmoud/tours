@@ -1,70 +1,67 @@
 <?php $__env->startSection('title', 'عروض السيارات'); ?>
-	
-<?php $__env->startSection('content'); ?>
-	<div>
-		<a href="<?php echo Url('/'); ?>/admin/carsOffers/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
-		<br />
-		<br />
-		<?php if(Session::has('msg')): ?>
-			<div class="alert alert-success">
-				<?php echo e(Session::get('msg')); ?>
 
-			</div>
-		<?php endif; ?>
+<?php $__env->startSection('content'); ?>
+<div>
+	<a href="<?php echo Url('/'); ?>/admin/carsOffers/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+	<br />
+	<br />
+	<?php if(Session::has('msg')): ?>
+	<div class="alert alert-success">
+		<?php echo e(Session::get('msg')); ?>
+
 	</div>
-	<div class="col-md-12">
-		<div class="panel panel-primary">
-			<div class="text-center panel-heading">عروض السيارات </div>	
-			<div class="panel-body">
-	
-			<table class="table table-bordered table-responsive">
-			<tr> 
-				<th>#ID</th>
-				<th>الاسم باللغة باللغة العربية</th>
-				<th>الاسم باللغة باللغة الأنجليزية</th>
-				<th>الدولة </th>
-				<th>المدينة </th>
-				<th>البراند </th>
-				<th>الموديل </th>
-				<th>السعر</th>
-				<th>تعديل</th>
-				<th>حذف</th>
-			</tr>
-			<?php foreach($carsOffers as $carsOffer): ?>
+	<?php endif; ?>
+</div>
+<div class="col-md-12">
+	<div class="panel panel-primary">
+		<div class="text-center panel-heading">عروض السيارات </div>
+		<div class="panel-body">
 			
-			<tr>
-				<td><?php echo e($carsOffer->id); ?></td>
-				<td><?php echo e($carsOffer->offer_name_ar); ?></td>
-				<td><?php echo e($carsOffer->offer_name_en); ?></td>
-				<td><?php echo e($countries->find($carsOffer->country_id)['name_ar']); ?></td>
-				<td><?php echo e($cities->find($carsOffer->city_id)['name_ar']); ?></td>
-				<td><?php echo e($cars_brand->find($carsOffer->brand_id)['brand_name']); ?></td>
-				<td><?php echo e($cars_models->find($carsOffer->model_id)['model_name']); ?></td>
-				<td><?php echo e($carsOffer->price); ?></td>
-				<td>
-					<a href="<?php echo Url('/'); ?>/admin/hotels/<?php echo e($carsOffer->id); ?>/edit" class="btn btn-info">تعديل</a>
-				</td>
-				<td>	
-					<?php echo Form::open(['method'=>'DELETE', 'action'=>['HotelsController@destroy', $carsOffer->id ]]); ?>
+			<table class="table table-bordered table-responsive">
+				<tr>
+					<th>#ID</th>
+					<th>الاسم باللغة باللغة العربية</th>
+					<th>الاسم باللغة باللغة الأنجليزية</th>
+					<th>الدولة </th>
+					<th>المدينة </th>
+					<th>البراند </th>
+					<th>الموديل </th>
+					<th>السعر</th>
+					<th>تعديل</th>
+					<th>حذف</th>
+				</tr>
+				<?php foreach($carsOffers as $carsOffer): ?>
+				
+				<tr>
+					<td><?php echo e($carsOffer->id); ?></td>
+					<td><?php echo e($carsOffer->offer_name_ar); ?></td>
+					<td><?php echo e($carsOffer->offer_name_en); ?></td>
+					<td><?php echo e($countries->find($carsOffer->country_id)['name_ar']); ?></td>
+					<td><?php echo e($cities->find($carsOffer->city_id)['name_ar']); ?></td>
+					<td><?php echo e($cars_brand->find($carsOffer->brand_id)['brand_name']); ?></td>
+					<td><?php echo e($cars_models->find($carsOffer->model_id)['model_name']); ?></td>
+					<td><?php echo e($carsOffer->price); ?></td>
+					<td>
+						<a href="<?php echo Url('/'); ?>/admin/carsOffers/<?php echo e($carsOffer->id); ?>/edit" class="btn btn-info">تعديل</a>
+					</td>
+					<td>
+						<?php echo Form::open(['method'=>'DELETE', 'action'=>['CarsOffersCtrl@destroy', $carsOffer->id ]]); ?>
 
 						<?php echo Form::submit('حذف', [ 'class'=> 'btn btn-danger', 'onClick'=>'return confirm("سيتم حذف هذا الفندق هل انت متأكد من الحذف ؟")'] ); ?>
 
-					<?php echo Form::close(); ?>
+						<?php echo Form::close(); ?>
 
-				</td>
-			</tr>
+					</td>
+				</tr>
+				
+				<?php endforeach; ?>
+			</table>
 			
-			<?php endforeach; ?>				
-		</table>
-	
-			</div>	
 		</div>
 	</div>
-		
+</div>
 
-		<div class="paginate"><?php echo e($carsOffers->render()); ?></div>
-
+<div class="paginate"><?php echo $carsOffers->render(); ?></div>
 <?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

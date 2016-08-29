@@ -118,7 +118,10 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::resource('admins','AdminsCtrl');
 	// Admins 
 
-
+	// Travels
+	Route::resource('travels','TravelsCtrl');
+	Route::resource('travels/delete_img/{pid}/{name}','TravelsCtrl@delete_img');
+	// Travels
 
 	Route::resource('areas','AreasCtrl');
 
@@ -127,7 +130,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 
 	
 
-	Route::resource('offers','OffersCtrl');
+	
 	
 	
 });

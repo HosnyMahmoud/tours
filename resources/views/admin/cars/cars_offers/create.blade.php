@@ -2,7 +2,7 @@
 @section('title' , 'اضافة عرض جديد')
 	
 @section('content')
-
+	
 	<div class="col-md-12">
 		<div class="panel panel-primary">
 			<div class="text-center panel-heading">أضافة عرض جديد</div>	

@@ -1,0 +1,190 @@
+<div class="form-group<?php echo e($errors->has('name_ar') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('name_ar', 'الأسم باللغة العربية'); ?>
+
+	<?php echo Form::text('name_ar', null, ['class' => 'form-control']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('name_ar')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('name_en') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('name_en', 'الأسم باللغة الأنجليزية'); ?>
+
+	<?php echo Form::text('name_en', null, ['class' => 'form-control']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('name_en')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('hotel_id') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('hotel_id', 'يرجي تحديد الفندق'); ?>
+
+    <?php echo Form::select('hotel_id', $hotels, null, ['id' => 'hotel_id', 'class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('hotel_id')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('nights') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('nights', 'عدد الليالي'); ?>
+
+    <?php echo Form::text('nights', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('nights')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('type') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('type', 'نوع الرحلة'); ?>
+
+    <?php echo Form::select('type', ['0'=>'عروض خاصة' ,'1'=>'حج وعمرة' , '2'=>'شهر عسل'], null, ['id' => 'type', 'class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('type')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('country_id') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('country_id', 'الدولة'); ?>
+
+    <?php echo Form::select('country_id', $countries, null, ['id' => 'country_id', 'class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('country_id')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('city_id') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('city_id', 'المنطقة'); ?>
+
+    <?php echo Form::select('city_id', $cities, null, ['id' => 'city_id', 'class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('city_id')); ?></small>
+</div>
+
+<!-- View Images -->
+<?php if(@$type == 'edit'): ?>
+    <?php foreach($exp as $img): ?> 
+      <div style="">
+          <img src="<?php echo Url('/'); ?>/uploads/travels/<?php echo e($img); ?>" class="img-thumbnail" width="150" height="150">
+          <span>
+            <a href="<?php echo e(Url('admin/travels/')); ?>/delete_img/<?php echo e($travel->id); ?>/<?php echo e($img); ?>"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
+          </span>
+      </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+<!-- View Images -->
+<hr>
+<div class="input_fields_wrap">
+	<div class="form-group<?php echo e($errors->has('imgs[]') ? ' has-error' : ''); ?>">
+	    <?php echo Form::label('imgs[]', 'أضافة صور مناسبة'); ?>
+
+	    <?php echo Form::file('imgs[]'); ?>
+
+	    <p class="help-block">يرجي تحديد صورة أو عدة صور .</p>
+	    <small class="text-danger"><?php echo e($errors->first('imgs[]')); ?></small>
+    </div>
+
+	<button id="addmore" class="btn btn-primary">
+		<?php echo e(' أضافة المزيد من الصور'); ?>
+
+	</button>
+</div>
+<br / >
+<br / >
+<div class="form-group<?php echo e($errors->has('price') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('price', 'سعر الرحلة'); ?>
+
+    <?php echo Form::text('price', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('price')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('date_from') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('date_from', 'بداية من'); ?>
+
+    <?php echo Form::input('date','date_from', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('date_from')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('date_to') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('date_to', 'وتنتهي في '); ?>
+
+    <?php echo Form::input('date','date_to', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('date_to')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('desc_ar') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('desc_ar', 'الوصف العربي'); ?>
+
+    <?php echo Form::textarea('desc_ar', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('desc_ar')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('desc_en') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('desc_en', 'الوصف الأنجليزي'); ?>
+
+    <?php echo Form::textarea('desc_en', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('desc_en')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('meta_desc_ar') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('meta_desc_ar', 'Meta descriptions arabic'); ?>
+
+    <?php echo Form::textarea('meta_desc_ar', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('meta_desc_ar')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('meta_desc_en') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('meta_desc_en', 'Meta descriptions english'); ?>
+
+    <?php echo Form::textarea('meta_desc_en', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('meta_desc_en')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('tags_ar') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('tags_ar', 'الكلمات الدلالية باللغة العربية'); ?>
+
+    <?php echo Form::text('tags_ar', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('tags_ar')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('tags_en') ? ' has-error' : ''); ?>">
+    <?php echo Form::label('tags_en', 'الكلمات الدلالية باللغة الأنجليزية'); ?>
+
+    <?php echo Form::text('tags_en', null, ['class' => 'form-control']); ?>
+
+    <small class="text-danger"><?php echo e($errors->first('tags_en')); ?></small>
+</div>
+
+<button type="" class="btn btn-primary">
+	<?php echo e($btnName); ?>
+
+</button>
+
+
+<!-- 
+	** J-Query Code To add more fields img **	
+-->
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	var max_fields      = 15; //maximum input boxes allowed
+	var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+	var add_button      = $("#addmore"); //Add button ID
+	
+	var x = 1; //initlal text box count
+	$(add_button).click(function(e){ //on add input button click
+	e.preventDefault();
+	if(x < max_fields){ //max input box allowed
+	x++; //text box increment
+	$(wrapper).append('<tr> <td> <label class="control-label" style="text-align:right">صوره الرحلة '+ x +'  <a class="remove_field btn btn-danger">remove</a> </label></td> <td><div  class="col-md-11"> <input name="imgs[]" type="file"> <small class="text-danger"></small> </div></td> </tr>'); //add input box
+	}
+	});
+	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+	
+	var remo = $(this).parent().parent().parent().hide('slow').remove();
+	x--;
+	})
+	});
+</script>

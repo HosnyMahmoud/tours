@@ -1,7 +1,16 @@
 <?php $__env->startSection('title' , 'اضافة عرض جديد'); ?>
 	
 <?php $__env->startSection('content'); ?>
-
+	<!-- <?php if(count($errors) > 0): ?>
+		<div class="alert alert-danger">
+			<?php echo e(Lang::get('assets.error')); ?><br><br>
+			<ul>
+				<?php foreach($errors->all() as $error): ?>
+					<li><?php echo e($error); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	<?php endif; ?> -->
 	<div class="col-md-12">
 		<div class="panel panel-primary">
 			<div class="text-center panel-heading">أضافة عرض جديد</div>	

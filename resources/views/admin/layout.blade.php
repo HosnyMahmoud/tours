@@ -262,7 +262,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li> 
 					
-					<li class="{{Request::is('admin/hotels*') ? 'active' : ''}}">
+					<li class="{{Request::is('admin/carsOffers*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/carsOffers">
 						<i class="icon-users"></i>
 						<span class="title">عروض السيارات</span>
@@ -276,6 +276,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 
+					<li class="{{Request::is('admin/travels*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/travels">
+						<i class="icon-users"></i>
+						<span class="title">الرحلات</span>
+						</a>
+					</li>
 						
 				
 					<!-- <li class="{{Request::is('admin/users*') ? 'active' : ''}}">

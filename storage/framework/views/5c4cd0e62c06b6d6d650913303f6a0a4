@@ -284,7 +284,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li> 
 					
-					<li class="<?php echo e(Request::is('admin/hotels*') ? 'active' : ''); ?>">
+					<li class="<?php echo e(Request::is('admin/carsOffers*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/carsOffers">
 						<i class="icon-users"></i>
 						<span class="title">عروض السيارات</span>
@@ -298,6 +298,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 
+					<li class="<?php echo e(Request::is('admin/travels*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/travels">
+						<i class="icon-users"></i>
+						<span class="title">الرحلات</span>
+						</a>
+					</li>
 						
 				
 					<!-- <li class="<?php echo e(Request::is('admin/users*') ? 'active' : ''); ?>">

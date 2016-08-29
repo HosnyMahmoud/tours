@@ -113,7 +113,7 @@ class HotelsController extends Controller {
 		}
 		
 		if($request->hasFile('image'))
-			{
+		{
 			$i = 1 ;
 			$filename = $hotel->images ;
 			foreach ($request->file('image') as $file) {
@@ -151,7 +151,7 @@ class HotelsController extends Controller {
 		return redirect()->to('admin/hotels')->with(['msg'=>'تم الحذف بنجاح']);
 	}
 	public function img_delete($id,$image)
-		{
+	{
 		$articles = Hotel::findOrFail($id);
 		$images =  explode('|',$articles->images);
 		foreach (array_keys($images, $image, true) as $key) {

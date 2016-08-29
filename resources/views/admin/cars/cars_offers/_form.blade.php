@@ -10,6 +10,18 @@
 	<small class="text-danger">{{ $errors->first('offer_name_en') }}</small>
 </div>
 
+<div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
+	{!! Form::label('brand_id', 'نوع السيارة') !!}
+	{!! Form::select('brand_id', $brands, null, ['id' => 'brand_id', 'class' => 'form-control']) !!}
+	<small class="text-danger">{{ $errors->first('brand_id') }}</small>
+</div>
+
+<div class="form-group{{ $errors->has('model_id') ? ' has-error' : '' }}">
+	{!! Form::label('model_id', 'الموديل') !!}
+	{!! Form::select('model_id', $models, null, ['id' => 'model_id', 'class' => 'form-control']) !!}
+	<small class="text-danger">{{ $errors->first('model_id') }}</small>
+</div>
+
 <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
 	{!! Form::label('country_id', 'الدولة') !!}
 	{!! Form::select('country_id', $countries, null, ['id' => 'country_id', 'class' => 'form-control']) !!}
@@ -22,6 +34,8 @@
 	<small class="text-danger">{{ $errors->first('city_id') }}</small>
 </div>
 
+
+
 <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
     {!! Form::label('img', 'الصورة') !!}
     {!! Form::file('img') !!}
@@ -31,7 +45,7 @@
 
 <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
     {!! Form::label('color', 'لون السيارة') !!}
-    {!! Form::text('color', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    {!! Form::text('color', null, ['class' => 'form-control']) !!}
     <small class="text-danger">{{ $errors->first('color') }}</small>
 </div>
 
