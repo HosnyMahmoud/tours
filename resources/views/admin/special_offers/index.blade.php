@@ -9,13 +9,9 @@
 		<br />
 		<br />
 		
-		{!! Form::open() !!} 
+		{!! Form::open(['method'=>'GET','id'=>'sortForm']) !!} 
 			<div class="pull-rigth">
-				<select class="form-control" id="sort">
-					<option value="0">العروض المنتهية</option>
-					<option value="1">العروض السارية</option>
-					<option value="2">العروض الغير مفعلة</option>
-				</select>
+				{!!Form::select('sort',['العروض المنتهية','العروض السارية','العروض الغير مفعلة'],@$bag->sort,['class'=>'form-control','id'=>'sort'])!!}
 			</div>
 		{!! Form::close() !!}
 		<br />
@@ -69,8 +65,7 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
         $('#sort').on('change',function() {
-            /*alert($('#sort').val());*/
-            window.location = '{!!Url("/")!!}/admin/special-offers/?sort=' + $('#sort').val();
+            $('#sortForm').submit();
         })
 </script>
 

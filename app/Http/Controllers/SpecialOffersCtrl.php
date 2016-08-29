@@ -21,25 +21,23 @@ class SpecialOffersCtrl extends Controller {
 		{
 			if($bag->sort == 0)
 			{	
-				$query = SpecialOffers::where('date_to','<',Carbon::now()); 
+				$offers = SpecialOffers::where('date_to','<',Carbon::now())->paginate(20); 
 			}
 
 			if($bag->sort == 1) {
-				$query = SpecialOffers::where('date_to','>=',Carbon::now()); 
+				$offers = SpecialOffers::where('date_to','>=',Carbon::now())->paginate(20); 
 			}
 
 			if($bag->sort == 2)
 			{
-				$query =  SpecialOffers::where('status',0)->where('date_to','<',Carbon::now());  
+				$offers = SpecialOffers::where('status',0)->where('date_to','<',Carbon::now())->paginate(20);  
 			}
-			dd($offers->count()) ;
-			$offers = $query->paginate(20);
 
-			return view('admin.special_offers.index' , compact('offers'));	
+			return view('admin.special_offers.index' , compact('offers','bag'));	
 		}
 
 		$offers = SpecialOffers::paginate(10); 
-		return view('admin.special_offers.index' , compact('offers'));	
+		return view('admin.special_offers.index' , compact('offers','bag'));	
 	}
 
 	/**
