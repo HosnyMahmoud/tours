@@ -38,6 +38,8 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+		<div class="paginate"><?php echo $admins->render(); ?></div>
+		
 	<?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

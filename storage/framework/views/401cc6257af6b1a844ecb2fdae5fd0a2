@@ -49,14 +49,18 @@
 
 <!-- View Images -->
 <?php if(@$type == 'edit'): ?>
-    <?php foreach($exp as $img): ?> 
-      <div style="">
-          <img src="<?php echo Url('/'); ?>/uploads/special_offers/<?php echo e($img); ?>" class="img-thumbnail" width="150" height="150">
-          <span>
-            <a href="<?php echo e(Url('admin/special-offers/')); ?>/delete_img/<?php echo e($offer->id); ?>/<?php echo e($img); ?>"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
-          </span>
-      </div>
-    <?php endforeach; ?>
+    <?php if($offer->images !== ''): ?>
+        <?php foreach($exp as $img): ?> 
+          <div style="">
+              <img src="<?php echo Url('/'); ?>/uploads/special_offers/<?php echo e($img); ?>" class="img-thumbnail" width="150" height="150">
+              <span>
+                <a href="<?php echo e(Url('admin/special-offers/')); ?>/delete_img/<?php echo e($offer->id); ?>/<?php echo e($img); ?>"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
+              </span>
+          </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+    <div class="alert alert-info">عفواً لا توجد صور</div>
+    <?php endif; ?>
 <?php endif; ?>
 <!-- View Images -->
 

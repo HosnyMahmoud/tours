@@ -172,7 +172,6 @@ License: You must have a valid license purchased only from themeforest(the above
 						<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
-							
 							<li>
 								<a href="{!!Url('/')!!}/logout">
 								<i class="icon-key"></i> Log Out </a>
@@ -282,8 +281,15 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 					
+					<li class="{{Request::is('admin/air_ports*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/air_ports">
+						<i class="icon-users"></i>
+						<span class="title">المطارات</span>
+						</a>
+					</li>
+					
 					<!-- Special Offers -->
-					<li class="{{Request::is('admin/travels*') ? 'active' : ''}}">
+					<li class="{{Request::is('admin/special-offers*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/special-offers">
 						<i class="icon-users"></i>
 						<span class="title">العروض الخاصة</span>

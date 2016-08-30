@@ -56,7 +56,7 @@
 	</div>
 		
 
-		<div class="paginate"><?php echo e($hotels->render()); ?></div>
+		<div class="paginate"><?php echo $hotels->render(); ?></div>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>

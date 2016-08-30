@@ -161,7 +161,22 @@ class SpecialOffersCtrl extends Controller {
 	public function startReservOffers($id)
 	{
 	 	$data = SpecialOffers::findOrFail($id);
-	 	($data->status === 0 )? $data->update(['status'=>1]) : $data->update(['status'=>0]);
+	 	($data->status === 0)? $data->update(['status'=>1]) : $data->update(['status'=>0]);
 		return Redirect()->to(Url('/').'/admin/special-offers')->with(['msg'=>'تم حفظ التعديلات بنجاح']);
 	}
+
+	public function delete_img($id, $name)
+	{
+		$data   = SpecialOffers::findOrFail($id) ;
+		$exp    = explode('|',$data->images); 
+		foreach (array_keys($exp , $name ,true) as $img) 
+		{
+		 	unset($exp[$name]) ;
+		}
+		$emp = implode('|',$exp) ;
+		$data->update(['images'=>$exp]) ;
+		return redirect()->back();
+	}
+
+	
 }	

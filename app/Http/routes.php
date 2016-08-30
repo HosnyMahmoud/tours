@@ -126,12 +126,17 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	// Special Offers
 	Route::resource('special-offers','SpecialOffersCtrl');
 	Route::get('special-offers/{id}/activate','SpecialOffersCtrl@startReservOffers');
+	Route::get('special-offers/delete_img/{pid}/{name}','SpecialOffersCtrl@delete_img');
 	// Special Offers
 	
-	Route::resource('areas','AreasCtrl');
 
+	Route::resource('air_ports','AirPortsCtrl');
+	
+
+	/*
+	Route::resource('areas','AreasCtrl');
 	Route::resource('users','UsersCtrl');
-	Route::resource('salons','SalonsCtrl');
+	Route::resource('salons','SalonsCtrl');*/
 	
 	
 });

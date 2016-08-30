@@ -66,6 +66,7 @@
     <?php endforeach; ?>
 <?php endif; ?>
 <!-- View Images -->
+
 <hr>
 <div class="input_fields_wrap">
 	<div class="form-group<?php echo e($errors->has('imgs[]') ? ' has-error' : ''); ?>">

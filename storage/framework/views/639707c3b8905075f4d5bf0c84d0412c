@@ -4,7 +4,7 @@
 	<div class="panel panel-primary">
 		<div class="text-center panel-heading">تعديل عرض : <?php echo e($offer->name_ar); ?></div>
 		<div class="panel-body col-md-10">
-			<?php echo Form::model($offer, ['action' => ['SpecialOffersCtrl@update', $offer->id], 'method' => 'PUT', 'class' => 'form-horizontal']); ?>
+			<?php echo Form::model($offer, ['action' => ['SpecialOffersCtrl@update', $offer->id], 'method' => 'PUT', 'class' => 'form-horizontal','files'=>true]); ?>
 
 				<?php echo $__env->make('admin.special_offers._form',['btnName'=>'حفظ التعديلات' , 'type'=>'edit'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
 			<?php echo Form::close(); ?>
