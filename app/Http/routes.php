@@ -141,6 +141,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	
 });
 
+	Route::get('/','FrontCtrl@index');
 /**
 	*********  End Application Route  *************
  */

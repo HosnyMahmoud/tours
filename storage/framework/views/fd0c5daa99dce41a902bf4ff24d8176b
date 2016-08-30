@@ -22,8 +22,6 @@
 				<th>#ID</th>
 				<th>الاسم العربي</th>
 				<th>الاسم الأجليزي</th>
-				<th>الوصف العربي</th>
-				<th>الوصف الأنجليزي</th>
 				<th>النجوم</th>
 				<th>السعر</th>
 				<th>تعديل</th>
@@ -35,8 +33,6 @@
 				<td><?php echo e($hotel->id); ?></td>
 				<td><?php echo e($hotel->name_ar); ?></td>
 				<td><?php echo e($hotel->name_en); ?></td>
-				<td><?php echo e($hotel->desc_ar); ?></td>
-				<td><?php echo e($hotel->desc_en); ?></td>
 				<td><?php echo e($hotel->stars); ?></td>
 				<td><?php echo e($hotel->price); ?></td>
 				<td>
@@ -60,7 +56,7 @@
 	</div>
 		
 
-		<div class="paginate"><?php echo e($hotels->render()); ?></div>
+		<div class="paginate"><?php echo $hotels->render(); ?></div>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
