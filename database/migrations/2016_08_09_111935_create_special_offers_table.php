@@ -21,8 +21,8 @@ class CreateSpecialOffersTable extends Migration {
 			$table->integer('num_of_persons');
 			$table->string('images');
 			$table->integer('status');
-			$table->timestamp('date_from');
-			$table->timestamp('date_to');
+			$table->date('date_from');
+			$table->date('date_to');
 			$table->text('desc_ar');
 			$table->text('desc_en');
 			$table->timestamps();

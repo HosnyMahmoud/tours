@@ -8,10 +8,10 @@
 		<a href="{!! Url('/') !!}/admin/special-offers/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
 		<br />
 		<br />
-		
+		<p><label class="label label-primary">عرض حسب :</label></p>
 		{!! Form::open(['method'=>'GET','id'=>'sortForm']) !!} 
 			<div class="pull-rigth">
-				{!!Form::select('sort',['العروض المنتهية','العروض السارية','العروض الغير مفعلة'],@$bag->sort,['class'=>'form-control','id'=>'sort'])!!}
+				{!!Form::select('sort',['عرض الكل','العروض المنتهية','العروض السارية','العروض الغير مفعلة'],@$bag->sort,['class'=>'form-control','id'=>'sort'])!!}
 			</div>
 		{!! Form::close() !!}
 		<br />

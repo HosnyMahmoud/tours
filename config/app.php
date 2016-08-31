@@ -135,10 +135,10 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider',
-
+		'Yajra\Datatables\DatatablesServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -195,10 +195,11 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Html'      => 'Illuminate\Html\HtmlFacade',
-    	'Form'      => 'Illuminate\Html\FormFacade',
+		'Form' 		=> 'Collective\Html\FormFacade',
+      	'Html' 		=> 'Collective\Html\HtmlFacade',
 		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'PushNotification' => 'Davibennun\LaravelPushNotification\Facades\PushNotification',
+		'Datatables'=> 'Yajra\Datatables\DatatablesServiceProvider',
 
 	],
 

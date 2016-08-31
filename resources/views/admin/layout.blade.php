@@ -260,6 +260,38 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li> 
 					
+					<!--  bookings	 -->
+					<li class="">
+						<a href="javascript:;">
+						<i class="icon-pointer"></i>
+						<span class="title">الحجوزات</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="{!!Url('/')!!}/admin/bookings/cars">
+									حجوزات السيارات
+								</a>
+							</li>
+							<li>
+								<a href="{!! Url('/') !!}/admin/bookings/hotels">
+									حجوزات الفنادق
+								</a>
+							</li>
+							<li>
+								<a href="{!! Url('/') !!}/admin/bookings/travels">
+									حجوزات الرحلات
+								</a>
+							</li>
+							<li>
+								<a href="{!! Url('/') !!}/admin/bookings/special-offers">
+									حجوزات العروض الخاصة
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!--  bookings	 -->
+
 					<li class="{{Request::is('admin/carsOffers*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/carsOffers">
 						<i class="icon-users"></i>
@@ -295,14 +327,13 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="title">العروض الخاصة</span>
 						</a>
 					</li>
-						
 				
-					<!-- <li class="{{Request::is('admin/users*') ? 'active' : ''}}">
+					<li class="{{Request::is('admin/users*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/users">
 						<i class="icon-user"></i>
 						<span class="title">الإعضاء</span>
 						</a>
-					</li> -->
+					</li>
 
 				
 					<!-- <li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
@@ -313,25 +344,6 @@ License: You must have a valid license purchased only from themeforest(the above
 					</li> -->
 						
 
-					<!-- <li class="last">
-						<a href="javascript:;">
-						<i class="icon-pointer"></i>
-						<span class="title">الدول والمحافظات</span>
-						<span class="arrow "></span>
-						</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="{!!Url('/')!!}/admin/countries">
-									الدول
-								</a>
-							</li>
-							<li>
-								<a href="{!! Url('/') !!}/admin/cities">
-									المحافظات
-								</a>
-							</li>
-						</ul>
-					</li>  -->
 																															
 									
 					<!--<li class="{{Request::is('admin/offers*') ? 'active' : ''}}">
@@ -477,7 +489,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12" style="min-height:786px">
 	      				@yield('content')
 					</div>
 				</div>

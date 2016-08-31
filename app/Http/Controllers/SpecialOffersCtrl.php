@@ -5,8 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\SpecialOffers ;
-use Validator ;
 use Carbon\Carbon ;
+use Validator ;
 
 class SpecialOffersCtrl extends Controller {
 
@@ -18,21 +18,22 @@ class SpecialOffersCtrl extends Controller {
 	public function index(Request $bag)
 	{	
 		if($bag->has('sort'))
-		{
+		{	
 			if($bag->sort == 0)
+			{	
+				$offers = SpecialOffers::paginate(10); 
+			}
+			if($bag->sort == 1)
 			{	
 				$offers = SpecialOffers::where('date_to','<',Carbon::now())->paginate(20); 
 			}
-
-			if($bag->sort == 1) {
+			if($bag->sort == 2) {
 				$offers = SpecialOffers::where('date_to','>=',Carbon::now())->paginate(20); 
 			}
-
-			if($bag->sort == 2)
+			if($bag->sort == 3)
 			{
 				$offers = SpecialOffers::where('status',0)->where('date_to','>',Carbon::now())->paginate(20);  
 			}
-
 			return view('admin.special_offers.index' , compact('offers','bag'));	
 		}
 
@@ -167,15 +168,17 @@ class SpecialOffersCtrl extends Controller {
 
 	public function delete_img($id, $name)
 	{
-		$data   = SpecialOffers::findOrFail($id) ;
-		$exp    = explode('|',$data->images); 
-		foreach (array_keys($exp , $name ,true) as $img) 
+		$data = SpecialOffers::findOrFail($id) ;
+		$keys = explode('|', $data->images) ;
+		
+		foreach (array_keys($keys, $name,true) as $key) 
 		{
-		 	unset($exp[$name]) ;
+			unset($keys[$key]) ;
 		}
-		$emp = implode('|',$exp) ;
-		$data->update(['images'=>$exp]) ;
-		return redirect()->back();
+		
+		$new = implode('|', $keys) ;
+		$data->update(['images'=>$new]);
+		return redirect()->back() ;
 	}
 
 	

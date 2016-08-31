@@ -6,10 +6,11 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"illuminate/html": "5.*",
+		"laravelcollective/html": "~5.0",
 		"sboo/multiauth" : "4.0.*",
 		"intervention/image":"*.*",
-		"davibennun/laravel-push-notification": "dev-laravel5"
+		"davibennun/laravel-push-notification": "dev-laravel5",
+		"yajra/laravel-datatables-oracle": "~6.0"
 
 	},
 	"require-dev": {

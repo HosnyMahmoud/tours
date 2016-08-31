@@ -79,9 +79,11 @@ Route::group(['prefix'=>'api'],function(){
 
 });
 
-/**
-	*********  Start Application Route  *************
- */
+/*
+****************************************************************
+****************  Start Application Route  *********************
+****************************************************************
+*/
 
 Route::get('admin/login','LoginCtrl@showAdminLogin');
 Route::post('admin/login','LoginCtrl@postAdminLogin');
@@ -129,14 +131,25 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('special-offers/delete_img/{pid}/{name}','SpecialOffersCtrl@delete_img');
 	// Special Offers
 	
-
+	// Air_ports
 	Route::resource('air_ports','AirPortsCtrl');
+	// Air_ports
 	
-
-	/*
-	Route::resource('areas','AreasCtrl');
+	// bookings
+	Route::resource('bookings/cars','BookingsCarsCtrl');
+	Route::resource('bookings/hotels','BookingsCtrl');
+	Route::resource('bookings/travels','BookingsCtrl');
+	Route::resource('bookings/special-offers','BookingsCtrl');
+	// bookings
+	
+	// Users
 	Route::resource('users','UsersCtrl');
-	Route::resource('salons','SalonsCtrl');*/
+	// Users
+	
+	/*
+		Route::resource('areas','AreasCtrl');
+		Route::resource('salons','SalonsCtrl'); 
+	*/
 	
 	
 });

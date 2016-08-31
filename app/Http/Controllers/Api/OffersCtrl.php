@@ -65,7 +65,7 @@ class OffersCtrl extends Controller {
 			$data[$i]['model']      = $carsModels->find($offer['model_id'])['model_name']; 
 			$data[$i]['price']      = $offer['price'];
 			$data[$i]['color']      = $offer['color'];
-			$data[$i]['image']      = Url('/').'/uploads/cars/'.$offer['image'];
+			$data[$i]['image']      = Url('/').'/uploads/cars/cars_offers/'.$offer['image'];
 			 
 		}
 

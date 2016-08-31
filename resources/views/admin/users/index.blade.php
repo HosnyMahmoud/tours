@@ -1,8 +1,4 @@
-@extends('admin.layout')
-
-@section('title')
-		الأعضاء
-@endsection
+@extends('admin.layout', 'الأعضاء')
 
 @section('content')
 
@@ -20,7 +16,7 @@
 
 	<br>
 	<div class="panel panel-primary">
-		<div class="panel-heading">جميع المستخدمين</div>
+		<div class="panel-heading text-center">جميع المستخدمين</div>
 		<div class="panel-body">
 			@if($users->total() > 0)
 				<table class="table table-bordered">
@@ -46,7 +42,7 @@
 				</table>
 				{!!$users->render()!!}
 			@else
-				<div class="alert alert-danger">لا توجد بيانات لعرضها.</div> 
+				<div class="alert alert-info">لا توجد بيانات لعرضها.</div> 
 
 			@endif
 		</div>	

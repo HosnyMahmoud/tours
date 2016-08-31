@@ -22,9 +22,10 @@
         "Illuminate\\Translation\\TranslationServiceProvider",
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
-        "Illuminate\\Html\\HtmlServiceProvider",
+        "Collective\\Html\\HtmlServiceProvider",
         "Intervention\\Image\\ImageServiceProvider",
         "Davibennun\\LaravelPushNotification\\LaravelPushNotificationServiceProvider",
+        "Yajra\\Datatables\\DatatablesServiceProvider",
         "App\\Providers\\AppServiceProvider",
         "App\\Providers\\BusServiceProvider",
         "App\\Providers\\ConfigServiceProvider",
@@ -45,6 +46,7 @@
         "Illuminate\\View\\ViewServiceProvider",
         "Intervention\\Image\\ImageServiceProvider",
         "Davibennun\\LaravelPushNotification\\LaravelPushNotificationServiceProvider",
+        "Yajra\\Datatables\\DatatablesServiceProvider",
         "App\\Providers\\AppServiceProvider",
         "App\\Providers\\BusServiceProvider",
         "App\\Providers\\ConfigServiceProvider",
@@ -128,8 +130,10 @@
         "auth.password.tokens": "Ollieread\\Multiauth\\Passwords\\PasswordResetServiceProvider",
         "translator": "Illuminate\\Translation\\TranslationServiceProvider",
         "translation.loader": "Illuminate\\Translation\\TranslationServiceProvider",
-        "html": "Illuminate\\Html\\HtmlServiceProvider",
-        "form": "Illuminate\\Html\\HtmlServiceProvider"
+        "html": "Collective\\Html\\HtmlServiceProvider",
+        "form": "Collective\\Html\\HtmlServiceProvider",
+        "Collective\\Html\\HtmlBuilder": "Collective\\Html\\HtmlServiceProvider",
+        "Collective\\Html\\FormBuilder": "Collective\\Html\\HtmlServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
@@ -143,6 +147,6 @@
         "Illuminate\\Redis\\RedisServiceProvider": [],
         "Ollieread\\Multiauth\\Passwords\\PasswordResetServiceProvider": [],
         "Illuminate\\Translation\\TranslationServiceProvider": [],
-        "Illuminate\\Html\\HtmlServiceProvider": []
+        "Collective\\Html\\HtmlServiceProvider": []
     }
 }

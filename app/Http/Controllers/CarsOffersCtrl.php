@@ -11,6 +11,7 @@ use App\CarsBrands ;
 use App\CarsModels;
 use Validator ;
 
+
 class CarsOffersCtrl extends Controller {
 
 	/**
@@ -147,5 +148,5 @@ class CarsOffersCtrl extends Controller {
 		CarsOffers::findOrFail($id)->delete() ;
 		return redirect()->to(Url('/').'/admin/carsOffers')->with(['msg' => 'تم الحذف بنجاح.']); 
 	}
-
+	
 }
