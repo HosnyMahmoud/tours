@@ -14,9 +14,11 @@ class UsersCtrl extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
+	{	
+
 		$users = User::paginate(10);
 		return View('admin.users.index',compact('users'));
+		
 	}
 
 	/**
@@ -43,8 +45,8 @@ class UsersCtrl extends Controller {
 	
 	}
 
-	
 	/**
+	 **
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
@@ -55,6 +57,14 @@ class UsersCtrl extends Controller {
 		$user = User::findOrFail($id);
 		return View('admin.users.edit',compact('user'));
 	}
+
+
+	public function show($id)
+	{
+		$user = User::findOrFail($id);
+		return View('admin.users.show',compact('user'));
+	}
+
 
 	/**
 	 * Update the specified resource in storage.
