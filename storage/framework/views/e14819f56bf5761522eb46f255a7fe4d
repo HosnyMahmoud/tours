@@ -1,0 +1,62 @@
+<?php $__env->startSection('title' ,'المطارات'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/air_ports/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+	</div>
+	<br>
+	<?php if(Session::has('msg')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('msg')); ?>
+
+		</div>
+	<?php endif; ?>
+
+	<br>
+	<div class="panel panel-primary">
+		<div class="panel-heading">جميع المطارات</div>
+		<div class="panel-body">
+			<?php if($airPorts->total() > 0): ?>
+				<table class="table table-bordered">
+					<tr>
+						<th>#</th>								
+						<th>الأسم باللغة العربية</th>								
+						<th>الأسم باللغة الأنجليزية</th>								
+							
+						<th>خيارات</th>								
+					</tr>
+				<?php foreach($airPorts as $airPort): ?>
+					<tr>
+						<td><?php echo e($airPort->id); ?></td>		
+						<td><?php echo e($airPort->name_ar); ?></td>		
+						<td><?php echo e($airPort->name_en); ?></td>		
+						<td>
+							
+							<?php echo Form::open(['method' => 'DELETE' ,'action'=>['AirPortsCtrl@destroy',$airPort->id]]); ?>
+
+									<a href="<?php echo Url('/'); ?>/admin/air_ports
+									/<?php echo e($airPort->id); ?>/edit" class="btn btn-info">تعديل</a>
+									<?php echo Form::submit('حذف' , ['class'=>'btn btn-danger','onClick' =>'return confirm(" هل انت متأكد من الحذف ؟")']); ?>
+
+							<?php echo Form::close(); ?>
+
+						</td>								
+					</tr>
+				<?php endforeach; ?>
+				</table>
+				<?php echo $airPorts->render(); ?>
+
+			<?php else: ?>
+				<div class="alert alert-info">No Record To Show .</div> 
+
+			<?php endif; ?>
+		</div>	
+	</div>
+	
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

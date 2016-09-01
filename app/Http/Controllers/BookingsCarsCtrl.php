@@ -11,6 +11,7 @@ use App\CarsModels;
 use App\CarsOffers; 
 
 use App\DataTables\UsersDataTable;
+use Datatables;
 
 class BookingsCarsCtrl extends Controller {
 
@@ -19,17 +20,17 @@ class BookingsCarsCtrl extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index(UsersDataTable $dataTable)
+	public function index(/*UsersDataTable $dataTable*/)
 	{	
 		$users         = 	User::all();
 		$citis         = 	Cities::all();
 		$carsModels    = 	CarsModels::all();
 		$carsOffers    = 	CarsOffers::all();
-		//$allCarsReserv = $dataTable->html();
+		$allCarsReserv =	Cars_Reservation::all(); 
 
-		//$dataTable->render('admin.bookings.bookingsCars.index');
-
-		return view('admin.bookings.bookingsCars.index' , compact('allCarsReserv','users','citis','carsModels','carsOffers'));
+		//return $dataTable->render('admin.bookings.bookingsCars.index');
+		//$allCarsReserv = 	Datatables::html();
+		return View('admin.bookings.bookingsCars.index' , compact('allCarsReserv','users','citis','carsModels','carsOffers'));
 	}
 
 	/**

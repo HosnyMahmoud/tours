@@ -1,11 +1,12 @@
 @extends('admin.layout')
 @section('title','حجوزات السيارات')
 @section('content')
+{!!Html::style('https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')!!}
 
 <div class="panel panel-info">
 	<div class="panel-heading text-center">حجوزات السيارات</div>
 	<div class="panel-body">
-		{{--<table class="table table-bordered table-responsive table-hover table-condensed">
+		<table id="table" class="table table-bordered table-responsive table-hover table-condensed">
 		
 			<tr>
 				<th>اسم المستخدم</th>
@@ -33,8 +34,17 @@
 					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
 			@endif
 			
-		</table>--}} 
+		</table> 
 	</div>
 </div>
+<!-- Latest compiled and minified CSS & JS -->
+<script src="http://code.jquery.com/jquery-1.12.3.js"></script>
+{!!Html::script('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')!!}
+<script>
+$(document).ready(function(){
+    $('#table').DataTable();
+});
+</script>
+
 @endsection
 @stop
