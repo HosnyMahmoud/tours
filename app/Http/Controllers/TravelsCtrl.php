@@ -45,6 +45,16 @@ class TravelsCtrl extends Controller {
 
 	}
 
+	public function show($id)
+	{
+		$travel 	 = Travels::findOrFail($id) ;
+		$hotel       = Hotel::all();
+		$countries   = Countries::all();
+		$cities      = Cities::all();
+
+		return view('admin.travels.show' , compact('travel','hotel','countries','cities')) ;
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *

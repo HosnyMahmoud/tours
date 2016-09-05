@@ -1,12 +1,10 @@
 @extends('admin.layout')
 @section('title','حجوزات السيارات')
 @section('content')
-
 <div class="panel panel-info">
 	<div class="panel-heading text-center">حجوزات السيارات</div>
 	<div class="panel-body">
-		{{--<table class="table table-bordered table-responsive table-hover table-condensed">
-		
+		<table class="table table-bordered table-responsive table-hover table-condensed">
 			<tr>
 				<th>اسم المستخدم</th>
 				<th>اسم المنطقة</th>
@@ -29,11 +27,11 @@
 						<td>{{ $carsOffers->find($carsReserv->offer_id)['price'] }}</td>
 					</tr>
 				@endforeach
-				@else
-					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			@else
+			<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
 			@endif
 			
-		</table>--}} 
+		</table>
 	</div>
 </div>
 @endsection

@@ -15,6 +15,7 @@ Route::get('notification' , function(){
 
 			//}
 		});
+
 /*  Start Front End Routes */
 
 Route::get('/',function()
@@ -152,22 +153,18 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('bookings/cars','BookingsCtrl@getCars');
 	Route::get('bookings/hotels','BookingsCtrl@gethotels');
 	Route::get('bookings/travels','BookingsCtrl@getTeavels');
-	Route::get('bookings/special-offers','BookingsCtrl');
+	Route::get('bookings/special-offers','BookingsCtrl@getSpecialOffers');
 	// bookings 
 
-	/*
-		Route::resource('areas','AreasCtrl');
-		Route::resource('salons','SalonsCtrl'); 
-	*/
-	
-	
 });
 
 /*
-**********************************************************
-  ******** End Application Route [ Back End ] ********
-**********************************************************
+*********************************************************
+*********** End Application Route [ Back End ] **********
+*********************************************************
 */
+
+
 
 
 /*

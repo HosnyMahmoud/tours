@@ -52,6 +52,17 @@ class SpecialOffersCtrl extends Controller {
 		return view('admin.special_offers.create') ;
 	}
 
+	public function show($id)
+	{
+		// Hotels // 
+		$hotel     	= Hotel::findOrFail($id);
+	
+		$countries 	= Countries::all() ;
+		$cities    	= Cities::all();
+
+		return View('admin.hotels.show',compact('hotel','countries','cities'));
+	}
+	
 	/**
 	 * Store a newly created resource in storage.
 	 *
