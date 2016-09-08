@@ -6,8 +6,7 @@
 <div class="panel panel-info">
 	<div class="panel-heading text-center">حجوزات السيارات</div>
 	<div class="panel-body">
-		<table id="table" class="table table-bordered table-responsive table-hover table-condensed">
-		
+		<table id="table" class="table table-bordered table-responsive table-hover table-condensed">		
 			<tr>
 				<th>اسم المستخدم</th>
 				<th>اسم المنطقة</th>
@@ -30,11 +29,15 @@
 						<td>{{ $carsOffers->find($carsReserv->offer_id)['price'] }}</td>
 					</tr>
 				@endforeach
-				@else
-					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			@else
+			<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
 			@endif
 			
+<<<<<<< HEAD
 		</table> 
+=======
+		</table>
+>>>>>>> ee4fbe0bbc70423ab8fae86bbd9bef4116da00ec
 	</div>
 </div>
 <!-- Latest compiled and minified CSS & JS -->

@@ -1,13 +1,9 @@
 <?php $__env->startSection('title','حجوزات السيارات'); ?>
 <?php $__env->startSection('content'); ?>
-
 <div class="panel panel-info">
 	<div class="panel-heading text-center">حجوزات السيارات</div>
 	<div class="panel-body">
-		  <?php echo e($allCarsReserv->table(['class' => 'table table-bordered '])); ?>
-
 		<table class="table table-bordered table-responsive table-hover table-condensed">
-		
 			<tr>
 				<th>اسم المستخدم</th>
 				<th>اسم المنطقة</th>
@@ -30,15 +26,13 @@
 						<td><?php echo e($carsOffers->find($carsReserv->offer_id)['price']); ?></td>
 					</tr>
 				<?php endforeach; ?>
-				<?php else: ?>
-					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php else: ?>
+			<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
 			<?php endif; ?>
 			
-		</table> 
+		</table>
 	</div>
 </div>
-<?php echo $dataTable->scripts(); ?>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

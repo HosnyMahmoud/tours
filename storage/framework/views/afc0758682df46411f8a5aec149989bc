@@ -1,0 +1,81 @@
+<?php $__env->startSection('title','بيانات الرحلة'); ?>
+	
+<?php $__env->startSection('content'); ?>
+
+<div class="panel panel-info">
+	<div class="panel panel-heading text-center">
+		تفاصيل الرحلة
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+		    <thead>
+		        <tr>
+			        <th>ID # </th>
+			        <th><?php echo e($travel->id); ?></th>
+		    	</tr>
+		        <tr>
+			        <th>أسم الرحلة</th>
+			        <th><?php echo e($travel->name_ar); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>الوصف</th>
+			        <th><?php echo e($travel->desc_ar); ?></th>
+
+		    	</tr>
+		    	<tr>
+			         <th>الفندق</th>
+			        <th><?php echo e($hotel->find($travel->hotel_id)['name_ar']); ?></th>
+
+		    	</tr>
+		    	<tr>
+			         <th>عدد الليالي</th>
+			        <th><?php echo e($travel->nights); ?></th>
+
+		    	</tr>
+		    	<tr>
+		         	<th>نوع الرحلة</th>
+			        <th>
+			        	<?php if($travel->type == 0): ?>
+			        		<?php echo e('عروض خاصة'); ?>
+
+		        		<?php elseif($travel->type == 1): ?>
+		        			<?php echo e('رحلة حج وعمرة'); ?>
+
+	        			<?php else: ?>
+	        				<?php echo e('رحلة شهر عسل'); ?>	
+        				<?php endif; ?>
+			        </th>
+
+		    	</tr>
+		    	<tr>
+			         <th>الدولة</th>
+			        <th><?php echo e($countries->find($travel->country_id)['name_ar']); ?></th>
+
+		    	</tr>
+		    	<tr>
+			         <th>المنطقة</th>
+			        <th><?php echo e($cities->find($travel->country_id)['name_ar']); ?></th>
+
+		    	</tr>
+		    	<tr>
+			         <th>السعر</th>
+			         <th><?php echo e($travel->price); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>تمت الأضافة في :</th>
+			         <th><?php echo e($travel->created_at); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th> أخر تعديل في :</th>
+			         <th><?php echo e($travel->updated_at); ?></th>
+		    	</tr>
+		    </thead>
+		</table>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+`name_ar`,  `price`, `country_id`, `city_id`, `stars`, `logo`, `images`
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

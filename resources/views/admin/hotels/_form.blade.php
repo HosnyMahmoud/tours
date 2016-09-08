@@ -44,19 +44,19 @@
 </div>
 <table class="table">
 	@if($type == "edit")
-	<?php $images = explode('|',$hotel->images);?>
-	@if($hotel->images !== '')
-	@foreach($images as $img)
-	<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
-		<div class="thumbnail">
-			<a href="{{Url('uploads/hotels/'.$img)}}" target="_blank">
-				<img src="{{Url('uploads/hotels/'.$img)}}" style="height:100px;">
-			</a>
-			<a href="{{Url('admin/hotels/')}}/delete_img/{{$hotel->id}}/{{$img}}">حذف</a>
-		</div>
-	</div>
-	@endforeach
-	@endif
+		<?php $images = explode('|',$hotel->images);?>
+		@if($hotel->images !== '')
+			@foreach($images as $img)
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+					<div class="thumbnail">
+						<a href="{{Url('uploads/hotels/'.$img)}}" target="_blank">
+							<img src="{{Url('uploads/hotels/'.$img)}}" style="height:100px;">
+						</a>
+						<a href="{{Url('admin/hotels/')}}/delete_img/{{$hotel->id}}/{{$img}}">حذف</a>
+					</div>
+				</div>
+			@endforeach
+		@endif
 	@endif
 	<tr>
 		<td>
@@ -111,10 +111,11 @@
 </div>
 
 <button class="btn btn-info">
-@if(@$btnName)
-{{ $btnName }}
-@endif
+	@if(@$btnName)
+		{{ $btnName }}
+	@endif
 </button>
+
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {

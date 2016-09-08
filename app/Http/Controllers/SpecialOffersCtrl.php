@@ -2,7 +2,6 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\SpecialOffers ;
 use Carbon\Carbon ;
@@ -48,10 +47,18 @@ class SpecialOffersCtrl extends Controller {
 	 */
 	public function create()
 	{
-		
 		return view('admin.special_offers.create') ;
 	}
 
+	/** Show Function **/
+	
+	public function show($id)
+	{
+		$data = SpecialOffers::findOrFail($id) ;
+
+		return View('admin.special_offers.show',compact('data'));
+	}
+	
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -82,7 +89,6 @@ class SpecialOffersCtrl extends Controller {
 			
 			$bag->merge(['images' => $paths]);
 		}
-
 
 		$bag->merge(['slug_ar'=>$this->make_slug($bag->name_ar)]);		
 		$bag->merge(['slug_en'=>$this->make_slug($bag->name_en)]);

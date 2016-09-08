@@ -61,19 +61,19 @@
 </div>
 <table class="table">
 	<?php if($type == "edit"): ?>
-	<?php $images = explode('|',$hotel->images);?>
-	<?php if($hotel->images !== ''): ?>
-	<?php foreach($images as $img): ?>
-	<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
-		<div class="thumbnail">
-			<a href="<?php echo e(Url('uploads/hotels/'.$img)); ?>" target="_blank">
-				<img src="<?php echo e(Url('uploads/hotels/'.$img)); ?>" style="height:100px;">
-			</a>
-			<a href="<?php echo e(Url('admin/hotels/')); ?>/delete_img/<?php echo e($hotel->id); ?>/<?php echo e($img); ?>">حذف</a>
-		</div>
-	</div>
-	<?php endforeach; ?>
-	<?php endif; ?>
+		<?php $images = explode('|',$hotel->images);?>
+		<?php if($hotel->images !== ''): ?>
+			<?php foreach($images as $img): ?>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+					<div class="thumbnail">
+						<a href="<?php echo e(Url('uploads/hotels/'.$img)); ?>" target="_blank">
+							<img src="<?php echo e(Url('uploads/hotels/'.$img)); ?>" style="height:100px;">
+						</a>
+						<a href="<?php echo e(Url('admin/hotels/')); ?>/delete_img/<?php echo e($hotel->id); ?>/<?php echo e($img); ?>">حذف</a>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		<?php endif; ?>
 	<?php endif; ?>
 	<tr>
 		<td>
@@ -140,11 +140,12 @@
 </div>
 
 <button class="btn btn-info">
-<?php if(@$btnName): ?>
-<?php echo e($btnName); ?>
+	<?php if(@$btnName): ?>
+		<?php echo e($btnName); ?>
 
-<?php endif; ?>
+	<?php endif; ?>
 </button>
+
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {

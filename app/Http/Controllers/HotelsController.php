@@ -44,11 +44,11 @@ class HotelsController extends Controller {
 		$file_name = $time.'.'.$request->file('log')->getClientOriginalExtension();
 		$request->file('log')->move($dest,$file_name);
 		
-		//Image Proccess
-			$img = Image::make($dest.$file_name);
+		// Image Proccess
+			/*$img = Image::make($dest.$file_name);
 			$img->resize(300, 200);
-			$img->save('uploads/hotels/logo/thumb/'.$file_name);
-		//Image Proccess
+			$img->save('uploads/hotels/logo/thumb/'.$file_name);*/
+		// Image Proccess
 		$request->merge(['logo'=>$file_name]);
 		}
 		if($request->hasFile('image'))

@@ -47,4 +47,3 @@
 @endsection
 @stop
 
-`name_ar`,  `price`, `country_id`, `city_id`, `stars`, `logo`, `images`

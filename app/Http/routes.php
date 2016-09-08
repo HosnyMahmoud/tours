@@ -15,17 +15,18 @@ Route::get('notification' , function(){
 
 			//}
 		});
-/*  Start Front End Routes */
+
+/**  Start Front End Routes **/
 
 Route::get('/',function()
 {
 	return View('front.layout');
 });
 
-/*  End Front End Routes */
+/**  End Front End Routes **/
 	
 
-/***************** Start Api Routes ***********************/	
+/******************* START API ROUTES ***********************/	
 
 Route::group(['prefix'=>'api'],function(){
 
@@ -50,10 +51,8 @@ Route::group(['prefix'=>'api'],function(){
 	//Hotels Route .
 		
 	// Countires Api
-		
 		Route::get('countries/all','api\AllCountries@getCountries');
 		Route::get('cities/all','api\AllCities@getCities');
-
 	// Countires Api
 
 	/* Start Cars Api Route */
@@ -81,8 +80,18 @@ Route::group(['prefix'=>'api'],function(){
 		Route::get('offers/get','Api\SpecialOffersApi@getSpecialOffers'); 
 		Route::post('offer/reserv','Api\SpecialOffersApi@ReservSpecialOffers'); 
 	// Special Offers
-		
-		
+	
+	// Get All Air Ports by city Id
+		Route::get('air-ports','Api\AirPorts@getAirPortsByCityId'); 
+	// Get All Air Ports by city Id
+	
+	// Reservation Tickets Airline 
+		Route::post('tickets/reserv','Api\AirPorts@ticketsReservation'); 
+	// Reservation Tickets Airline 		
+			
+
+
+
 
 });
 
@@ -152,22 +161,19 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('bookings/cars','BookingsCtrl@getCars');
 	Route::get('bookings/hotels','BookingsCtrl@gethotels');
 	Route::get('bookings/travels','BookingsCtrl@getTeavels');
-	Route::get('bookings/special-offers','BookingsCtrl');
+	Route::get('bookings/special-offers','BookingsCtrl@getSpecialOffers');
+	Route::get('bookings/tickets','BookingsCtrl@getTickets');
 	// bookings 
 
-	/*
-		Route::resource('areas','AreasCtrl');
-		Route::resource('salons','SalonsCtrl'); 
-	*/
-	
-	
 });
 
 /*
-**********************************************************
-  ******** End Application Route [ Back End ] ********
-**********************************************************
+*********************************************************
+*********** End Application Route [ Back End ] **********
+*********************************************************
 */
+
+
 
 
 /*

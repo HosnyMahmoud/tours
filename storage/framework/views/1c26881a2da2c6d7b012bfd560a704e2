@@ -1,0 +1,47 @@
+<?php $__env->startSection('title','تفاصيل المطار'); ?>
+	
+<?php $__env->startSection('content'); ?>
+
+<div class="panel panel-info">
+	<div class="panel panel-heading text-center">
+		تفاصيل مطار : <?php echo e($airPorts->name_ar); ?>
+
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+		    <thead>
+		        <tr>
+			        <th>ID # </th>
+			        <th><?php echo e($airPorts->id); ?></th>
+		    	</tr>
+		        <tr>
+			        <th>أسم المطار باللغة العربية</th>
+			        <th><?php echo e($airPorts->name_ar); ?></th>
+		    	</tr>
+		    	<tr>
+			        <th>أسم المطار بالأنجليزية</th>
+			        <th><?php echo e($airPorts->name_en); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>المنطقة</th>
+			        <th><?php echo e($cities->find($airPorts->city_id)['name_ar']); ?></th>
+
+		    	</tr>
+		    	<tr>
+			         <th>تمت الأضافة في :</th>
+			         <th><?php echo e($airPorts->created_at); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th> أخر تعديل في :</th>
+			         <th><?php echo e($airPorts->updated_at); ?></th>
+		    	</tr>
+		    </thead>
+		</table>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
