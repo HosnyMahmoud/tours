@@ -40,6 +40,8 @@
 <!-- Latest compiled and minified CSS & JS -->
 <script src="http://code.jquery.com/jquery-1.12.3.js"></script>
 {!!Html::script('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')!!}
+{!! Html::script("back/assets/global/scripts/datatable/jquery.dataTables.min.js") !!}
+
 <script>
 $(document).ready(function(){
     $('#table').DataTable();

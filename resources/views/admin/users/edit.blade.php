@@ -1,8 +1,6 @@
 @extends('admin.layout')
-@section('title')
-		تعديل العضو
-@endsection
-
+@section('title' , 'تعديل العضو')
+		
 @section('content')
 
 	{!! Form::model($user ,['method'=>'PATCH','action'=>['UsersCtrl@update',$user->id],'files'=>true])!!}

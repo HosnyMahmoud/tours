@@ -1,19 +1,15 @@
-@extends('admin.layout', 'الأعضاء')
-
+@extends('admin.layout')
+@section('title' , 'الأعضاء')
 @section('content')
-
 	<div>
 		<a href="{!!Url('/')!!}/admin/users/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
-		
 	</div>
-
 	<br>
 	@if(Session::has('msg'))
 		<div class="alert alert-success">
 			{{Session::get('msg')}}
 		</div>
 	@endif
-
 	<br>
 	<div class="panel panel-primary">
 		<div class="panel-heading text-center">جميع المستخدمين</div>
@@ -43,9 +39,8 @@
 				{!!$users->render()!!}
 			@else
 				<div class="alert alert-info">لا توجد بيانات لعرضها.</div> 
-
 			@endif
 		</div>	
 	</div>
-
+@endsection
 @stop

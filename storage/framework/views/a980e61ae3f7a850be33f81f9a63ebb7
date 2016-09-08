@@ -1,14 +1,8 @@
-<?php $__env->startSection('title'); ?>
-		الأعضاء
-<?php $__env->stopSection(); ?>
-
+<?php $__env->startSection('title' , 'الأعضاء'); ?>
 <?php $__env->startSection('content'); ?>
-
 	<div>
 		<a href="<?php echo Url('/'); ?>/admin/users/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
-		
 	</div>
-
 	<br>
 	<?php if(Session::has('msg')): ?>
 		<div class="alert alert-success">
@@ -16,7 +10,6 @@
 
 		</div>
 	<?php endif; ?>
-
 	<br>
 	<div class="panel panel-primary">
 		<div class="panel-heading text-center">جميع المستخدمين</div>
@@ -49,11 +42,11 @@
 				<?php echo $users->render(); ?>
 
 			<?php else: ?>
-				<div class="alert alert-danger">لا توجد بيانات لعرضها.</div> 
-
+				<div class="alert alert-info">لا توجد بيانات لعرضها.</div> 
 			<?php endif; ?>
 		</div>	
 	</div>
-
 <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

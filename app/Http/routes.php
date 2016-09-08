@@ -15,11 +15,18 @@ Route::get('notification' , function(){
 
 			//}
 		});
+/*  Start Front End Routes */
+
 Route::get('/',function()
 {
 	return View('front.layout');
 });
-//---------------------- api -----------------------------//
+
+/*  End Front End Routes */
+	
+
+/***************** Start Api Routes ***********************/	
+
 Route::group(['prefix'=>'api'],function(){
 
 	//global APIs
@@ -80,9 +87,9 @@ Route::group(['prefix'=>'api'],function(){
 });
 
 /*
-****************************************************************
-****************  Start Application Route  *********************
-****************************************************************
+**********************************************************
+  ******** Start Application Route [ Back End ] ********
+**********************************************************
 */
 
 Route::get('admin/login','LoginCtrl@showAdminLogin');
@@ -90,6 +97,7 @@ Route::post('admin/login','LoginCtrl@postAdminLogin');
 Route::get('admin/logout','LoginCtrl@AdminLogout');
 	
 Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
+	
 	Route::get('/',function()
 	{
 		return View('admin.layout');
@@ -135,17 +143,18 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::resource('air_ports','AirPortsCtrl');
 	// Air_ports
 	
-	// bookings
-	Route::resource('bookings/cars','BookingsCarsCtrl');
-	Route::resource('bookings/hotels','BookingsCtrl');
-	Route::resource('bookings/travels','BookingsCtrl');
-	Route::resource('bookings/special-offers','BookingsCtrl');
-	// bookings
 	
 	// Users
 	Route::resource('users','UsersCtrl');
 	// Users
 	
+	// bookings
+	Route::get('bookings/cars','BookingsCtrl@getCars');
+	Route::get('bookings/hotels','BookingsCtrl@gethotels');
+	Route::get('bookings/travels','BookingsCtrl@getTeavels');
+	Route::get('bookings/special-offers','BookingsCtrl');
+	// bookings 
+
 	/*
 		Route::resource('areas','AreasCtrl');
 		Route::resource('salons','SalonsCtrl'); 
@@ -154,24 +163,23 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	
 });
 
-	Route::get('/','FrontCtrl@index');
-/**
-	*********  End Application Route  *************
- */
-
 /*
-//---------------------- notefication -----------------------------//
-Route::get('noti',function(){
-			$message = PushNotification::Message('msg',array(
-	            'msgcnt'=> 1,
-	            'title'=>'title',
-	            'image'=>'https://www.google.com.eg/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
-	));
-
-	PushNotification::app('appNameAndroid')
-                ->to('f25mwZgO5tE:APA91bFLc4seSr1UryuAh3RSFNUM28bys1sDsNOGhKmlWUJKLO7wc6dbGpPLRI8ybOO26u0lxqqyhPBxQWn-pX36mf_nL9_pUYvNGbIa7Sk-sMY26aW3Dw6KFeMHRoX4ehvvOBfN8TcF')
-                ->send($message);
-});
-//->to('f25mwZgO5tE:APA91bFLc4seSr1UryuAh3RSFNUM28bys1sDsNOGhKmlWUJKLO7wc6dbGpPLRI8ybOO26u0lxqqyhPBxQWn-pX36mf_nL9_pUYvNGbIa7Sk-sMY26aW3Dw6KFeMHRoX4ehvvOBfN8TcF')
+**********************************************************
+  ******** End Application Route [ Back End ] ********
+**********************************************************
 */
 
+
+/*
+**********************************************************
+  ******** Start Application Route [ Front End ] ********
+**********************************************************
+*/
+
+	Route::get('/','FrontCtrl@index');
+
+/*
+**********************************************************
+  ******** End Application Route [ Front End ] ********
+**********************************************************
+*/

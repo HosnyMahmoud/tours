@@ -21,7 +21,7 @@
 			<?php if(count($allCarsReserv) > 0): ?>
 				<?php foreach($allCarsReserv as $carsReserv): ?>
 					<tr>
-						<td><a href=""><?php echo e($users->find($carsReserv->user_id)['name']); ?>س</a></td>
+						<td><a href=""><?php echo e($users->find($carsReserv->user_id)['name']); ?></a></td>
 						<td><?php echo e($citis->find($carsReserv->city_id)['name_ar']); ?></td>
 						<td><?php echo e($carsModels->find($carsReserv->model_id)['model_name']); ?></td>
 						<td><?php echo e($carsReserv->date_from); ?></td>
@@ -40,6 +40,9 @@
 <!-- Latest compiled and minified CSS & JS -->
 <script src="http://code.jquery.com/jquery-1.12.3.js"></script>
 <?php echo Html::script('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'); ?>
+
+<?php echo Html::script("back/assets/global/scripts/datatable/jquery.dataTables.min.js"); ?>
+
 
 <script>
 $(document).ready(function(){

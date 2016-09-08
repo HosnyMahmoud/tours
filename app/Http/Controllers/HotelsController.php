@@ -94,6 +94,20 @@ class HotelsController extends Controller {
 		
 		return view('admin.hotels.edit' , compact('hotel','countries','cities')) ;
 	}
+
+
+	public function show($id)
+	{
+		// Hotels // 
+		$hotel     	= Hotel::findOrFail($id);
+	
+		$countries 	= Countries::all() ;
+		$cities    	= Cities::all();
+
+		return View('admin.hotels.show',compact('hotel','countries','cities'));
+	}
+
+
 	/**
 	* Update the specified resource in storage.
 	*

@@ -1,0 +1,44 @@
+<?php $__env->startSection('title','بيانات المستخدم'); ?>
+	
+<?php $__env->startSection('content'); ?>
+
+<div class="panel panel-default">
+	<div class="panel panel-heading text-center">
+		تفاصيل المستخدم
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+		    <thead>
+		        <tr>
+			        <th>ID # </th>
+			        <th><?php echo e($user->id); ?></th>
+		    	</tr>
+		        <tr>
+			        <th>الأسم</th>
+			        <th><?php echo e($user->name); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>البريد الألكتروني</th>
+			         <th><?php echo e($user->email); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>رقم التلفون</th>
+			         <th><?php echo e($user->mobile); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>تمت الأضافة في :</th>
+			         <th><?php echo e($user->created_at); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th> أخر تعديل في :</th>
+			         <th><?php echo e($user->updated_at); ?></th>
+		    	</tr>
+		    </thead>
+		</table>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

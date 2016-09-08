@@ -418,6 +418,7 @@ class ComposerStaticInit265e8eccb5c018a1b09c7ab71f66aff6
         'CreateHotelsReservationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_25_142831_create_hotels__reservations_table.php',
         'CreateHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_19_130348_create_hotels_table.php',
         'CreateOffersTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_20_130600_create_offers_table.php',
+        'CreatePhotosTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_141654_create_photos_table.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_26_063535_create_settings_table.php',
         'CreateSpecialOfferReservsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_10_111043_create_special_offer_reservs_table.php',
         'CreateSpecialOffersTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_09_111935_create_special_offers_table.php',
