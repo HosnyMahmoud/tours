@@ -9,12 +9,10 @@ use App\CarsBrands ;
 class BrandCtrl extends Controller {
 
 	/* Start api function */
-	
 	public function api()
 	{
 	 	return ApiSettings::first(); 
 	}
-	
 	/* End api function */
 
 	/* Get All countries */

@@ -1,0 +1,62 @@
+<?php $__env->startSection('title','تفاصيل العرض'); ?>
+	
+<?php $__env->startSection('content'); ?>
+
+<div class="panel panel-info">
+	<div class="panel panel-heading text-center">
+		تفاصيل العرض
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+		    <thead>
+		        <tr>
+			        <th>ID # </th>
+			        <th><?php echo e($data->id); ?></th>
+		    	</tr>
+		        <tr>
+			        <th>أسم العرض الخاص</th>
+			        <th><?php echo e($data->name_ar); ?></th>
+		    	</tr>
+		    	<tr>
+			        <th>سعر العرض</th>
+			        <th><?php echo e($data->price); ?></th>
+		    	</tr>
+		    	<tr>
+			        <th>الوصف باللغة العربية</th>
+			        <th><?php echo e($data->desc_ar); ?></th>
+		    	</tr>
+		    	<tr>
+			        <th>نوع العرض</th>
+			        <th>
+			        	<?php if($data->status == 0): ?>
+			        		<?php echo e('مفعل'); ?>
+
+		        		<?php else: ?>
+			        		<?php echo e('غير مفعل'); ?>
+
+		        		<?php endif; ?>
+			        </th>
+		    	</tr>
+		    	<tr>
+			        <th>ابتداءا من :</th>
+			        <th>
+			        	<?php echo e($data->date_from); ?>
+
+			        </th>
+		    	</tr>
+		    	<tr>
+			        <th>وينتهي في :</th>
+			        <th>
+			        	<?php echo e($data->date_to); ?>
+
+			        </th>
+		    	</tr>
+		    </thead>
+		</table>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

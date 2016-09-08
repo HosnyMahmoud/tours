@@ -50,7 +50,10 @@ class AirPortsCtrl extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+
+		$airPorts = AirPort::findOrfail($id) ;
+		$cities = Cities::all() ;
+		return view('admin.air_ports.show' ,compact('airPorts','cities')) ;
 	}
 
 	/**

@@ -288,6 +288,11 @@ License: You must have a valid license purchased only from themeforest(the above
 									حجوزات العروض الخاصة
 								</a>
 							</li>
+							<li>
+								<a href="{!! Url('/') !!}/admin/bookings/tickets">
+									حجوزات تذاكر الطيران
+								</a>
+							</li>
 						</ul>
 					</li>
 					<!--  bookings	 -->

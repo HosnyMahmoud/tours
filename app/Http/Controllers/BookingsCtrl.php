@@ -15,6 +15,8 @@ use App\Travels ;
 use App\ReservTravel ;
 use App\SpecialOfferReserv ;
 use App\SpecialOffers ;
+use App\AirPort ;
+use App\Airline_tickets_reserv ;
 
 // Data Tabel Class 
 use App\DataTables\UsersDataTable;
@@ -70,5 +72,13 @@ class BookingsCtrl extends Controller {
 		return view('admin.bookings.bookingsSpecialOffers.index' , compact('allSpecialOffersReserv','users','specialOffers'));
 	}
 	
+	public function getTickets()
+	{	
+		$users      = User::all();
+		$airPorts   = AirPort::all();
+	
+		$allTicketsReserv  = Airline_tickets_reserv::paginate(20);
+		return view('admin.bookings.bookingsTickets.index' , compact('allTicketsReserv','users','airPorts'));
+	}
 	
 }
