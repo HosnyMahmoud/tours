@@ -256,12 +256,21 @@ License: You must have a valid license purchased only from themeforest(the above
 							</a>
 						</li> 
 					<?php endif; ?>
+					
+					<!-- Start Members -->
+					<li class="<?php echo e(Request::is('admin/users*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/users">
+						<i class="fa fa-users" aria-hidden="true"></i>
+						<span class="title">الإعضاء</span>
+						</a>
+					</li>
+					<!-- End Members -->
 
 					<?php if(in_array('admins',$explode)): ?>
 						<!-- Admin -->
 						<li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
 							<a href="<?php echo Url('/'); ?>/admin/admins">
-							<i class="icon-users"></i>
+							<i class="fa fa-lock" aria-hidden="true"></i>
 							<span class="title">المديرين</span>
 							</a>
 						</li>
@@ -270,14 +279,14 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- Countries and Cities -->	
 					<li class="<?php echo e(Request::is('admin/countries*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/countries">
-						<i class="icon-users"></i>
+						<i class="fa fa-globe" aria-hidden="true"></i>
 						<span class="title">الدول والمحافظات</span>
 						</a>
 					</li>
 					
 					<li class="<?php echo e(Request::is('admin/cars_brand*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/cars_brand">
-						<i class="icon-users"></i>
+						<i class="fa fa-car" aria-hidden="true"></i>
 						<span class="title">السيارات</span>
 						</a>
 					</li> 
@@ -285,7 +294,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!--  bookings	 -->
 					<li class="">
 						<a href="javascript:;">
-						<i class="icon-pointer"></i>
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
 						<span class="title">الحجوزات</span>
 						<span class="arrow "></span>
 						</a>
@@ -321,28 +330,28 @@ License: You must have a valid license purchased only from themeforest(the above
 
 					<li class="<?php echo e(Request::is('admin/carsOffers*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/carsOffers">
-						<i class="icon-users"></i>
+						<i class="fa fa-car" aria-hidden="true"></i>
 						<span class="title">عروض السيارات</span>
 						</a>
 					</li>
 
 					<li class="<?php echo e(Request::is('admin/hotels*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/hotels">
-						<i class="icon-users"></i>
+						<i class="fa fa-h-square" aria-hidden="true"></i>
 						<span class="title">الفنادق</span>
 						</a>
 					</li>
 
 					<li class="<?php echo e(Request::is('admin/travels*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/travels">
-						<i class="icon-users"></i>
+						<i class="fa fa-suitcase" aria-hidden="true"></i>
 						<span class="title">الرحلات</span>
 						</a>
 					</li>
 					
 					<li class="<?php echo e(Request::is('admin/air_ports*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/air_ports">
-						<i class="icon-users"></i>
+						<i class="fa fa-plane" aria-hidden="true"></i>
 						<span class="title">المطارات</span>
 						</a>
 					</li>
@@ -350,17 +359,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- Special Offers -->
 					<li class="<?php echo e(Request::is('admin/special-offers*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/special-offers">
-						<i class="icon-users"></i>
+						<i class="fa fa-table" aria-hidden="true"></i>
 						<span class="title">العروض الخاصة</span>
 						</a>
 					</li>
 				
-					<li class="<?php echo e(Request::is('admin/users*') ? 'active' : ''); ?>">
-						<a href="<?php echo Url('/'); ?>/admin/users">
-						<i class="icon-user"></i>
-						<span class="title">الإعضاء</span>
-						</a>
-					</li>
+					
 
 				
 					<!-- <li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">

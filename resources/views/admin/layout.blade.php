@@ -234,12 +234,21 @@ License: You must have a valid license purchased only from themeforest(the above
 							</a>
 						</li> 
 					@endif
+					
+					<!-- Start Members -->
+					<li class="{{Request::is('admin/users*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/users">
+						<i class="fa fa-users" aria-hidden="true"></i>
+						<span class="title">الإعضاء</span>
+						</a>
+					</li>
+					<!-- End Members -->
 
 					@if(in_array('admins',$explode))
 						<!-- Admin -->
 						<li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
 							<a href="{!!Url('/')!!}/admin/admins">
-							<i class="icon-users"></i>
+							<i class="fa fa-lock" aria-hidden="true"></i>
 							<span class="title">المديرين</span>
 							</a>
 						</li>
@@ -248,14 +257,14 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- Countries and Cities -->	
 					<li class="{{Request::is('admin/countries*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/countries">
-						<i class="icon-users"></i>
+						<i class="fa fa-globe" aria-hidden="true"></i>
 						<span class="title">الدول والمحافظات</span>
 						</a>
 					</li>
 					
 					<li class="{{Request::is('admin/cars_brand*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/cars_brand">
-						<i class="icon-users"></i>
+						<i class="fa fa-car" aria-hidden="true"></i>
 						<span class="title">السيارات</span>
 						</a>
 					</li> 
@@ -263,7 +272,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!--  bookings	 -->
 					<li class="">
 						<a href="javascript:;">
-						<i class="icon-pointer"></i>
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
 						<span class="title">الحجوزات</span>
 						<span class="arrow "></span>
 						</a>
@@ -299,28 +308,28 @@ License: You must have a valid license purchased only from themeforest(the above
 
 					<li class="{{Request::is('admin/carsOffers*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/carsOffers">
-						<i class="icon-users"></i>
+						<i class="fa fa-car" aria-hidden="true"></i>
 						<span class="title">عروض السيارات</span>
 						</a>
 					</li>
 
 					<li class="{{Request::is('admin/hotels*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/hotels">
-						<i class="icon-users"></i>
+						<i class="fa fa-h-square" aria-hidden="true"></i>
 						<span class="title">الفنادق</span>
 						</a>
 					</li>
 
 					<li class="{{Request::is('admin/travels*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/travels">
-						<i class="icon-users"></i>
+						<i class="fa fa-suitcase" aria-hidden="true"></i>
 						<span class="title">الرحلات</span>
 						</a>
 					</li>
 					
 					<li class="{{Request::is('admin/air_ports*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/air_ports">
-						<i class="icon-users"></i>
+						<i class="fa fa-plane" aria-hidden="true"></i>
 						<span class="title">المطارات</span>
 						</a>
 					</li>
@@ -328,17 +337,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- Special Offers -->
 					<li class="{{Request::is('admin/special-offers*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/special-offers">
-						<i class="icon-users"></i>
+						<i class="fa fa-table" aria-hidden="true"></i>
 						<span class="title">العروض الخاصة</span>
 						</a>
 					</li>
 				
-					<li class="{{Request::is('admin/users*') ? 'active' : ''}}">
-						<a href="{!!Url('/')!!}/admin/users">
-						<i class="icon-user"></i>
-						<span class="title">الإعضاء</span>
-						</a>
-					</li>
+					
 
 				
 					<!-- <li class="{{Request::is('admin/admins*') ? 'active' : ''}}">

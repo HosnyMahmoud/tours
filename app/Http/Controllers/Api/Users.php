@@ -28,9 +28,9 @@ class Users extends Controller {
 		$validator =  Validator::make($bag->all(), [
 						//'source' 	=> 'required',
 						'name'   	=> 'required',
-						'password' 	=> 'required|min:5',
 						'email' 	=> 'email|unique:users',
-						'phone' 	=> 'required|unique:users',
+						'password' 	=> 'required|min:5',
+						'mobile' 	=> 'required|unique:users',
 		]);
 		if($validator->fails()){
 			return response()->json(['status' => '400','message'=>'Some Errors Happened','errors'=>$validator->errors()->all()],400);
