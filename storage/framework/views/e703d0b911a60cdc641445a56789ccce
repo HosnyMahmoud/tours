@@ -1,0 +1,39 @@
+    <?php $__env->startSection('title',Lang::get('travels.breadcamp')); ?>
+	<?php $__env->startSection('content'); ?>
+		<section class="content">
+            <div class="container">
+                <div class="page-ttl">
+                    <h1>عروض الشركة</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo e(Url('/')); ?>/">الرئيسية</a></li>
+                        <li class="active"><?php echo e(Lang::get('travels.breadcamp')); ?></li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                	<?php foreach($travels as $travel): ?>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="offer wow fadeInUp">
+                            <figure class="offer-img">
+                                <?php $image = explode('|',$travel->images)?>
+                                <a href="<?php echo e(Url('/')); ?>/uploads/travels/<?php echo e($image[0]); ?>" rel="prettyPhoto"><img src="<?php echo e(Url('/')); ?>/uploads/travels/<?php echo e($image[0]); ?>" alt=""></a>
+                            </figure>
+                            <div class="offer-info">
+                                <h3>
+                                    <a href="<?php echo e(Url('/')); ?>/travels/<?php echo e($travel->id); ?>-<?php echo e($travel['slug_'.Session::get('local')]); ?>" title="<?php echo e($travel['name_'.Session::get('local')]); ?>"><?php echo e(str_limit($travel['name_'.Session::get('local')],10)); ?></a>
+                                    <span><?php echo e(round($travel['price'])); ?> جنيه</span>
+                                </h3>
+                                <p><?php echo e(str_limit($travel['desc_'.Session::get('local')],50)); ?></p>
+                                <a href="<?php echo e(Url('/')); ?>/travels/<?php echo e($travel->id); ?>-<?php echo e($travel['slug_'.Session::get('local')]); ?>" class="view-more">عرض التفاصيل</a>
+                            </div>
+                        </div>
+                    </div><!-- end of offer -->
+                    <?php endforeach; ?>
+                </div>
+                <?php echo $travels->render(); ?>
+
+            </div>
+        </section>
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

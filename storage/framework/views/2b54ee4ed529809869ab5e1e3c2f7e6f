@@ -1,0 +1,20 @@
+<?php $__env->startSection('title' , 'أضافة مطار جديد'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="text-center panel-heading">أضافة مطار جديد</div>	
+			<div class="col-md-10 panel-body">
+				<?php echo Form::open(['action'=>'AirPortsCtrl@store','class'=>'form-horizontal']); ?>
+
+					<?php echo $__env->make('admin.air_ports._form',['btnName'=>'إضافه'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<?php echo Form::close(); ?>
+
+			</div>	
+		</div>
+	</div>
+	
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

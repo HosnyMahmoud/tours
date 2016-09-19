@@ -1,5 +1,293 @@
 @extends('front.layout')
+ @section('title',Lang::get('index.title'))
 	@section('content')
-	
+	<div class="site-intro">
+            <!-- masterslider -->
+            <div class="master-slider ms-skin-default" id="of-home" style="direction: ltr;">
+                <!-- new slide -->
+                <div class="ms-slide">
+                    <!-- slide background -->
+                    <img src="{{Url('/')}}/front/masterslider/blank.gif" data-src="{{Url('/')}}/front/images/slide-1.jpg" alt="lorem ipsum dolor sit"/>     
+                    <!-- slide text layer 
+                    <div class="ms-layer ms-caption" style="top: 180px; left: 120px; display: none;">
+                        <h1>استكشف العالم مع <strong>سوا ترافيل</strong>!</h1>
+                        <a href="#">
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                            <span>شاهد أحدث العروض</span>
+                        </a>
+                    </div>-->
+                </div>
+                <!-- end of slide -->
+                 
+                <!-- new slide -->
+                <div class="ms-slide"> 
+                    <!-- slide background -->
+                    <img src="{{Url('/')}}/front/masterslider/blank.gif" data-src="{{Url('/')}}/front/images/slide-3.jpg" alt="lorem ipsum dolor sit"/>     
+                    <!-- slide text layer 
+                    <div class="ms-layer ms-caption" style="top: 180px; left: 120px;">
+                        <h1>استكشف العالم مع <strong>سوا ترافيل</strong>!</h1>
+                        <a href="#">
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                            <span>شاهد أحدث العروض</span>
+                        </a>
+                    </div>-->
+                    <!-- linked slide -->
+                    <a href="#">SAWA Travel</a>
+                </div>
+                <!-- end of slide -->
+                 
+                <!-- new slide -->
+                <div class="ms-slide">
+                    <!-- slide background -->
+                    <img src="{{Url('/')}}/front/masterslider/blank.gif" data-src="{{Url('/')}}/front/images/slide-2.jpg" alt="lorem ipsum dolor sit"/>     
+                    <!-- slide text layer 
+                    <div class="ms-layer ms-caption" style="top: 180px; right: 120px;">
+                        <h1>استكشف العالم مع <strong>سوا ترافيل</strong>!</h1>
+                        <a href="#">
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                            <span>شاهد أحدث العروض</span>
+                        </a>
+                    </div>-->
+                    <!-- youtube video -->
+                    <a href="http://www.youtube.com/embed/YHWkro9-e9Q?hd=1&wmode=opaque&controls=1&showinfo=0" data-type="video">Youtube video</a>
+                </div>
+                <!-- end of slide -->
+            </div>
+            <!-- end of masterslider -->
+            
+            <div id="booking-sec">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="flight-booking">
+                                <form>
+                                    <h3><i class="fa fa-plane" aria-hidden="true"></i> {{Lang::get('index.reserve_tickets')}}</h3>
+                                    <div class="row" style="margin-bottom: 20px;">
+                                        <div class="col-sm-6">
+                                            <label>{{Lang::get('index.leave')}}</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <select class="form-control">
+                                                        <option value="" disabled selected>{{Lang::get('index.from')}}</option>
+                                                        <option>مصر</option>
+                                                        <option>السعودية</option>
+                                                        <option>الإمارات</option>
+                                                        <option>اليونان</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <select class="form-control">
+                                                        <option value="" disabled selected>{{Lang::get('index.to')}}</option>
+                                                        <option>مدغشقر</option>
+                                                        <option>بنجلاديش</option>
+                                                        <option>ماليزيا</option>
+                                                        <option>الكونغو</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>{{Lang::get('index.takeoff')}}</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <select class="form-control">
+                                                        <option value="" disabled selected>{{Lang::get('index.from')}}</option>
+                                                        <option>مطار القاهرة</option>
+                                                        <option>مطار برج العرب</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <select class="form-control">
+                                                        <option value="" disabled selected>{{Lang::get('index.to')}}</option>
+                                                        <option>مطار بيروت</option>
+                                                        <option>مطار القاهرة</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label>{{Lang::get('index.adults')}}</label>
+                                                    <input type="number" class="form-control" placeholder="">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label>{{Lang::get('index.kids')}}</label>
+                                                    <input type="number" class="form-control" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>{{Lang::get('index.date')}}</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class='input-group date'>
+                                                            <input type='text' class="form-control" placeholder="{{Lang::get('index.go')}}">
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class='input-group date'>
+                                                            <input type='text' class="form-control" placeholder="{{Lang::get('index.back')}}">
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info">{{Lang::get('assets.reserve_now')}}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div><!-- end of site-intro -->
+        
+        
+        <section id="services" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="sec-ttl text-center wow fadeInUp">
+                            <h1>{{Lang::get('index.services')}}</h1>
+                            <span><i class="fa fa-bullhorn" aria-hidden="true"></i></span>
+                            <p>{{Lang::get('index.services_text')}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="service text-center wow fadeInLeft">
+                            <figure>
+                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-1.jpg" alt=""></a>
+                            </figure>
+                            <h3><a href="#">{{Lang::get('index.flights_tickets')}}</a></h3>
+                        </div>
+                    </div><!-- end of service -->
+                    <div class="col-sm-3">
+                        <div class="service text-center wow fadeInLeft" data-wow-delay="0.5s">
+                            <figure>
+                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-2.jpg" alt=""></a>
+                            </figure>
+                            <h3><a href="#">{{Lang::get('index.tourism')}}</a></h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="service text-center wow fadeInLeft" data-wow-delay="1s">
+                            <figure>
+                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-3.jpg" alt=""></a>
+                            </figure>
+                            <h3><a href="#">{{Lang::get('index.haj')}}</a></h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="service text-center wow fadeInLeft" data-wow-delay="1.5s">
+                            <figure>
+                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-4.jpg" alt=""></a>
+                            </figure>
+                            <h3><a href="#">{{Lang::get('index.hotels_book')}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- #services -->
+        
+        <section id="home-offers" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="sec-ttl text-center wow fadeInUp">
+                            <h1>{{Lang::get('index.offers')}}</h1>
+                            <span><i class="fa fa-plane" aria-hidden="true"></i></span>
+                            <p>{{Lang::get('index.offers_text')}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach($travels as $travel)
+                    <div class="col-md-3 col-sm-6">
+                        <div class="offer wow fadeInUp">
+                            <figure class="offer-img">
+                                <?php $image = explode('|',$travel->images)?>
+                                <a href="{{Url('/')}}/uploads/travels/{{$image[0]}}" rel="prettyPhoto"><img src="{{Url('/')}}/uploads/travels/{{$image[0]}}" alt=""></a>
+                            </figure>
+                            <div class="offer-info">
+                                <h3>
+                                    <a href="{{Url('/')}}/travels/{{$travel->id}}-{{$travel['slug_'.Session::get('local')]}}">{{$travel['name_'.Session::get('local')]}}</a>
+                                    <span>{{round($travel['price'])}} {{Lang::get('assets.le')}}</span>
+                                </h3>
+                                <p>{{str_limit($travel['desc_'.Session::get('local')],50)}}</p>
+                                <a href="{{Url('/')}}/travels/{{$travel->id}}-{{$travel['slug_'.Session::get('local')]}}" class="view-more">{{Lang::get('assets.view_details')}}</a>
+                            </div>
+                        </div>
+                    </div><!-- end of offer -->
+                    @endforeach
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <a href="{{Url('/')}}/travels"  class="view-all wow zoomIn" data-wow-delay="2s">{{Lang::get('assets.view_all_offers')}}</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- #home-offers -->
+        
+        <section id="testimonials" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="sec-ttl text-center wow fadeInUp">
+                            <h1>{{Lang::get('index.testmonials')}}</h1>
+                            <span><i class="fa fa-quote-right" aria-hidden="true"></i></span>
+                            <p>{{Lang::get('index.testmonials_text')}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp" data-wow-delay="1s">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div id="owl-demo" class="owl-carousel owl-theme" style="direction: ltr;">
+                            <div class="item">
+                                <div class="testimonial-container">
+                                    <blockquote>
+                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء</p>
+                                    </blockquote>
+                                </div>
+                                <div class="client-info">
+                                    <img src="{{Url('/')}}/front/images/client.jpg" alt="">
+                                    <span><strong>ميريل ستريب</strong><br>ممثلة أمريكية </span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-container">
+                                    <blockquote>
+                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء</p>
+                                    </blockquote>
+                                </div>
+                                <div class="client-info">
+                                    <img src="{{Url('/')}}/front/images/client.jpg" alt="">
+                                    <span><strong>ميريل ستريب</strong><br>ممثلة أمريكية </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- #testimonials -->
+        
+
 	@endsection
 @stop

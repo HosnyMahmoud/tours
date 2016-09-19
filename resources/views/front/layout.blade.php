@@ -1,3 +1,5 @@
+<?php use App\Settings; ?>
+<?php $settings = Settings::first(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,11 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>سوا ترافيل | الصفحة غير موجودة</title>
+        <title>@yield('title') | {{$settings['site_name_'.Session::get('local')]}} </title>
         
+
         <!-- CSS -->
         {!!Html::style('front/css/bootstrap.min.css') !!}
-        {!!Html::style('front/css/bootstrap-rtl.min.css') !!}
+        @if(Session::get('local') == 'ar')
+            {!!Html::style('front/css/bootstrap-rtl.min.css') !!}
+        @endif
         {!!Html::style('front/fonts/font-awesome-4.6.3/css/font-awesome.min.css') !!}
         {!!Html::style('front/js/masterslider/style/masterslider.css') !!}
         {!!Html::style('front/js/masterslider/skins/default/style.css') !!}
@@ -43,19 +48,26 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <ul class="contact-info">
-                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i><span>info@sawatravel.com</span></li>
+                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i><span>voyageapp.travel@gmail.com</span></li>
                                 <li><i class="fa fa-phone-square" aria-hidden="true"></i><span>0100 008 5567 - 0109 270 2914</span></li>
                                 <li class="social">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="{{$settings['facebook']}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="{{$settings['twitter']}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="{{$settings['google_Plus']}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="{{$settings['linkedIn']}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </li>
+                                    <li class="social">
+                                        
+                                    <a href="{{Url('/')}}/lang/ar"><img src="{{Url('/')}}/back/assets/global/img/flags/eg.png" alt=""></a>
+
+                                    <a href="{{Url('/')}}/lang/en"><img src="{{Url('/')}}/back/assets/global/img/flags/us.png" alt=""></a>
+                                
+                                    </li>
                             </ul>
                         </div>
                         <div class="col-sm-4 text-left">
-                            <a href="#" class="btn-login">تسجيل دخول</a>
-                            <a href="#" class="btn-register">عضوية جديدة</a>
+                            <a href="#" class="btn-login">{{Lang::get('assets.login')}}</a>
+                            <a href="#" class="btn-register">{{Lang::get('assets.register')}}</a>
                         </div>
                     </div>
                 </div>
@@ -77,12 +89,12 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
-                            <li class="active"><a href="#">الرئيسية</a></li>
-                            <li><a href="#">عن الشركة</a></li>
-                            <li><a href="#">الخدمات</a></li>
-                            <li><a href="#">آخر العروض</a></li>
-                            <li><a href="#">حجز فنادق</a></li>
-                            <li><a href="#">اتصل بنا</a></li>
+                            <li class="{{(Request::is('/'))?'active':''}}"><a href="{{Url('/')}}">{{Lang::get('assets.index')}}</a></li>
+                            <li class="{{(Request::is('about*'))?'active':''}}"><a href="#">{{Lang::get('assets.about')}}</a></li>
+                            <li class="{{(Request::is('services*'))?'active':''}}"><a href="#services">{{Lang::get('assets.services')}}</a></li>
+                            <li class="{{(Request::is('travels*'))?'active':''}}"><a href="{{Url('/')}}/travels">{{Lang::get('assets.offers')}}</a></li>
+                            <li class="{{(Request::is('hotels*'))?'active':''}}"><a href="#">{{Lang::get('assets.hotels')}}</a></li>
+                            <li class="{{(Request::is('contact*'))?'active':''}}"><a href="#">{{Lang::get('assets.contact')}}</a></li>
                             <li><a href="#search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -119,7 +131,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-md-offset-1">
-                            <h3 class="widget-ttl">أخبار الشركة</h3>
+                            <h3 class="widget-ttl">{{Lang::get('assets.news')}}</h3>
                             <div class="recent-posts">
                                 <div class="post">
                                     <a href="#" class="post-thumb"><img src="{{Url('/')}}/front/images/post-1.jpg" alt=""></a>
@@ -136,13 +148,14 @@
                             </div>
                         </div>
                         <div class="col-md-2 col-md-offset-1">
-                            <h3 class="widget-ttl">روابط</h3>
+                            <h3 class="widget-ttl">{{Lang::get('assets.links')}}</h3>
                             <ul class="links">
-                                <li><a href="#">الرئيسية</a></li>
-                                <li><a href="#">عن الشركة</a></li>
-                                <li><a href="#">آخر الفنادق</a></li>
-                                <li><a href="#">تذاكر طيران</a></li>
-                                <li><a href="#">اتصل بنا</a></li>
+                                <li><a href="#">{{Lang::get('assets.index')}}</a></li>
+                                <li><a href="#">{{Lang::get('assets.about')}}</a></li>
+                                <li><a href="#">{{Lang::get('assets.services')}}</a></li>
+                                <li><a href="#">{{Lang::get('assets.offers')}}</a></li>
+                                <li><a href="#">{{Lang::get('assets.hotels')}}</a></li>
+                                <li><a href="#">{{Lang::get('assets.contact')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -150,19 +163,19 @@
                 
                 <div class="bottom-footer">
                     <div class="site-rights">
-                        <p style="margin: 0;">سوا ترافيل للسياحة &copy; 2016</p>
+                        <p style="margin: 0;">{{Lang::get('assets.app_copyrights')}}</p>
                     </div>|
                     <div class="sawa4-rights">
-                        <span>تصميم وتطوير</span>
+                        <span>{{Lang::get('assets.copyrights')}}</span>
                         <span class="sawa4">
-                            <span class="sawa4-ttl">سوافور</span>
+                            <span class="sawa4-ttl">{{Lang::get('assets.sawa4')}}</span>
                             <div class="sawa4-info">
                                 <div class="info-wrap">
-                                    <span>سوافور هى مؤسسة رائدة فى مجال استضافة المواقع وحلول الويب</span>
+                                    <span>{{Lang::get('assets.about_sawa4')}}</span>
                                     <div class="social-btns">
-                                        <a href="https://www.facebook.com/Sawa4.com.eg" title="فيسبوك"><i class="fa fa-facebook-square"></i></a>
-                                        <a href="https://twitter.com/_sawa4" title="تويتر"><i class="fa fa-twitter-square"></i></a>
-                                        <a href="http://www.sawa4.com.eg" title="موقع سوافور"><i class="fa fa-external-link-square"></i></a>
+                                        <a target="_blank" href="https://www.facebook.com/Sawa4.com.eg" title="فيسبوك"><i class="fa fa-facebook-square"></i></a>
+                                        <a target="_blank" href="https://twitter.com/_sawa4" title="تويتر"><i class="fa fa-twitter-square"></i></a>
+                                        <a target="_blank" href="http://www.sawa4.com.eg" title="موقع سوافور"><i class="fa fa-external-link-square"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -3,24 +3,26 @@
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-
+use Session;
+use App;
 use Auth ;
 
 abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
-
-
-	/*public function check_pre($rule)
+	public function __construct()
 	{
-		$pre = Auth::admin()->get()->pre ; 		
-		if (in_array($rule, explode('|', $pre))) {
-
-			return true ;			
+		if((Session::get('local')) == '')
+		{
+			Session::set('local','ar');
+			App::setlocale(Session::get('local'));
+			//Carbon::setLocale(Session::get('local'));
+		}else{
+			App::setlocale(Session::get('local'));	
+			//Carbon::setLocale(Session::get('local'));
+			//Carbon::setLocale(Session::get('local'));
 		}
-
-		return false ;
-	}*/
+	}
 
 	public function make_slug($string = null, $separator = "-") {
 	    if (is_null($string)) {

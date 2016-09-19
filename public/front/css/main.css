@@ -258,6 +258,62 @@ a.btn-register{
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
+.site-intro{
+    position: relative;
+}
+#booking-sec{
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    left: 0px;
+    bottom: 30px;
+}
+.flight-booking{
+    background: rgba(0,0,0,0.5);
+    padding: 5px;
+}
+.flight-booking form{
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+.flight-booking form h3{
+    margin: 0 0 20px;
+    font-size: 20px;
+    color: #07a4eb;
+}
+.flight-booking form label{
+    color: #313131;
+    display: block;
+    margin: 0 0 8px;
+}
+.flight-booking form .form-group{
+    margin: 0;
+}
+.flight-booking form .form-control{
+    height: 40px;
+    padding: 0 15px;
+    background: #F4F4F4;
+    border: 1px solid #D6D6D6;
+    box-shadow: none;
+    cursor: pointer;
+    border-radius: 2px;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+}
+.input-group-addon,
+.input-group-addon:last-child{
+    border: 1px solid #D6D6D6;
+    border-right: 0;
+}
+.flight-booking form .form-control:focus{
+    background-color: #fff;
+}
+.flight-booking form .btn{
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 15px;
+    font-size: 18px;
+}
 .section{
     padding: 80px 0;
     overflow: hidden;
@@ -1046,6 +1102,135 @@ footer{
     font-size: 17px;
 }
 
+/*User Dashboard*/
+.user-nav{
+    margin: 3px 0 0 5px;
+}
+.user-nav .dropdown-menu{
+    left: 0;
+    right: auto;
+    min-width: 180px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+.user-nav .dropdown-menu>li>a{
+    padding: 8px 15px;
+    color: #767f88;
+    border-bottom: solid 1px #efefef;
+}
+.user-nav .dropdown-menu>li>a:focus, 
+.user-nav .dropdown-menu>li>a:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+.user-nav > a{
+    color: #939ea9;
+    text-decoration: none;
+}
+.user-nav > a:hover,
+.user-nav > a:focus{
+    color: #fff;
+}
+.user-nav > a > img{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    vertical-align: middle;
+}
+
+.user-dashboard {
+    background: #fff;
+    padding: 15px;
+}
+.dashboard-nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.dashboard-nav ul > li > a{
+    display: block;
+    position: relative;
+    color: #4d82a3;
+    background: #f4f9fd;
+    margin-bottom: 1px;
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 15px;
+}
+.dashboard-nav ul > li > a > i{
+    margin-left: 8px;
+}
+.dashboard-nav ul > li > a:hover{
+    color: #4d82a3;
+    background: #eef4f7;
+    /*padding-right: 20px;*/
+}
+.dashboard-nav ul > li.active > a{
+    background: #07a4eb;
+    color: #fff;
+}
+.dashboard-nav ul > li.active > a:after {
+    content: "";
+    top: 16px;
+    left: -6px;
+    width: 6px;
+    position: absolute;
+    display: inline-block;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #07a4eb;
+}
+
+.page-bar {
+    padding: 0px;
+    background-color: #f7f7f7;
+    margin-bottom: 25px;
+}
+.page-bar .page-breadcrumb {
+    display: inline-block;
+    padding: 8px 10px;
+    margin: 0;
+    list-style: none;
+}
+.page-bar .page-breadcrumb > li {
+    display: inline-block;
+}
+.page-bar .page-breadcrumb > li > i {
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+    color: #aaa;
+    font-size: 14px;
+}
+.page-bar .page-breadcrumb > li > a, 
+.page-bar .page-breadcrumb > li > span {
+    color: #888;
+    font-size: 14px;
+    text-shadow: none;
+}
+
+.status-request{
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    padding: 50px;
+    margin-bottom: 30px;
+}
+.status-request .form-control{
+    margin-bottom: 20px;
+}
+.booking-status{
+    font-size: 18px;
+}
+.dashboard-ttl{
+    font-size: 25px;
+    margin: 0 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
 /*Media Queries*/
 @media (max-width: 1024px){
     
@@ -1083,6 +1268,19 @@ footer{
     }
     .hotel{
         margin-bottom: 30px;
+    }
+    #booking-sec{
+        position: relative;
+        padding: 30px 0;
+        bottom: auto;
+        background: #e1e3e4;
+    }
+    .flight-booking{
+        background: none;
+        padding: 0;
+    }
+    .flight-booking form label{
+        margin: 15px 0 8px;
     }
 }
 

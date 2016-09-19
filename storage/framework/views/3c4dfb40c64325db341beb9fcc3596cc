@@ -1,0 +1,46 @@
+<?php $__env->startSection('title','حجوزات الفنادق'); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="panel panel-info">
+	<div class="panel-heading text-center">حجوزات الفنادق</div>
+	<div class="panel-body">
+		<table class="table table-bordered table-responsive table-hover table-condensed">
+			<tr>
+				<th>#ID</th>
+				<th>اسم المستخدم</th>
+				<th>اسم الفندق</th>
+				<th>عدد الأشخاص</th>
+				<th>من</th>
+				<th>الي</th>
+			</tr>
+			<?php if(count($AllHotelsReserv) > 0): ?>
+				<?php foreach($AllHotelsReserv as $hotelReserv): ?>
+					<tr>
+						<td><?php echo e($hotelReserv->id); ?></td>
+						<td>
+							<a href="<?php echo Url('/'); ?>/admin/users/<?php echo e($hotelReserv->user_id); ?>" class='btn btn-info' title="عرض تفاصيل المستخدم">
+								<?php echo e($users->find($hotelReserv->user_id)['name']); ?>
+
+							</a>
+						</td>
+						<td>
+							<a href="<?php echo Url('/'); ?>/admin/hotels/<?php echo e($hotelReserv->hotel_id); ?>" class='btn btn-info' title="عرض تفاصيل الفندق">
+							<?php echo e($hotels->find($hotelReserv->hotel_id)['name_ar']); ?>
+
+							</a>
+						</td>
+						<td><?php echo e($hotelReserv->persons); ?></td>
+						<td><?php echo e($hotelReserv->date_from); ?></td>
+						<td><?php echo e($hotelReserv->date_to); ?></td>
+					</tr>
+				<?php endforeach; ?>
+				<?php else: ?>
+					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php endif; ?>
+			
+		</table>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

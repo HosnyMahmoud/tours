@@ -6,8 +6,7 @@
 <div class="panel panel-info">
 	<div class="panel-heading text-center">حجوزات السيارات</div>
 	<div class="panel-body">
-		<table id="table" class="table table-bordered table-responsive table-hover table-condensed">
-		
+		<table id="table" class="table table-bordered table-responsive table-hover table-condensed">		
 			<tr>
 				<th>اسم المستخدم</th>
 				<th>اسم المنطقة</th>
@@ -30,11 +29,10 @@
 						<td><?php echo e($carsOffers->find($carsReserv->offer_id)['price']); ?></td>
 					</tr>
 				<?php endforeach; ?>
-				<?php else: ?>
-					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php else: ?>
+			<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
 			<?php endif; ?>
-			
-		</table> 
+		</table>
 	</div>
 </div>
 <!-- Latest compiled and minified CSS & JS -->

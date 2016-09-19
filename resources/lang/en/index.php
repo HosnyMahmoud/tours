@@ -1,21 +1,35 @@
 <?php
 
 return [
-	"title"			=>	"Cure Hospital",
-	"our_location"	=>	"Our Location",
-	"call_us"		=>	"Call Us 24/7",
-	"patient_name"	=>	"Patient Name",
-	"patient_number"=>	"Patient Number",
-	"patient_email"	=>	"Patient Email",
-	"patient_date"	=>	"Date",
-	"reserv"		=>	"Reservation",
-	"latest"		=>	"Latest News",
-	"comments"		=>	"Comments",
-	"success"		=>	"Your Message Has been sent successfuly",
-	"more"			=>	"More",
-	"add_mind"		=>	"Add Your Openion",
-	"your_name"		=>	"Your Name",
-	"your_mind"		=>	"Your Mind",
-	'add'			=>	'Add'
+	/**************** Sections *****************/
+	"title"				=>	"Home",
+	"services"			=>	"services",
+	"services_text" 	=>	"Voyage makes it easy for businessmen to have a professional website and mobile apps which are meant by travel and tours",
+	"offers"			=>	"Offers",
+	"offers_text"		=>	"Offers",
+	"testmonials"		=>	"Testmonials",
+	"testmonials_text"	=>	"Dear customer we need your feedback about our valid service to make it much better for you",
+	/**************** Sections *****************/
+
+	/**************** airFlights *****************/
+	"reserve_tickets"	=>	"Reserve Flight Tickets",
+	"leave"				=>	"Leave (country)",
+	"takeoff"			=>	"Take Off (Airport)",
+	"adults"			=>	"Adults Number",
+	"kids"				=>	"kids Number (less than 2 years)",
+	"date"				=>	"Flight Date",
+	"from"				=>	"From",
+	"to"				=>	"To",
+	"go"				=>	"Go",
+	"back"				=>	"Back",
+	
+	/**************** airFlights *****************/
+	
+	/**************** services *****************/
+	"flights_tickets"	=>	"Flights Tickets",
+	"tourism"			=>	"Internal and External Tourism",
+	"haj"				=>	"Haj & Omra",
+	"hotels_book"		=>	"Hotels Booking",
+	/**************** services *****************/
 
 ];
