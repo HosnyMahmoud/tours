@@ -194,7 +194,6 @@ License: You must have a valid license purchased only from themeforest(the above
 						<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
-							
 							<li>
 								<a href="<?php echo Url('/'); ?>/logout">
 								<i class="icon-key"></i> Log Out </a>
@@ -257,12 +256,21 @@ License: You must have a valid license purchased only from themeforest(the above
 							</a>
 						</li> 
 					<?php endif; ?>
+					
+					<!-- Start Members -->
+					<li class="<?php echo e(Request::is('admin/users*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/users">
+						<i class="fa fa-users" aria-hidden="true"></i>
+						<span class="title">الإعضاء</span>
+						</a>
+					</li>
+					<!-- End Members -->
 
 					<?php if(in_array('admins',$explode)): ?>
 						<!-- Admin -->
 						<li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
 							<a href="<?php echo Url('/'); ?>/admin/admins">
-							<i class="icon-users"></i>
+							<i class="fa fa-lock" aria-hidden="true"></i>
 							<span class="title">المديرين</span>
 							</a>
 						</li>
@@ -271,54 +279,92 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- Countries and Cities -->	
 					<li class="<?php echo e(Request::is('admin/countries*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/countries">
-						<i class="icon-users"></i>
+						<i class="fa fa-globe" aria-hidden="true"></i>
 						<span class="title">الدول والمحافظات</span>
 						</a>
 					</li>
 					
 					<li class="<?php echo e(Request::is('admin/cars_brand*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/cars_brand">
-						<i class="icon-users"></i>
+						<i class="fa fa-car" aria-hidden="true"></i>
 						<span class="title">السيارات</span>
 						</a>
 					</li> 
 					
+					<!--  bookings	 -->
+					<li class="">
+						<a href="javascript:;">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
+						<span class="title">الحجوزات</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="<?php echo Url('/'); ?>/admin/bookings/cars">
+									حجوزات السيارات
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo Url('/'); ?>/admin/bookings/hotels">
+									حجوزات الفنادق
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo Url('/'); ?>/admin/bookings/travels">
+									حجوزات الرحلات
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo Url('/'); ?>/admin/bookings/special-offers">
+									حجوزات العروض الخاصة
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo Url('/'); ?>/admin/bookings/tickets">
+									حجوزات تذاكر الطيران
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!--  bookings	 -->
+
 					<li class="<?php echo e(Request::is('admin/carsOffers*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/carsOffers">
-						<i class="icon-users"></i>
+						<i class="fa fa-car" aria-hidden="true"></i>
 						<span class="title">عروض السيارات</span>
 						</a>
 					</li>
 
 					<li class="<?php echo e(Request::is('admin/hotels*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/hotels">
-						<i class="icon-users"></i>
+						<i class="fa fa-h-square" aria-hidden="true"></i>
 						<span class="title">الفنادق</span>
 						</a>
 					</li>
 
 					<li class="<?php echo e(Request::is('admin/travels*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/travels">
-						<i class="icon-users"></i>
+						<i class="fa fa-suitcase" aria-hidden="true"></i>
 						<span class="title">الرحلات</span>
 						</a>
 					</li>
 					
+					<li class="<?php echo e(Request::is('admin/air_ports*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/air_ports">
+						<i class="fa fa-plane" aria-hidden="true"></i>
+						<span class="title">المطارات</span>
+						</a>
+					</li>
+					
 					<!-- Special Offers -->
-					<li class="<?php echo e(Request::is('admin/travels*') ? 'active' : ''); ?>">
+					<li class="<?php echo e(Request::is('admin/special-offers*') ? 'active' : ''); ?>">
 						<a href="<?php echo Url('/'); ?>/admin/special-offers">
-						<i class="icon-users"></i>
+						<i class="fa fa-table" aria-hidden="true"></i>
 						<span class="title">العروض الخاصة</span>
 						</a>
 					</li>
-						
 				
-					<!-- <li class="<?php echo e(Request::is('admin/users*') ? 'active' : ''); ?>">
-						<a href="<?php echo Url('/'); ?>/admin/users">
-						<i class="icon-user"></i>
-						<span class="title">الإعضاء</span>
-						</a>
-					</li> -->
+					
 
 				
 					<!-- <li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
@@ -329,25 +375,6 @@ License: You must have a valid license purchased only from themeforest(the above
 					</li> -->
 						
 
-					<!-- <li class="last">
-						<a href="javascript:;">
-						<i class="icon-pointer"></i>
-						<span class="title">الدول والمحافظات</span>
-						<span class="arrow "></span>
-						</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="<?php echo Url('/'); ?>/admin/countries">
-									الدول
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo Url('/'); ?>/admin/cities">
-									المحافظات
-								</a>
-							</li>
-						</ul>
-					</li>  -->
 																															
 									
 					<!--<li class="<?php echo e(Request::is('admin/offers*') ? 'active' : ''); ?>">
@@ -493,7 +520,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12" style="min-height:786px">
 	      				<?php echo $__env->yieldContent('content'); ?>
 					</div>
 				</div>

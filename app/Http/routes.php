@@ -16,15 +16,6 @@ Route::get('notification' , function(){
 			//}
 		});
 
-/**  Start Front End Routes **/
-
-Route::get('/',function()
-{
-	return View('front.layout');
-});
-
-/**  End Front End Routes **/
-	
 
 /******************* START API ROUTES ***********************/	
 
@@ -183,6 +174,9 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 */
 
 	Route::get('/','FrontCtrl@index');
+	Route::get('lang/{lang}','LanguageCtrl@switcher');
+	Route::get('travels','FrontCtrl@travels');
+
 
 /*
 **********************************************************

@@ -199,7 +199,7 @@ return [
       	'Html' 		=> 'Collective\Html\HtmlFacade',
 		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'PushNotification' => 'Davibennun\LaravelPushNotification\Facades\PushNotification',
-		'Datatables'=> 'Yajra\Datatables\DatatablesServiceProvider',
+		'Datatables'=> 'Yajra\Datatables\Facades\Datatables',
 
 	],
 

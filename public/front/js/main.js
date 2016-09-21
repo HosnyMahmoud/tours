@@ -17,8 +17,8 @@ slider.setup('of-home' , {
         loop:true,
         // more slider options goes here...
     });
-slider.control('arrows'); // here we've added arrow control to the slider.
-slider.control('bullets' , {autohide:false  , dir:"h", align:"top"});
+//slider.control('arrows'); // here we've added arrow control to the slider.
+//slider.control('bullets' , {autohide:false  , dir:"h", align:"top"});
 //slider.control('circletimer' , {color:"#479a1b" , stroke:20});
 
 var owl = $("#owl-demo");

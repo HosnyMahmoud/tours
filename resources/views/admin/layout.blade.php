@@ -500,6 +500,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="row">
 					<div class="col-md-12" style="min-height:786px">
 	      				@yield('content')
+	      				
 					</div>
 				</div>
 				<!-- END PAGE CONTENT-->
