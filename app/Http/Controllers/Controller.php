@@ -13,12 +13,11 @@ abstract class Controller extends BaseController {
 
 	public function __construct()
 	{	
-		dd("OO") ;
 		if((Session::get('local')) == '')
 		{
 			Session::set('local','ar');
 			$lang = App::setlocale(Session::get('local'));
-			return $lang
+			return $lang ;
 			//Carbon::setLocale(Session::get('local'));
 		}else{
 			return $lang = App::setlocale(Session::get('local'));	

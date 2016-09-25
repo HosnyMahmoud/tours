@@ -342,15 +342,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 				
-					
-
-				
-					<!-- <li class="{{Request::is('admin/admins*') ? 'active' : ''}}">
-						<a href="{!!Url('/')!!}/admin/cars">
+					<li class="{{Request::is('admin/contactUs*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/contactUs">
 						<i class="icon-users"></i>
-						<span class="title">السيارات</span>
+						<span class="title">اتصل بنا</span>
 						</a>
-					</li> -->
+					</li>
 						
 
 																															

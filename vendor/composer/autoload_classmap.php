@@ -16,6 +16,7 @@ return array(
     'CreateCarsOffersTable' => $baseDir . '/database/migrations/2016_08_03_091737_create_cars_offers_table.php',
     'CreateCarsReservationsTable' => $baseDir . '/database/migrations/2016_08_06_093905_create_cars__reservations_table.php',
     'CreateCitiesTable' => $baseDir . '/database/migrations/2016_07_30_015927_create_cities_table.php',
+    'CreateContactUsesTable' => $baseDir . '/database/migrations/2016_09_25_082017_create_contact_uses_table.php',
     'CreateCountriesTable' => $baseDir . '/database/migrations/2016_07_30_015909_create_countries_table.php',
     'CreateHotelsReservationsTable' => $baseDir . '/database/migrations/2016_07_25_142831_create_hotels__reservations_table.php',
     'CreateHotelsTable' => $baseDir . '/database/migrations/2016_07_19_130348_create_hotels_table.php',
