@@ -415,6 +415,7 @@ class ComposerStaticInit265e8eccb5c018a1b09c7ab71f66aff6
         'CreateCarsOffersTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_03_091737_create_cars_offers_table.php',
         'CreateCarsReservationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_06_093905_create_cars__reservations_table.php',
         'CreateCitiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_30_015927_create_cities_table.php',
+        'CreateContactUsesTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_25_082017_create_contact_uses_table.php',
         'CreateCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_30_015909_create_countries_table.php',
         'CreateHotelsReservationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_25_142831_create_hotels__reservations_table.php',
         'CreateHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_19_130348_create_hotels_table.php',

@@ -156,6 +156,9 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('bookings/tickets','BookingsCtrl@getTickets');
 	// bookings 
 
+	// contactUs
+	Route::resource('contactUs', 'ContactUsCtrl');		
+	// contactUs
 });
 
 /*

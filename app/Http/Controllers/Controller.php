@@ -10,15 +10,17 @@ use Auth ;
 abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
+
 	public function __construct()
-	{
+	{	
 		if((Session::get('local')) == '')
 		{
 			Session::set('local','ar');
-			App::setlocale(Session::get('local'));
+			$lang = App::setlocale(Session::get('local'));
+			return $lang ;
 			//Carbon::setLocale(Session::get('local'));
 		}else{
-			App::setlocale(Session::get('local'));	
+			return $lang = App::setlocale(Session::get('local'));	
 			//Carbon::setLocale(Session::get('local'));
 			//Carbon::setLocale(Session::get('local'));
 		}
