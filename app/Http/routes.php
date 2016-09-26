@@ -176,6 +176,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('/','FrontCtrl@index');
 	Route::get('lang/{lang}','LanguageCtrl@switcher');
 	Route::get('travels','FrontCtrl@travels');
+	Route::get('travels/{id}-{slug}','FrontCtrl@travel');
 
 
 /*

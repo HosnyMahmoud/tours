@@ -11,6 +11,7 @@ return [
 	
 	'login'				=> 'Login',
 	'register'			=> 'Open New Account',
+	'search'			=> 'Enter Search Keyword',
 	/**************** NavBar ***************/
 
 	/**************** Buttons  ***************/

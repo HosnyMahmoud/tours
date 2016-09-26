@@ -6,7 +6,7 @@
                 <div class="page-ttl">
                     <h1>عروض الشركة</h1>
                     <ol class="breadcrumb">
-                        <li><a href="{{Url('/')}}/">الرئيسية</a></li>
+                        <li><a href="{{Url('/')}}/">{{Lang::get('assets.index')}}</a></li>
                         <li class="active">{{Lang::get('travels.breadcamp')}}</li>
                     </ol>
                     <div class="clearfix"></div>

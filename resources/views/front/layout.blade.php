@@ -48,26 +48,24 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <ul class="contact-info">
-                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i><span>voyageapp.travel@gmail.com</span></li>
-                                <li><i class="fa fa-phone-square" aria-hidden="true"></i><span>0100 008 5567 - 0109 270 2914</span></li>
+                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> <span> voyageapp.travel@gmail.com</span></li>
+                                <li><i class="fa fa-phone-square" aria-hidden="true"></i> <span> 0100 008 5567 - 0109 270 2914</span></li>
                                 <li class="social">
                                     <a target="_blank" href="{{$settings['facebook']}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['twitter']}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['google_Plus']}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['linkedIn']}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </li>
-                                    <li class="social">
+                                <li class="social">
                                         
                                     <a href="{{Url('/')}}/lang/ar"><img src="{{Url('/')}}/back/assets/global/img/flags/eg.png" alt=""></a>
-
                                     <a href="{{Url('/')}}/lang/en"><img src="{{Url('/')}}/back/assets/global/img/flags/us.png" alt=""></a>
-                                
-                                    </li>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-sm-4 text-left">
                             <a href="#" class="btn-login">{{Lang::get('assets.login')}}</a>
-                            <a href="#" class="btn-register">{{Lang::get('assets.register')}}</a>
+                             <a href="#" class="btn-register">{{Lang::get('assets.register')}}</a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +106,7 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <form>
-                            <input type="search" placeholder="ادخل كلمة البحث" />
+                            <input type="search" placeholder="{{Lang::get('assets.search')}}" />
                             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>

@@ -27,7 +27,7 @@ return [
 	
 	/**************** services *****************/
 	"flights_tickets"	=>	"Flights Tickets",
-	"tourism"			=>	"Internal and External Tourism",
+	"tourism"			=>	"Honey Moon Offers",
 	"haj"				=>	"Haj & Omra",
 	"hotels_book"		=>	"Hotels Booking",
 	/**************** services *****************/

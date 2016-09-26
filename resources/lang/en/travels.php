@@ -1,7 +1,8 @@
 <?php
 
 return [
-	"breadcamp"			=> "Company Offers",
+	"breadcamp"		=> "Company Offers",
+	"all_travels"	=> "All Travels and Offers",
 	
 
 ];
