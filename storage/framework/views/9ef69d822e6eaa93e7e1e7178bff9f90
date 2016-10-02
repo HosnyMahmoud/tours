@@ -190,12 +190,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<li class="dropdown dropdown-user">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						sas </span>
+						<?php echo e(Auth::admin()->get()->name); ?> </span>
 						<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
-								<a href="<?php echo Url('/'); ?>/logout">
+								<a href="<?php echo Url('/'); ?>/admin/logout">
 								<i class="icon-key"></i> Log Out </a>
 							</li>
 						</ul>
@@ -364,15 +364,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 				
-					
-
-				
-					<!-- <li class="<?php echo e(Request::is('admin/admins*') ? 'active' : ''); ?>">
-						<a href="<?php echo Url('/'); ?>/admin/cars">
+					<li class="<?php echo e(Request::is('admin/contactUs*') ? 'active' : ''); ?>">
+						<a href="<?php echo Url('/'); ?>/admin/contactUs">
 						<i class="icon-users"></i>
-						<span class="title">السيارات</span>
+						<span class="title">اتصل بنا</span>
 						</a>
-					</li> -->
+					</li>
 						
 
 																															
@@ -522,6 +519,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="row">
 					<div class="col-md-12" style="min-height:786px">
 	      				<?php echo $__env->yieldContent('content'); ?>
+	      				
 					</div>
 				</div>
 				<!-- END PAGE CONTENT-->

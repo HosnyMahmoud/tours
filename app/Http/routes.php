@@ -178,9 +178,20 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 
 	Route::get('/','FrontCtrl@index');
 	Route::get('lang/{lang}','LanguageCtrl@switcher');
+
 	Route::get('travels','FrontCtrl@travels');
 	Route::get('travels/{id}-{slug}','FrontCtrl@travel');
 
+	Route::get('hotels','FrontCtrl@hotels');
+	Route::get('hotels/{id}-{slug}','FrontCtrl@hotel');
+
+	Route::get('services','FrontCtrl@services');
+
+	Route::get('services','FrontCtrl@services');
+
+	Route::get('contact','FrontCtrl@contact');
+	
+	Route::post('contact','FrontCtrl@sendContact');
 
 /*
 **********************************************************

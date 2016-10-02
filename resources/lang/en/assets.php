@@ -32,5 +32,10 @@ return [
 	"wrong_login"		=>	"Wrong Email Or Password",
 	'news'				=> 	"Company News",
 
+
+	/**************** 404 ***************/
+	'message'			=> 	"Sorry !! The page you requested is not found .. please check the Url and try again",
+	'backHome'			=> 	"Take Me Home",
+	/**************** 404 ***************/
 ];
 

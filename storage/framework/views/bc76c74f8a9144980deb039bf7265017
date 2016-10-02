@@ -6,7 +6,7 @@
                     <h1><?php echo e($travel['name_'.Session::get('local')]); ?></h1>
                     <ol class="breadcrumb">
                         <li><a href="<?php echo e(Url('/')); ?>/"><?php echo e(Lang::get('assets.index')); ?></a></li>
-                        <li><a href="<?php echo e(Url('/')); ?>/travels"><?php echo e(Lang::get('travels.all_travels')); ?></a></li>
+                        <li><a href="<?php echo e(Url('/')); ?>/travels"><?php echo e(Lang::get('travels.breadcamp')); ?></a></li>
                         <li class="active"><?php echo e($travel['name_'.Session::get('local')]); ?></li>
                     </ol>
                     <div class="clearfix"></div>
@@ -34,24 +34,23 @@
                     
                     <div class="col-sm-4">
                         <div class="hotel-booking">
-                            <h4>سعر الرحله</h4>
+                            <h4><?php echo e(Lang::get('travels.travel_price')); ?></h4>
                             <div class="hotel-price">
-                                <span>750LE</span>
+                                <span><?php echo e($travel->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
                             </div>
-                            <a href="#" class="btn btn-block btn-lg btn-success">احجز الآن</a>
+                            <a href="#" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('travels.reserve_now')); ?></a>
                         </div>
                         
                         <div class="hotel-info">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> عن الفندق</a></li>
+                                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo e(Lang::get('travels.about')); ?></a></li>
                             </ul>
                             
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="overview">
-                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.</p>
-                                    <p>هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص.</p>
+                                    <p><?php echo e($travel['desc_'.Session::get('local')]); ?> </p>
                                 </div>
                                 
                             </div>

@@ -21,6 +21,9 @@ class CreateSettingsTable extends Migration {
 			$table->text('site_desc_en');
 			$table->text('site_tags_ar');
 			$table->text('site_tags_en');
+			$table->string('phone');
+			$table->string('email');
+			$table->string('address');
 			$table->string('facebook');
 			$table->string('twitter');
 			$table->string('google_Plus');

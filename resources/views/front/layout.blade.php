@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>@yield('title') | {{$settings['site_name_'.Session::get('local')]}} </title>
+        <title>@yield('title') | {{ $settings['site_name_'.Session::get('local')] }} </title>
         
 
         <!-- CSS -->
@@ -48,8 +48,9 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <ul class="contact-info">
-                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> <span> voyageapp.travel@gmail.com</span></li>
-                                <li><i class="fa fa-phone-square" aria-hidden="true"></i> <span> 0100 008 5567 - 0109 270 2914</span></li>
+                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> <span> {{$settings->email}}</span></li>
+                                <?php $numbers = explode('-',$settings->phone); ?>
+                                <li><i class="fa fa-phone-square" aria-hidden="true"></i> <span> {{$numbers[0]}} - {{$numbers[1]}}</span></li>
                                 <li class="social">
                                     <a target="_blank" href="{{$settings['facebook']}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['twitter']}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -88,11 +89,11 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="{{(Request::is('/'))?'active':''}}"><a href="{{Url('/')}}">{{Lang::get('assets.index')}}</a></li>
-                            <li class="{{(Request::is('about*'))?'active':''}}"><a href="#">{{Lang::get('assets.about')}}</a></li>
-                            <li class="{{(Request::is('services*'))?'active':''}}"><a href="#services">{{Lang::get('assets.services')}}</a></li>
+                            <li class="{{(Request::is('about*'))?'active':''}}"><a href="{{Url('/')}}/about">{{Lang::get('assets.about')}}</a></li>
+                            <li class="{{(Request::is('services*'))?'active':''}}"><a href="{{Url('/')}}/services">{{Lang::get('assets.services')}}</a></li>
                             <li class="{{(Request::is('travels*'))?'active':''}}"><a href="{{Url('/')}}/travels">{{Lang::get('assets.offers')}}</a></li>
-                            <li class="{{(Request::is('hotels*'))?'active':''}}"><a href="#">{{Lang::get('assets.hotels')}}</a></li>
-                            <li class="{{(Request::is('contact*'))?'active':''}}"><a href="#">{{Lang::get('assets.contact')}}</a></li>
+                            <li class="{{(Request::is('hotels*'))?'active':''}}"><a href="{{Url('/')}}/hotels">{{Lang::get('assets.hotels')}}</a></li>
+                            <li class="{{(Request::is('contact*'))?'active':''}}"><a href="{{Url('/')}}/contact">{{Lang::get('assets.contact')}}</a></li>
                             <li><a href="#search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->

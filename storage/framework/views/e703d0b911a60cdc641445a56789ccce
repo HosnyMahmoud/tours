@@ -3,7 +3,7 @@
 		<section class="content">
             <div class="container">
                 <div class="page-ttl">
-                    <h1>عروض الشركة</h1>
+                    <h1><?php echo e(Lang::get('travels.breadcamp')); ?></h1>
                     <ol class="breadcrumb">
                         <li><a href="<?php echo e(Url('/')); ?>/"><?php echo e(Lang::get('assets.index')); ?></a></li>
                         <li class="active"><?php echo e(Lang::get('travels.breadcamp')); ?></li>

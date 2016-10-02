@@ -4,7 +4,7 @@
 		<section class="content">
             <div class="container">
                 <div class="page-ttl">
-                    <h1>عروض الشركة</h1>
+                    <h1>{{Lang::get('travels.breadcamp')}}</h1>
                     <ol class="breadcrumb">
                         <li><a href="{{Url('/')}}/">{{Lang::get('assets.index')}}</a></li>
                         <li class="active">{{Lang::get('travels.breadcamp')}}</li>

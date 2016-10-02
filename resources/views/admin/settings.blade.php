@@ -45,6 +45,29 @@
 				{!! Form::select('site_status', ['0'=>'مغلق','1'=>'مفتوح'], null, ['id' => 'site_status', 'class' => 'form-control', 'required' => 'required']) !!}
 				<small class="text-danger">{{ $errors->first('site_status') }}</small>
 			</div>
+			<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+				{!! Form::label('phone', 'أرقام التليفونات') !!}
+				{!! Form::text('phone', null, ['class' => 'form-control', 'required' => 'required']) !!}
+				<small class="text-primary">افصل بينهم ب ( - ) </small>
+			</div>
+
+			<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+				{!! Form::label('email', 'البريد الإلكترونى') !!}
+				{!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required']) !!}
+				<small class="text-danger">{{ $errors->first('email') }}</small>
+			</div>
+
+			<div class="form-group{{ $errors->has('address_ar') ? ' has-error' : '' }}">
+				{!! Form::label('address_ar', 'العنوان بالعربيه') !!}
+				{!! Form::textarea('address_ar', null, ['class' => 'form-control','rows'=>3, 'required' => 'required']) !!}
+				<small class="text-danger">{{ $errors->first('address_ar') }}</small>
+			</div>
+			<div class="form-group{{ $errors->has('address_en') ? ' has-error' : '' }}">
+				{!! Form::label('address_en', 'العنوان بالإنجليزيه') !!}
+				{!! Form::textarea('address_en', null, ['class' => 'form-control','rows'=>3, 'required' => 'required']) !!}
+				<small class="text-danger">{{ $errors->first('address_en') }}</small>
+			</div>
+
 			<div class="form-group{{ $errors->has('facebook') ? ' has-error' : 'facebook' }}">
 				{!! Form::label('facebook', 'فيس بوك') !!}
 				{!! Form::text('facebook', null, ['class' => 'form-control', 'required' => 'required']) !!}
