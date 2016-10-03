@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Travels ;
 use App\Hotel ;
 use App\Countries;
+use App\Settings;
 use App\Cities;
 use Validator;
 use Session;
@@ -111,7 +112,9 @@ class FrontCtrl extends Controller {
 
 	public function contact()
 	{
-		return View('front.contact.index');
+		$settings = Settings::first();
+		$phone = explode('-', $settings->phone);
+		return View('front.contact.index',compact('settings','phone'));
 	}
 
 	public function sendContact(Request $request)

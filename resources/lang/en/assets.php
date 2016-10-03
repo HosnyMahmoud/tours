@@ -37,5 +37,14 @@ return [
 	'message'			=> 	"Sorry !! The page you requested is not found .. please check the Url and try again",
 	'backHome'			=> 	"Take Me Home",
 	/**************** 404 ***************/
+	'success_title'			=> 	"Your Account Has Created Successfuly",
+	'regSuccessMsg'			=> 	"a verfication message sent to your mail :",
+	'clickHereToHome'		=> 	"click <a href=".Url('/')."> HERE </a> to go Home !!",
+
+	/**************** wrong login ***************/
+	'mustVerify'			=> 	"Your Account Must Be Verified",
+	'mustVerifyMsg'			=> 	"you need to Verify your account before login",
+	/**************** wrong login ***************/
+
 ];
 

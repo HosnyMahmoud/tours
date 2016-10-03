@@ -1,0 +1,32 @@
+<?php
+	if((Session::get('local')) == '')
+		{
+			Session::set('local','ar');
+			App::setlocale(Session::get('local'));
+			
+			//Carbon::setLocale(Session::get('local'));
+		}else{
+			App::setlocale(Session::get('local'));	
+			//Carbon::setLocale(Session::get('local'));
+			//Carbon::setLocale(Session::get('local'));
+		}
+?>
+
+	<?php $__env->startSection('title',404); ?>
+	<?php $__env->startSection('content'); ?>
+		<section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="page-not-found">
+                            <h1>404</h1>
+                            <p><?php echo e(Lang::get('assets.message')); ?></p>
+                            <a href="#" class="btn btn-info"><?php echo e(Lang::get('assets.backHome')); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -65,9 +65,28 @@
                             </ul>
                         </div>
                         <div class="col-sm-4 text-left">
-                            <a href="#" class="btn-login">{{Lang::get('assets.login')}}</a>
-                             <a href="#" class="btn-register">{{Lang::get('assets.register')}}</a>
+                            @if(Auth::client()->check() == false)
+                            <a href="{{Url('/')}}/login" class="btn-login">{{Lang::get('assets.login')}}</a>
+                             <a href="{{Url('/')}}/register" class="btn-register">{{Lang::get('assets.register')}}</a>
+                            @else
+                             <div class="dropdown user-nav">
+                                <a data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    @if(Auth::client()->get()->image == '')
+                                    <img src="https://dummyimage.com/100x100/9bd4ef/000&text=No+Image">
+                                    @else
+                                    <img src="{{Url('/')}}/uploads/users/{{Auth::client()->get()->image}}">
+                                    @endif
+                                    <span class="user-name">{{Auth::client()->get()->name}}</span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{Url('/')}}/dashboard"><i class="fa fa-gear fa-fw"></i> لوحة التحكم</a></li>
+                                    <li><a href="{{Url('/')}}/logout"><i class="fa fa-sign-out fa-fw"></i> خروج؟</a></li>
+                                </ul>
+                            </div>
+                            @endif
                         </div>
+
                     </div>
                 </div>
             </div>

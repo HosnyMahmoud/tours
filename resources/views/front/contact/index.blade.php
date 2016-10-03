@@ -41,17 +41,17 @@
                         <div class="col-sm-4">
                             <div class="contact-method">
                                 <div class="icon"><i class="glyphicon glyphicon-headphones" aria-hidden="true"></i></div>
-                                <h2>0100 008 5567</h2>
+                                <h2>{{$phone[0]}}</h2>
                             </div>
                             
                             <div class="contact-method">
                                 <div class="icon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></div>
-                                <h2>info@sawatravel.com</h2>
+                                <h2>{{$settings->email}}</h2>
                             </div>
                             
                             <div class="contact-method">
                                 <div class="icon"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i></div>
-                                <h2>18 Mustafa El Nahas Street,<br>Madinet El-Nasr<br> Cairo 11371</h2>
+                                <h2>{{$settings['address_'.Session::get('local')]}}</h2>
                             </div>
                         </div>
                     </div>

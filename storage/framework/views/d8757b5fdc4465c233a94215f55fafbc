@@ -74,9 +74,28 @@
                             </ul>
                         </div>
                         <div class="col-sm-4 text-left">
-                            <a href="#" class="btn-login"><?php echo e(Lang::get('assets.login')); ?></a>
-                             <a href="#" class="btn-register"><?php echo e(Lang::get('assets.register')); ?></a>
+                            <?php if(Auth::client()->check() == false): ?>
+                            <a href="<?php echo e(Url('/')); ?>/login" class="btn-login"><?php echo e(Lang::get('assets.login')); ?></a>
+                             <a href="<?php echo e(Url('/')); ?>/register" class="btn-register"><?php echo e(Lang::get('assets.register')); ?></a>
+                            <?php else: ?>
+                             <div class="dropdown user-nav">
+                                <a data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <?php if(Auth::client()->get()->image == ''): ?>
+                                    <img src="https://dummyimage.com/100x100/9bd4ef/000&text=No+Image">
+                                    <?php else: ?>
+                                    <img src="<?php echo e(Url('/')); ?>/uploads/users/<?php echo e(Auth::client()->get()->image); ?>">
+                                    <?php endif; ?>
+                                    <span class="user-name"><?php echo e(Auth::client()->get()->name); ?></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo e(Url('/')); ?>/dashboard"><i class="fa fa-gear fa-fw"></i> لوحة التحكم</a></li>
+                                    <li><a href="<?php echo e(Url('/')); ?>/logout"><i class="fa fa-sign-out fa-fw"></i> خروج؟</a></li>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
                         </div>
+
                     </div>
                 </div>
             </div>

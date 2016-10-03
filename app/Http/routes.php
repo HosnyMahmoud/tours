@@ -157,7 +157,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	// bookings 
 
 	// contactUs
-	Route::resource('contactUs', 'ContactUsCtrl');		
+	Route::resource('about', 'ContactUsCtrl');		
 	// contactUs
 });
 
@@ -196,5 +196,32 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 /*
 **********************************************************
   ******** End Application Route [ Front End ] ********
+**********************************************************
+*/
+
+/*
+**********************************************************
+  ******** Start Application Route [ Dashboard ] ********
+**********************************************************
+*/
+
+Route::get('login','LoginCtrl@showClientLogin');
+Route::post('login','LoginCtrl@postClientLogin');
+
+Route::get('register','LoginCtrl@showClientReg');
+Route::post('register','LoginCtrl@postClientReg');
+Route::get('success','LoginCtrl@RegSuccess');
+Route::get('unverified_account','LoginCtrl@mustVerify');
+Route::get('verify/{code}','LoginCtrl@verify');
+
+Route::get('logout','LoginCtrl@ClientLogout');
+
+Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
+
+
+});
+/*
+**********************************************************
+  ********  End Application Route [ Dashboard ]  ********
 **********************************************************
 */

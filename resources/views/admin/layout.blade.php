@@ -342,10 +342,10 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 				
-					<li class="{{Request::is('admin/contactUs*') ? 'active' : ''}}">
-						<a href="{!!Url('/')!!}/admin/contactUs">
-						<i class="icon-users"></i>
-						<span class="title">اتصل بنا</span>
+					<li class="{{Request::is('admin/about*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/about">
+						<i class="fa fa-info"></i>
+						<span class="title">عن الشركه</span>
 						</a>
 					</li>
 						

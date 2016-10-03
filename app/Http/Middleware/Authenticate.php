@@ -17,13 +17,7 @@ class Authenticate {
 	{
 		$this->auth = Auth::client();
 	}
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @return mixed
-	 */
+	
 	public function handle($request, Closure $next)
 	{
 		if ($this->auth->guest())

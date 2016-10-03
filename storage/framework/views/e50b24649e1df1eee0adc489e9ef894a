@@ -1,0 +1,24 @@
+  <?php $__env->startSection('title',Lang::get('loginReg.titleReg')); ?>
+  <?php $__env->startSection('content'); ?>
+    <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="alert alert-danger text-center">
+                            <h2>
+                            <i class="fa fa-times-circle"></i>
+                              <?php echo e(Lang::get('assets.mustVerify')); ?>
+
+                            </h2>
+                            <p>
+                              <?php echo e(Lang::get('assets.mustVerifyMsg')); ?><br>
+                              
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
