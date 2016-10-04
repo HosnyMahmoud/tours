@@ -15,6 +15,7 @@
 				<th>النوع</th>
 				<th>تاريخ السفر </th>
 				<th>تاريخ العودة</th>
+				<th>خيارات</th>
 			</tr>
 			@if($allTicketsReserv->count() > 0)
 			@foreach ($allTicketsReserv as $ticketsReserv)
@@ -40,6 +41,13 @@
 				<td> @if($ticketsReserv->type == 0) {{ 'ذهاب فقط' }}@else{{ 'ذهاب وعودة' }} @endif</td>
 				<td>{{ $ticketsReserv->date_from }}</td>
 				<td class="text-center">@if($ticketsReserv->type == 0) {{ '_' }}@else{{ $ticketsReserv->date_to }} @endif</td>
+				<td>
+					@if($ticketsReserv->status !== 2)
+					<a href="{{Url('/')}}/admin/bookings/Airline_tickets_reserv/{{$ticketsReserv->id}}" class="btn btn-{{($ticketsReserv->status == 0)?'success':'danger'}}">
+						{{($ticketsReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'}}
+					</a>
+					@endif
+				</td>
 				
 			</tr>
 			@endforeach

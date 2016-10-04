@@ -19,6 +19,7 @@ class CreateHotelsReservationsTable extends Migration {
 			$table->integer('user_id');
 			$table->timestamp('from');
 			$table->timestamp('to');
+			$table->integer('status');
 			$table->timestamps();
 		});
 	}

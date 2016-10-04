@@ -65,12 +65,13 @@
                                     <a target="_blank" href="<?php echo e($settings['twitter']); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                     <a target="_blank" href="<?php echo e($settings['google_Plus']); ?>"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                     <a target="_blank" href="<?php echo e($settings['linkedIn']); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                     <?php if(Session::get('local') == 'en'): ?>   
+                                        <a href="<?php echo e(Url('/')); ?>/lang/ar"><img src="<?php echo e(Url('/')); ?>/back/assets/global/img/flags/eg.png" alt=""></a>
+                                     <?php else: ?>
+                                        <a href="<?php echo e(Url('/')); ?>/lang/en"><img src="<?php echo e(Url('/')); ?>/back/assets/global/img/flags/us.png" alt=""></a>
+                                     <?php endif; ?>
                                 </li>
-                                <li class="social">
-                                        
-                                    <a href="<?php echo e(Url('/')); ?>/lang/ar"><img src="<?php echo e(Url('/')); ?>/back/assets/global/img/flags/eg.png" alt=""></a>
-                                    <a href="<?php echo e(Url('/')); ?>/lang/en"><img src="<?php echo e(Url('/')); ?>/back/assets/global/img/flags/us.png" alt=""></a>
-                                </li>
+                                
                             </ul>
                         </div>
                         <div class="col-sm-4 text-left">
@@ -85,7 +86,7 @@
                                     <?php else: ?>
                                     <img src="<?php echo e(Url('/')); ?>/uploads/users/<?php echo e(Auth::client()->get()->image); ?>">
                                     <?php endif; ?>
-                                    <span class="user-name"><?php echo e(Auth::client()->get()->name); ?></span>
+                                    <span class="user-name"> <?php echo e(Auth::client()->get()->name); ?></span>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">

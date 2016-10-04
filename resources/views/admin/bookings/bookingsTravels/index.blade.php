@@ -10,6 +10,7 @@
 				<th>#ID</th>
 				<th>اسم المستخدم</th>
 				<th>اسم الرحلة</th>
+				<th>خيارات</th>
 			</tr>
 			@if(count($AllTravelsReserv) > 0)
 				@foreach ($AllTravelsReserv as $travelReserv)
@@ -25,7 +26,13 @@
 							{{ $travels->find($travelReserv->travel_id)['name_ar'] }}
 							</a>
 						</td>
-						
+						<td>
+							@if($travelReserv->status !== 2)
+							<a href="{{Url('/')}}/admin/bookings/ReservTravel/{{$travelReserv->id}}" class="btn btn-{{($travelReserv->status == 0)?'success':'danger'}}">
+								{{($travelReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'}}
+							</a>
+							@endif
+						</td>
 					</tr>
 				@endforeach
 				@else

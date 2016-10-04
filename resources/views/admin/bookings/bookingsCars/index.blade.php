@@ -15,6 +15,7 @@
 				<th>الي</th>
 				<th>العرض</th>
 				<th>السعر</th>
+				<th>خيارات</th>
 			</tr>
 			
 			@if(count($allCarsReserv) > 0)
@@ -27,6 +28,13 @@
 						<td>{{ $carsReserv->date_to }}</td>
 						<td>{{ $carsOffers->find($carsReserv->offer_id)['offer_name_ar'] }}</td>
 						<td>{{ $carsOffers->find($carsReserv->offer_id)['price'] }}</td>
+						<td>
+							@if($carsReserv->status !== 2)
+							<a href="{{Url('/')}}/admin/bookings/Cars_Reservation/{{$carsReserv->id}}" class="btn btn-{{($carsReserv->status == 0)?'success':'danger'}}">
+								{{($carsReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'}}
+							</a>
+							@endif
+						</td>
 					</tr>
 				@endforeach
 			@else

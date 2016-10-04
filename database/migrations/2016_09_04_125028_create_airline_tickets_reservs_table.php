@@ -23,6 +23,7 @@ class CreateAirlineTicketsReservsTable extends Migration {
 			$table->integer('type') ;
 			$table->timestamp('date_from') ;
 			$table->timestamp('date_to') ;
+			$table->integer('status');
 			$table->timestamps();
 		});
 	}

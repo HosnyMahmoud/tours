@@ -6,7 +6,7 @@ class ReservTravel extends Model {
 
 	
 	protected $table    = 'reservtravel' ;
-	protected $fillable = ['travel_id', 'user_id'] ;
+	protected $fillable = ['travel_id', 'user_id','status'] ;
 	
 
 }

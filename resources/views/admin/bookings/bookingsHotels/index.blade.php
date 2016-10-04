@@ -13,6 +13,7 @@
 				<th>عدد الأشخاص</th>
 				<th>من</th>
 				<th>الي</th>
+				<th>خيارات</th>
 			</tr>
 			@if(count($AllHotelsReserv) > 0)
 				@foreach ($AllHotelsReserv as $hotelReserv)
@@ -31,6 +32,14 @@
 						<td>{{ $hotelReserv->persons }}</td>
 						<td>{{ $hotelReserv->date_from }}</td>
 						<td>{{ $hotelReserv->date_to }}</td>
+
+						<td>
+							@if($hotelReserv->status !== 2)
+							<a href="{{Url('/')}}/admin/bookings/HotelsReservations/{{$hotelReserv->id}}" class="btn btn-{{($hotelReserv->status == 0)?'success':'danger'}}">
+								{{($hotelReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'}}
+							</a>
+							@endif
+						</td>
 					</tr>
 				@endforeach
 				@else

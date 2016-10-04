@@ -117,6 +117,8 @@ class FrontCtrl extends Controller {
 		return View('front.contact.index',compact('settings','phone'));
 	}
 
+
+
 	public function sendContact(Request $request)
 	{
 		$rules = [
@@ -127,7 +129,7 @@ class FrontCtrl extends Controller {
 		];
 		$validator = Validator::make($request->all(),$rules);
 		if($validator->fails()){
-			return redirect()->back()->withErrors($validator)->withInputs();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 
 		$data = [
@@ -136,9 +138,10 @@ class FrontCtrl extends Controller {
 			'subject' => $request->subject,
 			'msg' => $request->msg,
 		];
-		Mail::send('emails.feedback', $data, function($message) {
-		    $message->from('info@voyage-app.com', 'Voyage App Admin');
-		    $message->to('info@voyage-app.com', 'Voyage App Admin')->subject('New Contact Us Request');
-		});
-	}
+
+		 Mail::send('emails.feedback', $data, function($message) use($request) {
+               $message->to('eng.ahmedmgad@gmail.com', 'Senior Ahmed gad 2r2osha')->from($request->email,$request->name)->subject($request->about);
+          });
+
+			}
 }

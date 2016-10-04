@@ -29,16 +29,12 @@ class BookingsCtrl extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getCars(/*UsersDataTable $dataTable*/)
+	public function getCars()
 	{	
 		$users         = 	User::all();
 		$citis         = 	Cities::all();
 		$carsModels    = 	CarsModels::all();
 		$carsOffers    = 	CarsOffers::all();
-		
-		// $allCarsReserv = $dataTable->html();
-		// $dataTable->render('admin.bookings.bookingsCars.index');
-		
 		$allCarsReserv = Cars_Reservation::paginate(10) ;
 
 		return view('admin.bookings.bookingsCars.index' , compact('allCarsReserv','users','citis','carsModels','carsOffers'));
@@ -53,6 +49,8 @@ class BookingsCtrl extends Controller {
 		return view('admin.bookings.bookingsHotels.index' , compact('AllHotelsReserv','users','hotels'));
 	}
 
+	
+
 
 	public function getTeavels()
 	{	
@@ -63,6 +61,7 @@ class BookingsCtrl extends Controller {
 		return view('admin.bookings.bookingsTravels.index' , compact('AllTravelsReserv','users','travels'));
 	}
 
+
 	public function getSpecialOffers()
 	{	
 		$users         	         = User::all();
@@ -72,6 +71,8 @@ class BookingsCtrl extends Controller {
 		return view('admin.bookings.bookingsSpecialOffers.index' , compact('allSpecialOffersReserv','users','specialOffers'));
 	}
 	
+
+
 	public function getTickets()
 	{	
 		$users      = User::all();
@@ -81,4 +82,35 @@ class BookingsCtrl extends Controller {
 		return view('admin.bookings.bookingsTickets.index' , compact('allTicketsReserv','users','airPorts'));
 	}
 	
+	public function confirmReserv($type,$id)
+	{
+		switch ($type) {
+			case 'Cars_Reservation':
+				$reserv = Cars_Reservation::findOrFail($id);
+				break;
+			case 'HotelsReservations':
+				$reserv = HotelsReservations::findOrFail($id);
+				break;
+			case 'SpecialOfferReserv':
+				$reserv = SpecialOfferReserv::findOrFail($id);
+				break;
+			case 'Airline_tickets_reserv':
+				$reserv = Airline_tickets_reserv::findOrFail($id);
+				break;
+			case 'ReservTravel':
+				$reserv = ReservTravel::findOrFail($id);
+				break;
+				
+			default:
+				abort(404);	
+			break;
+		}
+
+		if($reserv->status == 0){
+			$reserv->update(['status'=>1]);
+		}else{
+			$reserv->update(['status'=>2]);
+		}
+		return redirect()->back();
+	}
 }

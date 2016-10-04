@@ -15,6 +15,7 @@
 				<th>الي</th>
 				<th>العرض</th>
 				<th>السعر</th>
+				<th>خيارات</th>
 			</tr>
 			
 			<?php if(count($allCarsReserv) > 0): ?>
@@ -27,6 +28,14 @@
 						<td><?php echo e($carsReserv->date_to); ?></td>
 						<td><?php echo e($carsOffers->find($carsReserv->offer_id)['offer_name_ar']); ?></td>
 						<td><?php echo e($carsOffers->find($carsReserv->offer_id)['price']); ?></td>
+						<td>
+							<?php if($carsReserv->status !== 2): ?>
+							<a href="<?php echo e(Url('/')); ?>/admin/bookings/Cars_Reservation/<?php echo e($carsReserv->id); ?>" class="btn btn-<?php echo e(($carsReserv->status == 0)?'success':'danger'); ?>">
+								<?php echo e(($carsReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'); ?>
+
+							</a>
+							<?php endif; ?>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 			<?php else: ?>

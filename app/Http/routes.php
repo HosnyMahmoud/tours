@@ -154,6 +154,9 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('bookings/travels','BookingsCtrl@getTeavels');
 	Route::get('bookings/special-offers','BookingsCtrl@getSpecialOffers');
 	Route::get('bookings/tickets','BookingsCtrl@getTickets');
+	Route::get('bookings/{type}/{id}','BookingsCtrl@confirmReserv');
+
+	
 	// bookings 
 
 	// contactUs
@@ -218,6 +221,9 @@ Route::get('logout','LoginCtrl@ClientLogout');
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 
+	Route::get('/','DashboardCtrl@index');
+	Route::get('reservations','DashboardCtrl@reservations');
+	Route::post('reservations','DashboardCtrl@check_reservations');
 
 });
 /*

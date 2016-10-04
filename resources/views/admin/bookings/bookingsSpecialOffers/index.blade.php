@@ -10,6 +10,7 @@
 				<th>#ID</th>
 				<th>اسم المستخدم</th>
 				<th>اسم العرض</th>
+				<th>خيارات</th>
 			</tr>
 			@if($allSpecialOffersReserv->total() > 0)
 				@foreach ($allSpecialOffersReserv as $specialOfferReserv)
@@ -25,7 +26,13 @@
 							{{ $specialOffers->find($specialOfferReserv->id)['name_ar'] }}
 							</a>
 						</td>
-						
+						<td>
+							@if($specialOfferReserv->status !== 2)
+							<a href="{{Url('/')}}/admin/bookings/SpecialOfferReserv/{{$specialOfferReserv->id}}" class="btn btn-{{($specialOfferReserv->status == 0)?'success':'danger'}}">
+								{{($specialOfferReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'}}
+							</a>
+							@endif
+						</td>
 					</tr>
 				@endforeach
 				@else

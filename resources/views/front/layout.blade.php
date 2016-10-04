@@ -56,12 +56,13 @@
                                     <a target="_blank" href="{{$settings['twitter']}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['google_Plus']}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['linkedIn']}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                     @if(Session::get('local') == 'en')   
+                                        <a href="{{Url('/')}}/lang/ar"><img src="{{Url('/')}}/back/assets/global/img/flags/eg.png" alt=""></a>
+                                     @else
+                                        <a href="{{Url('/')}}/lang/en"><img src="{{Url('/')}}/back/assets/global/img/flags/us.png" alt=""></a>
+                                     @endif
                                 </li>
-                                <li class="social">
-                                        
-                                    <a href="{{Url('/')}}/lang/ar"><img src="{{Url('/')}}/back/assets/global/img/flags/eg.png" alt=""></a>
-                                    <a href="{{Url('/')}}/lang/en"><img src="{{Url('/')}}/back/assets/global/img/flags/us.png" alt=""></a>
-                                </li>
+                                
                             </ul>
                         </div>
                         <div class="col-sm-4 text-left">
@@ -76,7 +77,7 @@
                                     @else
                                     <img src="{{Url('/')}}/uploads/users/{{Auth::client()->get()->image}}">
                                     @endif
-                                    <span class="user-name">{{Auth::client()->get()->name}}</span>
+                                    <span class="user-name"> {{Auth::client()->get()->name}}</span>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">

@@ -17,6 +17,7 @@ class CreateSpecialOfferReservsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('special_offer_id');
+			$table->integer('status');
    			$table->timestamps();
 		});
 	}

@@ -12,6 +12,7 @@
 				<th>عدد الأشخاص</th>
 				<th>من</th>
 				<th>الي</th>
+				<th>خيارات</th>
 			</tr>
 			<?php if(count($AllHotelsReserv) > 0): ?>
 				<?php foreach($AllHotelsReserv as $hotelReserv): ?>
@@ -32,6 +33,15 @@
 						<td><?php echo e($hotelReserv->persons); ?></td>
 						<td><?php echo e($hotelReserv->date_from); ?></td>
 						<td><?php echo e($hotelReserv->date_to); ?></td>
+
+						<td>
+							<?php if($hotelReserv->status !== 2): ?>
+							<a href="<?php echo e(Url('/')); ?>/admin/bookings/HotelsReservations/<?php echo e($hotelReserv->id); ?>" class="btn btn-<?php echo e(($hotelReserv->status == 0)?'success':'danger'); ?>">
+								<?php echo e(($hotelReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'); ?>
+
+							</a>
+							<?php endif; ?>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 				<?php else: ?>

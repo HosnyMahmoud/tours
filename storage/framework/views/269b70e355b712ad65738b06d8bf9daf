@@ -1,0 +1,66 @@
+<?php $__env->startSection('title','حجوزات تذاكر الطيران'); ?>
+<?php $__env->startSection('content'); ?>
+<div class="panel panel-info">
+	<div class="panel-heading text-center">حجوزات تذاكر الطيران</div>
+	<div class="panel-body">
+		<table class="table table-bordered table-responsive table-hover table-condensed">
+			<tr>
+				<th>#ID</th>
+				<th>اسم المستخدم</th>
+				<th>الأقلاع من </th>
+				<th>الهبوط في </th>
+				<th>عدد الأفراد</th>
+				<th>عدد الأطفال</th>
+				<th>النوع</th>
+				<th>تاريخ السفر </th>
+				<th>تاريخ العودة</th>
+				<th>خيارات</th>
+			</tr>
+			<?php if($allTicketsReserv->count() > 0): ?>
+			<?php foreach($allTicketsReserv as $ticketsReserv): ?>
+			<tr>
+				<td><?php echo e($ticketsReserv->id); ?></td>
+				<td>
+					<a href="<?php echo Url('/'); ?>/admin/users/<?php echo e($ticketsReserv->user_id); ?>" class='btn btn-info' title="عرض تفاصيل المستخدم">
+						<?php echo e($users->find($ticketsReserv->user_id)['name']); ?>
+
+					</a>
+				</td>
+				<td>
+					<a href="<?php echo Url('/'); ?>/admin/air_ports/<?php echo e($ticketsReserv->airport_from); ?>" class='btn btn-info' title="عرض تفاصيل المطار">
+						<?php echo e($airPorts->find($ticketsReserv->airport_from)['name_ar']); ?>
+
+					</a>
+				</td>
+				<td>
+					<a href="<?php echo Url('/'); ?>/admin/air_ports/<?php echo e($ticketsReserv->airport_to); ?>" class='btn btn-info' title="عرض تفاصيل المطار">
+						<?php echo e($airPorts->find($ticketsReserv->airport_to)['name_ar']); ?>
+
+					</a>
+				</td>
+				<td><?php echo e($ticketsReserv->num_persons); ?></td>
+				<td><?php echo e($ticketsReserv->num_child); ?></td>
+				<td> <?php if($ticketsReserv->type == 0): ?> <?php echo e('ذهاب فقط'); ?><?php else: ?><?php echo e('ذهاب وعودة'); ?> <?php endif; ?></td>
+				<td><?php echo e($ticketsReserv->date_from); ?></td>
+				<td class="text-center"><?php if($ticketsReserv->type == 0): ?> <?php echo e('_'); ?><?php else: ?><?php echo e($ticketsReserv->date_to); ?> <?php endif; ?></td>
+				<td>
+					<?php if($ticketsReserv->status !== 2): ?>
+					<a href="<?php echo e(Url('/')); ?>/admin/bookings/Airline_tickets_reserv/<?php echo e($ticketsReserv->id); ?>" class="btn btn-<?php echo e(($ticketsReserv->status == 0)?'success':'danger'); ?>">
+						<?php echo e(($ticketsReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'); ?>
+
+					</a>
+					<?php endif; ?>
+				</td>
+				
+			</tr>
+			<?php endforeach; ?>
+			<?php else: ?>
+			<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php endif; ?>
+			
+		</table>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -21,6 +21,7 @@ class CreateCarsReservationsTable extends Migration {
 			$table->integer('model_id');
 			$table->timestamp('date_from');
 			$table->timestamp('date_to');
+			$table->integer('status');
 			$table->timestamps();
 		});
 	}

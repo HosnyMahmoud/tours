@@ -6,5 +6,5 @@ class SpecialOfferReserv extends Model {
 
 
 	protected $table    = 'special_offer_reservs' ;
-	protected $fillable = ['user_id', 'special_offer_id'] ; 
+	protected $fillable = ['user_id', 'special_offer_id','status'] ; 
 }
