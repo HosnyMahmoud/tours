@@ -29,6 +29,8 @@
 
         <?php echo Html::style('front/css/animate.css'); ?>
 
+        <?php echo Html::style('front/css/custom.css'); ?>
+
         <?php echo Html::style('front/css/main.css'); ?>
 
        
@@ -222,14 +224,17 @@
 
         <?php echo Html::script('front/js/owl.carousel.min.js'); ?>
 
-        <?php echo Html::script('front/js/jquery.prettyPhoto.js    '); ?>
+        <?php echo Html::script('front/js/jquery.prettyPhoto.js'); ?>
 
         <?php echo Html::script('front/js/wow.min.js'); ?>
 
         <?php echo Html::script('front/js/bootstrap.min.js'); ?>
 
+        <?php echo Html::script('front/js/jquery.nicescroll.min.js'); ?>
+
         <?php echo Html::script('front/js/main.js'); ?>
 
+        <?php echo $__env->yieldContent('inlineJS'); ?>
       
     </body>
 </html>

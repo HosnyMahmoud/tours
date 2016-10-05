@@ -21,6 +21,7 @@
         {!!Html::style('front/css/owl.carousel.css') !!}
         {!!Html::style('front/css/prettyPhoto.css') !!}
         {!!Html::style('front/css/animate.css') !!}
+        {!!Html::style('front/css/custom.css') !!}
         {!!Html::style('front/css/main.css') !!}
        
         
@@ -209,10 +210,12 @@
         {!!Html::script('front/js/masterslider/masterslider.min.js') !!}
         {!!Html::script('front/js/masterslider/jquery.easing.min.js') !!}
         {!!Html::script('front/js/owl.carousel.min.js') !!}
-        {!!Html::script('front/js/jquery.prettyPhoto.js    ') !!}
+        {!!Html::script('front/js/jquery.prettyPhoto.js') !!}
         {!!Html::script('front/js/wow.min.js') !!}
         {!!Html::script('front/js/bootstrap.min.js') !!}
+        {!!Html::script('front/js/jquery.nicescroll.min.js') !!}
         {!!Html::script('front/js/main.js') !!}
+        @yield('inlineJS')
       
     </body>
 </html>

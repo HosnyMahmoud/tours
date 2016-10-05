@@ -225,6 +225,15 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 	Route::get('reservations','DashboardCtrl@reservations');
 	Route::post('reservations','DashboardCtrl@check_reservations');
 
+	Route::get('wishlist','DashboardCtrl@wishlist');
+	Route::get('wishlist/{id}/delete','DashboardCtrl@wishlist_delete');
+	
+	Route::get('messages','DashboardCtrl@msgs');
+	Route::post('messages','DashboardCtrl@msgsSend');
+
+	Route::get('edit_personal','DashboardCtrl@editProfile');
+	Route::post('edit_personal','DashboardCtrl@postProfile');
+
 });
 /*
 **********************************************************

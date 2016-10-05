@@ -22,8 +22,23 @@ return [
 	'reserv_success'		=> 'Reservation has been confirmed.',
 	'reserv_notConfirmed'	=> "Sorry !! Reservation hasn't been confirmed yet ",
 	'reserv_canceled'		=> 'Sorry !! Reservation hasn been Canceled Please Contact us for information . ',
-
 	/**************** reservations ****************/
+
+	/**************** wishlist ****************/
+	'name'					=> 'Name',
+	'type'					=> 'Type',
+	'options'				=> 'Options',
+	'visit'					=> 'Visit',
+	'delete'				=> 'Delete',
+	'hotel'					=> 'Hotel',
+	'travel'				=> 'Travel',
+	/**************** wishlist ****************/
+
+	/**************** messages ****************/
+	'writeMsgHere'			=> 'Write Your Message Here',
+	'send'					=> 'Send',
+	/**************** messages ****************/
+	'save'					=> 'Save',
 
 
 
