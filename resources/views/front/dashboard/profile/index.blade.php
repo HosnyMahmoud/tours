@@ -14,6 +14,11 @@
                 <br>
             </div>
         @endif
+        @if(Session::has('msg'))
+            <div class="alert alert-success">
+                {{Session::get('msg')}}
+            </div>
+        @endif
         <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
             <label for="">{{Lang::get('loginReg.username')}}</label>
             {!! Form::text('username',null,['class'=>'form-control','disabled'=>'disabled']) !!}
@@ -35,15 +40,15 @@
             {!!Form::file('img')!!}
             <small class="text-danger">{{ $errors->first('img') }}</small>
         </div>
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group {{ $errors->has('pwd') ? ' has-error' : '' }}">
             <label for="">{{Lang::get('loginReg.password')}}</label>
-            {!! Form::password('password',['class'=>'form-control']) !!}
-            <small class="text-danger">{{ $errors->first('password') }}</small>
+            {!! Form::password('pwd',['class'=>'form-control']) !!}
+            <small class="text-danger">{{ $errors->first('pwd') }}</small>
         </div>
-        <div class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+        <div class="form-group {{ $errors->has('pwd_confirmation') ? ' has-error' : '' }}">
             <label for="">{{Lang::get('loginReg.passwordConf')}}</label>
-            {!! Form::password('password_confirmation',['class'=>'form-control']) !!}
-            <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
+            {!! Form::password('pwd_confirmation',['class'=>'form-control']) !!}
+            <small class="text-danger">{{ $errors->first('pwd_confirmation') }}</small>
         </div>
         <div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}">
             <label for="">{{Lang::get('loginReg.city')}}</label>

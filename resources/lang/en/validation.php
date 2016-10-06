@@ -102,6 +102,13 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'airport_from'          => 'Take Off : from',
+        'airport_to'            => 'Landing : to',
+        'num_persons'           => 'Number of Adults',
+        'num_child'             => 'Number of Kids',
+        'date_from'             => 'Travel Date (Go)',
+        'date_to'               => 'Travel Date (Return)',
+	],
 
 ];

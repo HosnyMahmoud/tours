@@ -41,5 +41,8 @@ return [
 	'save'					=> 'Save',
 
 
+	'saved_success'			=> 'Profile Saved Succeessfully',
+
+
 
 ];

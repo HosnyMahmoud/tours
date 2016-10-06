@@ -261,13 +261,15 @@ a.btn-register{
 .site-intro{
     position: relative;
 }
+
 #booking-sec{
     position: absolute;
     width: 100%;
-    z-index: 9;
+    z-index: 1;
     left: 0px;
     bottom: 30px;
 }
+
 .flight-booking{
     background: rgba(0,0,0,0.5);
     padding: 5px;
@@ -1547,4 +1549,13 @@ footer{
     .sec-ttl h1{
         font-size: 30px;
     }
+}
+
+.ui-datepicker-trigger {
+    position: relative;
+    top: -40px;
+    z-index: 9;
+    right: -175px;
+    padding: 12px;
+    width: 40px;
 }

@@ -22,7 +22,6 @@ return [
 	"to"				=>	"To",
 	"go"				=>	"Go",
 	"back"				=>	"Back",
-	
 	/**************** airFlights *****************/
 	
 	/**************** services *****************/
@@ -31,5 +30,9 @@ return [
 	"haj"				=>	"Haj & Omra",
 	"hotels_book"		=>	"Hotels Booking",
 	/**************** services *****************/
+	"are_you_sure"		=>	"Are you sure of reservation ?",
+	"you_must_be_logged"=>	"Sorry You must be Logged In ",
+	'done_reserv'		=>  "Your Reservation done successfully",
+
 
 ];

@@ -180,6 +180,11 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 */
 
 	Route::get('/','FrontCtrl@index');
+	Route::post('/','FrontCtrl@reserv_tickets');
+	
+	//Route::get('/','FrontCtrl@index');
+	Route::get('get_airports/{id}','FrontCtrl@get_Airports');
+
 	Route::get('lang/{lang}','LanguageCtrl@switcher');
 
 	Route::get('travels','FrontCtrl@travels');
@@ -233,6 +238,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 
 	Route::get('edit_personal','DashboardCtrl@editProfile');
 	Route::post('edit_personal','DashboardCtrl@postProfile');
+
+
 
 });
 /*

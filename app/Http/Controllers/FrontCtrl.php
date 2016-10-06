@@ -3,16 +3,19 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Travels ;
-use App\Hotel ;
+use App\Airline_tickets_reserv;
 use App\Countries;
 use App\Settings;
+use App\Travels;
+use App\AirPort;
+use App\Hotel;
 use App\Cities;
 use Validator;
 use Session;
 use Lang;
 use Mail;
-
+use Auth;
+use Carbon\Carbon;
 
 
 class FrontCtrl extends Controller {
@@ -21,9 +24,51 @@ class FrontCtrl extends Controller {
 	public function index()
 	{
 		$travels = Travels::latest('created_at')->take(4)->get();
+		$countries = Countries::lists('name_'.Session::get('local'),'id'); 
 		//dd($travels);
-		return View('front.index',compact('travels'));
+		return View('front.index',compact('travels','countries'));
 	}
+
+	public function get_Airports($id)
+	{
+		$cities = Cities::where('country_id',$id)->get();
+		$airPorts = [];
+		$i = 0;
+		foreach ($cities as $city) {
+			$airPort = AirPort::where('city_id',$city->id)->get();
+			foreach ($airPort as $air) {
+				$airPorts[$i]['id']  =  $air->id;
+				$airPorts[$i]['name']  =  $air['name_'.Session::get('local')];
+				$i++;
+			}
+		}
+		return response()->json(['airports'=>$airPorts]);
+	}
+
+	public function reserv_tickets(Request $request)
+	{
+		$rules = [
+			'airport_from'		=>'required',
+			'airport_to'		=>'required',
+			'num_persons'		=>'required|numeric',
+			'num_child'			=>'required|numeric',	
+			'date_from'			=>'required|date',
+			'date_to'			=>'required|date',
+		];
+
+		$validator = Validator::make($request->all(),$rules);
+		if($validator->fails()){
+			return redirect()->back()->withErrors($validator)->withInput();
+		}else
+		{
+			$request->merge(['date_from'=>Carbon::parse($request->date_from)]);
+			$request->merge(['date_to'=>Carbon::parse($request->date_to)]);
+			$request->merge(['user_id'=>Auth::client()->get()->id]);
+			Airline_tickets_reserv::create($request->all());
+			return redirect()->back()->with(['msg'=>Lang::get('index.done_reserv')]);
+		}
+	}
+	
 
 	// all travels 
 	public function travels(Request $request)

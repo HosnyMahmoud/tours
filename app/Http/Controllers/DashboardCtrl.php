@@ -2,25 +2,25 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+
 use App\Airline_tickets_reserv;
 use App\HotelsReservations;
 use App\SpecialOfferReserv;
 use App\Cars_Reservation;
 use App\ReservTravel;
+use App\Countries;
 use App\WishList;
-use App\Hotel;
 use App\Messages;
 use App\Travels;
-use App\Admin;
-use App\Countries;
 use App\Cities;
+use App\Hotel;
+use App\Admin;
 use App\User;
+use Validator;
 use Session;
 use Auth;
 use Lang;
-use Validator;
 class DashboardCtrl extends Controller {
 
 	public function index()
@@ -127,7 +127,7 @@ class DashboardCtrl extends Controller {
 		$user = User::findOrFail(Auth::client()->get()->id);
 		$validator =  Validator::make($request->all(), [
 			'img'      => 'image',
-			'password' => 'min:5|confirmed',
+			'pwd' => 'min:5|confirmed',
 		]);
 		if ($validator->fails()) {
             return redirect()
@@ -142,12 +142,14 @@ class DashboardCtrl extends Controller {
 				$request->file('img')->move($dest,$file_name);
 				$request->merge(['image'=>$file_name]);
         	}  
-        	if($request->has('password')){ 
+        	
+        	if($request->has('pwd')){ 
 				$request->merge(['password'=>bcrypt($request->password)]);
-				$request->merge(['verification_code'=>md5(time())]);
 			}
+
 			$user->update($request->all());
-			return redirect()->back();
-		}
+			return redirect()->back()->with(['msg'=>Lang::get('dashboard.saved_success')]);
+		} 
+
 	}
 }

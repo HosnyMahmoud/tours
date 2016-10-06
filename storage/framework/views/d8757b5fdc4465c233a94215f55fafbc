@@ -216,8 +216,8 @@
         </footer>
         
         <!-- JavaScript -->
-        <?php echo Html::script('front/js/jquery.min.js'); ?>
-
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <?php echo Html::script('front/js/masterslider/masterslider.min.js'); ?>
 
         <?php echo Html::script('front/js/masterslider/jquery.easing.min.js'); ?>

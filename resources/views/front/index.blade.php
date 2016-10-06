@@ -1,6 +1,9 @@
 @extends('front.layout')
  @section('title',Lang::get('index.title'))
 	@section('content')
+
+
+
 	<div class="site-intro">
             <!-- masterslider -->
             <div class="master-slider ms-skin-default" id="of-home" style="direction: ltr;">
@@ -60,48 +63,37 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="flight-booking">
-                                <form>
+                                {!!Form::open()!!}
                                     <h3><i class="fa fa-plane" aria-hidden="true"></i> {{Lang::get('index.reserve_tickets')}}</h3>
+                                    @if(Session::get('msg'))
+                                        <div class="alert alert-success">{{Session::get('msg')}}</div>  
+                                    @endif
                                     <div class="row" style="margin-bottom: 20px;">
                                         <div class="col-sm-6">
                                             <label>{{Lang::get('index.leave')}}</label>
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option value="" disabled selected>{{Lang::get('index.from')}}</option>
-                                                        <option>مصر</option>
-                                                        <option>السعودية</option>
-                                                        <option>الإمارات</option>
-                                                        <option>اليونان</option>
-                                                    </select>
+                                                    {!!Form::select('leave_from',[Lang::get('index.from'),''=>$countries],null,['class'=>'form-control','id'=>'leave_from'])!!}
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option value="" disabled selected>{{Lang::get('index.to')}}</option>
-                                                        <option>مدغشقر</option>
-                                                        <option>بنجلاديش</option>
-                                                        <option>ماليزيا</option>
-                                                        <option>الكونغو</option>
-                                                    </select>
+                                                    {!!Form::select('leave_to',[Lang::get('index.to'),''=>$countries],null,['class'=>'form-control','id'=>'leave_to'])!!}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label>{{Lang::get('index.takeoff')}}</label>
                                             <div class="row">
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
+                                                <div class="col-sm-6 {{ $errors->has('airport_from') ? ' has-error' : '' }}">
+                                                    <select class="form-control" name="airport_from" id="takeoff" disabled>
                                                         <option value="" disabled selected>{{Lang::get('index.from')}}</option>
-                                                        <option>مطار القاهرة</option>
-                                                        <option>مطار برج العرب</option>
                                                     </select>
+                                                     <small class="text-danger">{{ $errors->first('airport_from') }}</small>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
+                                                <div class="col-sm-6 {{ $errors->has('airport_to') ? ' has-error' : '' }}">
+                                                    <select class="form-control" name="airport_to" id="landing" disabled>
                                                         <option value="" disabled selected>{{Lang::get('index.to')}}</option>
-                                                        <option>مطار بيروت</option>
-                                                        <option>مطار القاهرة</option>
                                                     </select>
+                                                    <small class="text-danger">{{ $errors->first('airport_to') }}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,46 +102,48 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="row">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 {{ $errors->has('num_persons') ? ' has-error' : '' }}">
                                                     <label>{{Lang::get('index.adults')}}</label>
-                                                    <input type="number" class="form-control" placeholder="">
+                                                    <input type="number" name="num_persons" class="form-control" placeholder="">
+                                                     <small class="text-danger">{{ $errors->first('num_persons') }}</small>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 {{ $errors->has('num_child') ? ' has-error' : '' }}">
                                                     <label>{{Lang::get('index.kids')}}</label>
-                                                    <input type="number" class="form-control" placeholder="">
+                                                    <input type="number" name="num_child" class="form-control" placeholder="">
+                                                     <small class="text-danger">{{ $errors->first('num_child') }}</small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label>{{Lang::get('index.date')}}</label>
                                             <div class="row">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 {{ $errors->has('date_from') ? ' has-error' : '' }}">
                                                     <div class="form-group">
                                                         <div class='input-group date'>
-                                                            <input type='text' class="form-control" placeholder="{{Lang::get('index.go')}}">
-                                                            <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                            </span>
+                                                            <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="{{Lang::get('index.go')}}">
                                                         </div>
                                                     </div>
+                                                    <small class="text-danger">{{ $errors->first('date_from') }}</small>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 {{ $errors->has('date_to') ? ' has-error' : '' }}">
                                                     <div class="form-group">
                                                         <div class='input-group date'>
-                                                            <input type='text' class="form-control" placeholder="{{Lang::get('index.back')}}">
-                                                            <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                            </span>
+                                                            <input type='text' name='date_to' class="form-control" id="datepicker_back" placeholder="{{Lang::get('index.back')}}">
                                                         </div>
                                                     </div>
+                                                    <small class="text-danger">{{ $errors->first('date_to') }}</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-info">{{Lang::get('assets.reserve_now')}}</button>
+                                        @if(Auth::client()->check() == true)
+                                            <button type="submit" class="btn btn-info" onClick="return confirm('{{Lang::get('index.are_you_sure')}}');">{{Lang::get('assets.reserve_now')}}</button>
+                                        @else 
+                                            <a class="btn btn-info" onClick="return alert('{{Lang::get('index.you_must_be_logged')}}');">{{Lang::get('assets.reserve_now')}}</a>
+                                        @endif
                                     </div>
-                                </form>
+                                {!!Form::close()!!}
                             </div>
                         </div>
                     </div>
@@ -288,6 +282,103 @@
             </div>
         </section><!-- #testimonials -->
         
+        
+        @section('inlineJS')
+        <script type="text/javascript">
+            $('#leave_from').on('change',function(){
+                if($('#leave_from').val() == 0){
+                     $('#takeoff').find('option').remove();
+                    $('#takeoff').append("<option>{{Lang::get('index.from')}}</option>")
+                    $('#takeoff').attr('disabled',true);
+                }else{
+                    $.get('{{Url("/")}}/get_airports/'+$('#leave_from').val(),function(data){
+                        $('#takeoff').find('option').remove();
+                            $.each(data.airports,function(key,val){
+                                $('#takeoff').append('<option value="'+val.id+'">'+val.name+'</option>')
+                            })
+                            $('#takeoff').attr('disabled',false);
+                    });
+                }
+            });
 
+             $('#leave_to').on('change',function(){
+                if($('#leave_to').val() == 0){
+                     $('#landing').find('option').remove();
+                    $('#landing').append("<option>{{Lang::get('index.from')}}</option>")
+                    $('#landing').attr('disabled',true);
+                }else{
+                    $.get('{{Url("/")}}/get_airports/'+$('#leave_to').val(),function(data){
+                        $('#landing').find('option').remove();
+                            $.each(data.airports,function(key,val){
+                                $('#landing').append('<option value="'+val.id+'">'+val.name+'</option>')
+                            })
+                            $('#landing').attr('disabled',false);
+                    });
+                }
+            });
+            $(document).ready(function(){
+                if($('#leave_from').val() == 0){
+                     $('#takeoff').find('option').remove();
+                    $('#takeoff').append("<option>{{Lang::get('index.from')}}</option>")
+                    $('#takeoff').attr('disabled',true);
+                }else{
+                    $.get('{{Url("/")}}/get_airports/'+$('#leave_from').val(),function(data){
+                        $('#takeoff').find('option').remove();
+                            $.each(data.airports,function(key,val){
+                                $('#takeoff').append('<option value="'+val.id+'">'+val.name+'</option>')
+                            })
+                            $('#takeoff').attr('disabled',false);
+                    });
+                }
+
+
+                if($('#leave_to').val() == 0){
+                     $('#landing').find('option').remove();
+                    $('#landing').append("<option>{{Lang::get('index.from')}}</option>")
+                    $('#landing').attr('disabled',true);
+                }else{
+                    $.get('{{Url("/")}}/get_airports/'+$('#leave_to').val(),function(data){
+                        $('#landing').find('option').remove();
+                            $.each(data.airports,function(key,val){
+                                $('#landing').append('<option value="'+val.id+'">'+val.name+'</option>')
+                            })
+                            $('#landing').attr('disabled',false);
+                    });
+                }
+            });
+
+            $(document).ready(function(){
+                var dateFormat = "yy-mm-dd",
+                  from = $( "#datepicker_go" )
+                    .datepicker({
+                      defaultDate: "+1w",
+                      changeMonth: true,
+                      numberOfMonths: 1,
+                    })
+                    .on( "change", function() {
+                      to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                  to = $( "#datepicker_back" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                  })
+                  .on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                  });
+                function getDate( element ) {
+                  var date;
+                  try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                  } catch( error ) {
+                    date = null;
+                  }
+                  return date;
+                }
+
+                $('button.ui-datepicker-trigger').addClass('input-group-addon glyphicon glyphicon-calendar');
+            });
+        </script>
 	@endsection
+    @endsection
 @stop

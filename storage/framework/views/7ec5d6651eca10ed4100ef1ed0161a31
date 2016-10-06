@@ -17,6 +17,12 @@
                 <br>
             </div>
         <?php endif; ?>
+        <?php if(Session::has('msg')): ?>
+            <div class="alert alert-success">
+                <?php echo e(Session::get('msg')); ?>
+
+            </div>
+        <?php endif; ?>
         <div class="form-group <?php echo e($errors->has('username') ? ' has-error' : ''); ?>">
             <label for=""><?php echo e(Lang::get('loginReg.username')); ?></label>
             <?php echo Form::text('username',null,['class'=>'form-control','disabled'=>'disabled']); ?>
@@ -42,17 +48,17 @@
 
             <small class="text-danger"><?php echo e($errors->first('img')); ?></small>
         </div>
-        <div class="form-group <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+        <div class="form-group <?php echo e($errors->has('pwd') ? ' has-error' : ''); ?>">
             <label for=""><?php echo e(Lang::get('loginReg.password')); ?></label>
-            <?php echo Form::password('password',['class'=>'form-control']); ?>
+            <?php echo Form::password('pwd',['class'=>'form-control']); ?>
 
-            <small class="text-danger"><?php echo e($errors->first('password')); ?></small>
+            <small class="text-danger"><?php echo e($errors->first('pwd')); ?></small>
         </div>
-        <div class="form-group <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+        <div class="form-group <?php echo e($errors->has('pwd_confirmation') ? ' has-error' : ''); ?>">
             <label for=""><?php echo e(Lang::get('loginReg.passwordConf')); ?></label>
-            <?php echo Form::password('password_confirmation',['class'=>'form-control']); ?>
+            <?php echo Form::password('pwd_confirmation',['class'=>'form-control']); ?>
 
-            <small class="text-danger"><?php echo e($errors->first('password_confirmation')); ?></small>
+            <small class="text-danger"><?php echo e($errors->first('pwd_confirmation')); ?></small>
         </div>
         <div class="form-group <?php echo e($errors->has('city') ? ' has-error' : ''); ?>">
             <label for=""><?php echo e(Lang::get('loginReg.city')); ?></label>
