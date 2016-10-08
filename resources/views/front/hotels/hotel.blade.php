@@ -33,9 +33,11 @@
                         <div class="hotel-booking">
                             <h4>{{Lang::get('hotels.night_price')}}</h4>
                             <div class="hotel-price">
-                                <span>750 {{Lang::get('hotels.le')}}</span>
+                                <span>{{$hotels->price}} {{Lang::get('hotels.le')}}</span>
                             </div>
                             <a href="#" class="btn btn-block btn-lg btn-success">{{Lang::get('hotels.reseve_now')}}</a>
+                            <br>
+                            <a id="wishlist" href="{{Url('/')}}/wishlist/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
                         </div>
                         
                         <div class="hotel-info">
@@ -106,7 +108,20 @@
                     <?php $i++; ?>
                     @endforeach
                 @endif
-                
+                @section('inlineJS')
+                <script type="text/javascript">
+                    $('#wishlist').hover(function() {
+                       $('#wishlist').addClass('fa-heart');
+                       $('#wishlist').removeClass('fa-heart-o');
+                      },function(){
+                        $('#wishlist').removeClass('fa-heart');
+                        $('#wishlist').addClass('fa-heart-o');
+                      }
+                    );
+
+                  
+                </script>
+                @endsection
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">
                         <div class="content-holder">
