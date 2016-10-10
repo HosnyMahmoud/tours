@@ -168,33 +168,33 @@
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft">
                             <figure>
-                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-1.jpg" alt=""></a>
+                                <a href="{{Url('/')}}/"><img src="{{Url('/')}}/front/images/service-img-1.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#">{{Lang::get('index.flights_tickets')}}</a></h3>
+                            <h3><a href="{{Url('/')}}/">{{Lang::get('index.flights_tickets')}}</a></h3>
                         </div>
                     </div><!-- end of service -->
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft" data-wow-delay="0.5s">
                             <figure>
-                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-2.jpg" alt=""></a>
+                                <a href="{{Url('/')}}/hotels?type=2"><img src="{{Url('/')}}/front/images/service-img-2.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#">{{Lang::get('index.tourism')}}</a></h3>
+                            <h3><a href="{{Url('/')}}/hotels?type=2">{{Lang::get('index.tourism')}}</a></h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft" data-wow-delay="1s">
                             <figure>
-                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-3.jpg" alt=""></a>
+                                <a href="{{Url('/')}}/hotels?type=1"><img src="{{Url('/')}}/front/images/service-img-3.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#">{{Lang::get('index.haj')}}</a></h3>
+                            <h3><a href="{{Url('/')}}/hotels?type=1">{{Lang::get('index.haj')}}</a></h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft" data-wow-delay="1.5s">
                             <figure>
-                                <a href="#"><img src="{{Url('/')}}/front/images/service-img-4.jpg" alt=""></a>
+                                <a href="{{Url('/')}}/hotels"><img src="{{Url('/')}}/front/images/service-img-4.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#">{{Lang::get('index.hotels_book')}}</a></h3>
+                            <h3><a href="{{Url('/')}}/hotels">{{Lang::get('index.hotels_book')}}</a></h3>
                         </div>
                     </div>
                 </div>

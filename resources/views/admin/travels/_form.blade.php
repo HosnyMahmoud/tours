@@ -41,10 +41,11 @@
 </div>
 
 <!-- View Images -->
+<div class="row">
 @if(@$type == 'edit')
     @if($travel->images !== '')
         @foreach ($exp as $img) 
-          <div style="">
+          <div class="col-md-3">
               <img src="{!!Url('/')!!}/uploads/travels/{{ $img }}" class="img-thumbnail" width="150" height="150">
               <span>
                 <a href="{{Url('admin/travels/')}}/delete_img/{{$travel->id}}/{{$img}}"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
@@ -55,6 +56,7 @@
          <div class="alert alert-info">عفواً لا توجد صور</div>
     @endif
 @endif
+</div> 
 <!-- View Images -->
 
 <hr>
