@@ -1,0 +1,46 @@
+ 
+     <?php $__env->startSection('title',Lang::get('dashboard.dashboard')); ?>
+     <?php $__env->startSection('content'); ?>
+         <section class="content">
+            <div class="container">
+                <div class="user-dashboard">
+                    <div class="row">
+                       <div class="col-md-3">
+                            <div class="dashboard-nav">
+                                <ul>
+                                    <li class="<?php echo e((Request::is('dashboard'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard"><i class="fa fa-home fa-fw"></i> <?php echo e(Lang::get('dashboard.index')); ?></a></li>
+                                    <li class="<?php echo e((Request::is('dashboard/reservations*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/reservations"><i class="fa fa-eye fa-fw"></i> <?php echo e(Lang::get('dashboard.reservations')); ?></a></li>
+                                    <li class="<?php echo e((Request::is('dashboard/wishlist*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/wishlist"><i class="fa fa-heart fa-fw"></i> <?php echo e(Lang::get('dashboard.wishlist')); ?></a></li>
+                                    <li class="<?php echo e((Request::is('dashboard/messages*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/messages"><i class="fa fa-envelope fa-fw"></i> <?php echo e(Lang::get('dashboard.messages')); ?></a></li>
+                                    <li class="<?php echo e((Request::is('dashboard/edit_personal*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/edit_personal"><i class="fa fa-gear fa-fw"></i> <?php echo e(Lang::get('dashboard.edit_personal')); ?></a></li>
+                                    <li class="<?php echo e((Request::is('dashboard/logout*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/logout"><i class="fa fa-sign-out fa-fw"></i> <?php echo e(Lang::get('dashboard.logout')); ?></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="dashboard-content">
+                                <div class="page-bar">
+                    				<ul class="page-breadcrumb">
+                    					<li>
+                    						<a href="<?php echo e(Url('/')); ?>"><?php echo e(Lang::get('dashboard.index')); ?></a>
+                    						<i class="<?php echo e(Lang::get('dashboard.arrow')); ?>"></i>
+                    					</li>
+                    					<li>
+                                            <a href="<?php echo e(Url('/')); ?>/dashboard"><?php echo e(Lang::get('dashboard.dashboard')); ?></a>
+                                        </li>
+                                        <li>
+                                            <span><?php echo $__env->yieldContent('breadcrumbs'); ?></span>
+                                        </li>
+                    				</ul>	
+                    			</div>
+                                <?php echo $__env->yieldContent('dashboard'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+        </section>
+    <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,10 +1,29 @@
 @extends('admin.layout')
 @section('content')
+
+
+
 <div class="col-md-12">
 	<div class="table panel-primary">
 		<div class="text-center panel-heading">التحكم في أعدادات الموقع </div>
 		<div class="col-md-11 panel-body">
-			
+		
+		@if (Session::has('msg'))
+			<div class="alert alert-success">{{ Session::get('msg') }}</div>
+		@endif		
+
+		@if (Session::has('errors'))
+			<div class="alert alert-dismissable alert-warning">
+	      <h4>Errors!</h4>
+	      <ul>
+	           @foreach (Session::get('errors')->all() as $error)
+		           <li>{!! $error !!}</li>
+	           @endforeach
+	      </ul>
+			 </div>
+		@endif
+
+
 			{!! Form::model($settings,['method'=>'PATCH' , 'action' => ['SettingsCtrl@update' , $settings->id ] ]) !!}
 			
 			<div class="form-group{{ $errors->has('site_name_ar') ? ' has-error' : '' }}">

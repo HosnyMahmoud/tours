@@ -36,7 +36,7 @@ class SettingsCtrl extends Controller {
      
 	    Settings::findOrFail($id)->update($data);
 
-        return redirect()->back(); 
+        return redirect()->back()->with(['msg'=>'تم حفظ التعديلات .']);; 
 	
 	}
 

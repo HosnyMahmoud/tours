@@ -11,8 +11,8 @@ class ContactUsCtrl extends Controller {
 
 	public function index()
 	{	
-		$col = contactUs::first();
-		return view('admin.contactUs' , compact('col')) ;
+		$rows = contactUs::paginate(30);
+		return view('admin.contact_us.index' , compact('rows')) ;
 	}
 	
 	
@@ -25,7 +25,29 @@ class ContactUsCtrl extends Controller {
 					'content_en'   => 'required',
 				];
 	}
+	public function create()
+	{
+		return view('admin.contact_us.create') ;
+	}
 
+	public function store(Request $bag)
+	{	
+		$validation = Validator::make($bag->all(),$this->rules()) ;
+		if($validation->fails())
+		{
+			return redirect()->back()->withErrors($validation)->withInput() ;
+		}
+
+		contactUs::create($bag->all());
+		return redirect()->to(Url('/').'/admin/about')->with(['msg'=>'تمت الأضافة بنجاح']) ;
+ 	}
+
+ 	public function edit($id)
+	{
+		// Countries 
+		$row = contactUs::findOrFail($id);
+		return view('admin.countries.countries.edit' , compact('row')) ;
+	}
 
 	public function update(Request $request , $id)
 	{
