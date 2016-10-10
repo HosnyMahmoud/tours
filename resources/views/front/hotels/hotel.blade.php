@@ -35,9 +35,9 @@
                         <div class="hotel-price">
                             <span>{{$hotels->price}} {{Lang::get('hotels.le')}}</span>
                         </div>
-                        <a href="#" class="btn btn-block btn-lg btn-success">{{Lang::get('hotels.reseve_now')}}</a>
+                        <a href="{{Url('/')}}/dashboard/travels/{{$hotels->id}}/reserve" class="btn btn-block btn-lg btn-success">{{Lang::get('hotels.reseve_now')}}</a>
                         <br>
-                        <a id="wishlist" href="{{Url('/')}}/wishlist/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        <a id="wishlist" href="{{Url('/')}}/dashboard/wishlist/hotels/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
                     </div>
                     
                     <div class="hotel-info">

@@ -16,18 +16,14 @@
                     <div class="col-sm-8 item-slides">
                         <!-- masterslider -->
                         <div class="master-slider ms-skin-metro" id="of-item">
+                           <?php foreach($images as $img): ?> 
                             <div class="ms-slide">
-                                <img src="<?php echo e(Url('/')); ?>/front/masterslider/blank.gif" data-src="<?php echo e(Url('/')); ?>/front/images/hotel-img-1-lg.jpg" alt="lorem ipsum dolor sit"/>     
+                                <img src="<?php echo e(Url('/')); ?>/front/masterslider/blank.gif" data-src="<?php echo e(Url('/')); ?>/uploads/travels/<?php echo e($img); ?>" alt="lorem ipsum dolor sit"/>     
                                 <div class="ms-thumb">
-                                    <img src="<?php echo e(Url('/')); ?>/front/images/hotel-img-1-lg.jpg" />
+                                    <img src="<?php echo e(Url('/')); ?>/uploads/travels/<?php echo e($img); ?>" />
                                 </div>
                             </div>
-                            <div class="ms-slide">
-                                <img src="<?php echo e(Url('/')); ?>/front/masterslider/blank.gif" data-src="<?php echo e(Url('/')); ?>/front/images/hotel-img-1-lg.jpg" alt="lorem ipsum dolor sit"/>     
-                                <div class="ms-thumb">
-                                    <img src="<?php echo e(Url('/')); ?>/front/images/hotel-img-1-lg.jpg" />
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                         <!-- end of masterslider -->
                     </div>
@@ -38,7 +34,7 @@
                             <div class="hotel-price">
                                 <span><?php echo e($travel->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
                             </div>
-                            <a href="#" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('travels.reserve_now')); ?></a>
+                            <a href="<?php echo e(Url('/')); ?>/travels/<?php echo e($travel->id); ?>/reserve" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('travels.reserve_now')); ?></a>
                         </div>
                         
                         <div class="hotel-info">

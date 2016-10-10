@@ -17,18 +17,14 @@
                     <div class="col-sm-8 item-slides">
                         <!-- masterslider -->
                         <div class="master-slider ms-skin-metro" id="of-item">
+                           @foreach($images as $img) 
                             <div class="ms-slide">
-                                <img src="{{Url('/')}}/front/masterslider/blank.gif" data-src="{{Url('/')}}/front/images/hotel-img-1-lg.jpg" alt="lorem ipsum dolor sit"/>     
+                                <img src="{{Url('/')}}/front/masterslider/blank.gif" data-src="{{Url('/')}}/uploads/travels/{{$img}}" alt="lorem ipsum dolor sit"/>     
                                 <div class="ms-thumb">
-                                    <img src="{{Url('/')}}/front/images/hotel-img-1-lg.jpg" />
+                                    <img src="{{Url('/')}}/uploads/travels/{{$img}}" />
                                 </div>
                             </div>
-                            <div class="ms-slide">
-                                <img src="{{Url('/')}}/front/masterslider/blank.gif" data-src="{{Url('/')}}/front/images/hotel-img-1-lg.jpg" alt="lorem ipsum dolor sit"/>     
-                                <div class="ms-thumb">
-                                    <img src="{{Url('/')}}/front/images/hotel-img-1-lg.jpg" />
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <!-- end of masterslider -->
                     </div>
@@ -39,7 +35,7 @@
                             <div class="hotel-price">
                                 <span>{{$travel->price}} {{Lang::get('hotels.le')}}</span>
                             </div>
-                            <a href="#" class="btn btn-block btn-lg btn-success">{{Lang::get('travels.reserve_now')}}</a>
+                            <a href="{{Url('/')}}/dashboard/travels/{{$travel->id}}/reserve" class="btn btn-block btn-lg btn-success">{{Lang::get('travels.reserve_now')}}</a>
                         </div>
                         
                         <div class="hotel-info">

@@ -239,6 +239,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 	Route::get('edit_personal','DashboardCtrl@editProfile');
 	Route::post('edit_personal','DashboardCtrl@postProfile');
 
+	Route::get('wishlist/hotels/add/{id}','FrontCtrl@hotelWishlist');
 
 
 });

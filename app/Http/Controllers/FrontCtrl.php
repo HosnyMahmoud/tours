@@ -91,7 +91,8 @@ class FrontCtrl extends Controller {
 		{
 			return redirect()->to(Url('/').'/travels/'.$id.'-'.$travel['slug_'.Session::get('local')]);
 		}
-		return View('front.travels.travel',compact('travel'));
+		$images = explode('|', $travel->images);
+		return View('front.travels.travel',compact('travel','images'));
 	}
 
 	public function hotels(Request $request)
@@ -149,6 +150,12 @@ class FrontCtrl extends Controller {
 		$related = Hotel::where('id','!=',$id)->where('tags_ar','like','%'.$hotels->tags_ar.'%')->orWhere('tags_en','like','%'.$hotels->tags_en.'%')->take(2)->get();
 		return View('front.hotels.hotel',compact('hotels','images','related'));
 	}
+
+	public function hotelWishlist($id)
+	{
+
+	}
+
 
 	public function services()
 	{
