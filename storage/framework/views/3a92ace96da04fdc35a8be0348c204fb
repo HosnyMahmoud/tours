@@ -55,10 +55,11 @@
 </div>
 
 <!-- View Images -->
+<div class="row">
 <?php if(@$type == 'edit'): ?>
     <?php if($travel->images !== ''): ?>
         <?php foreach($exp as $img): ?> 
-          <div style="">
+          <div class="col-md-3">
               <img src="<?php echo Url('/'); ?>/uploads/travels/<?php echo e($img); ?>" class="img-thumbnail" width="150" height="150">
               <span>
                 <a href="<?php echo e(Url('admin/travels/')); ?>/delete_img/<?php echo e($travel->id); ?>/<?php echo e($img); ?>"><i class="fa fa-close" style="position: absolute;right:7px;font-size: 33px;" title='حذف الصورة'></i></a>
@@ -69,6 +70,7 @@
          <div class="alert alert-info">عفواً لا توجد صور</div>
     <?php endif; ?>
 <?php endif; ?>
+</div> 
 <!-- View Images -->
 
 <hr>

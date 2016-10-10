@@ -11,6 +11,7 @@ use App\CarsBrands ;
 use App\CarsModels ;
 use App\Hotel ;
 use Validator ;
+use Carbon\Carbon;
 
 class TravelsCtrl extends Controller {
 
@@ -92,8 +93,11 @@ class TravelsCtrl extends Controller {
 			$bag->merge(['images' => $paths]);
 		}
 
+		$bag->merge(['date_from'=>Carbon::parse($bag->date_from)]);	
+		$bag->merge(['date_to'=>Carbon::parse($bag->date_to)]);	
+
 		$bag->merge(['slug_ar'=>$this->make_slug($bag->name_ar)]);		
-		$bag->merge(['slug_en'=>$this->make_slug($bag->name_en)]) ;
+		$bag->merge(['slug_en'=>$this->make_slug($bag->name_en)]);
 
 		Travels::create($bag->all()) ;
 		return redirect()->to(Url('/').'/admin/travels')->with(['msg'=>'تمت الأضافة بنجاح']) ;
@@ -147,7 +151,11 @@ class TravelsCtrl extends Controller {
 		{
 			$bag->merge(['images' => $travel->images]) ;
 		}
-		
+
+		$bag->merge(['date_from'=>Carbon::parse($bag->date_from)]);	
+		$bag->merge(['date_to'=>Carbon::parse($bag->date_to)]); 
+
+				
 		$bag->merge(['slug_ar'=>$this->make_slug($bag->name_ar)]);		
 		$bag->merge(['slug_en'=>$this->make_slug($bag->name_en)]) ;
 		

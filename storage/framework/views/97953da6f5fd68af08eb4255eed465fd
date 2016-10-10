@@ -1,0 +1,31 @@
+<?php $__env->startSection('tilte' ,'تعديل الرحلة'); ?>
+
+<?php $__env->startSection('content'); ?>
+	<!-- Start Check For Errors  -->
+	<?php if(count($errors) > 0): ?>
+		<div class="alert alert-danger">
+			<ul>
+				<?php foreach($errors->all() as $error): ?>
+					<li><?php echo e($error); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	<?php endif; ?>
+	<!-- Start Check For Errors  -->
+
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="text-center panel-heading">تعديل الرحلة: <?php echo e($travel->name_ar); ?></div>
+			<div class="panel-body col-md-10">
+				<?php echo Form::model($travel,[ 'action'=>['TravelsCtrl@update', $travel->id],'method' => 'PUT', 'class' => 'form-horizontal', 'files'=>true]); ?>
+
+				<?php echo $__env->make('admin.travels._form',['btnName' => 'حفظ التعديلات', 'type'=> 'edit'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<?php echo Form::close(); ?>
+
+			</div>
+		</div>
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

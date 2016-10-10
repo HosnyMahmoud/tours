@@ -15,33 +15,33 @@
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft">
                             <figure>
-                                <a href="#"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-1.jpg" alt=""></a>
+                                <a href="<?php echo e(Url('/')); ?>/"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-1.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#"><?php echo e(Lang::get('index.flights_tickets')); ?></a></h3>
+                            <h3><a href="<?php echo e(Url('/')); ?>/"><?php echo e(Lang::get('index.flights_tickets')); ?></a></h3>
                         </div>
                     </div><!-- end of service -->
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft" data-wow-delay="0.5s">
                             <figure>
-                                <a href="#"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-2.jpg" alt=""></a>
+                                <a href="<?php echo e(Url('/')); ?>/hotels?type=2"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-2.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#"><?php echo e(Lang::get('index.tourism')); ?></a></h3>
+                            <h3><a href="<?php echo e(Url('/')); ?>/hotels?type=2"><?php echo e(Lang::get('index.tourism')); ?></a></h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft" data-wow-delay="1s">
                             <figure>
-                                <a href="#"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-3.jpg" alt=""></a>
+                                <a href="<?php echo e(Url('/')); ?>/hotels?type=1"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-3.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#"><?php echo e(Lang::get('index.haj')); ?></a></h3>
+                            <h3><a href="<?php echo e(Url('/')); ?>/hotels?type=1"><?php echo e(Lang::get('index.haj')); ?></a></h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="service text-center wow fadeInLeft" data-wow-delay="1.5s">
                             <figure>
-                                <a href="#"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-4.jpg" alt=""></a>
+                                <a href="<?php echo e(Url('/')); ?>/hotels"><img src="<?php echo e(Url('/')); ?>/front/images/service-img-4.jpg" alt=""></a>
                             </figure>
-                            <h3><a href="#"><?php echo e(Lang::get('index.hotels_book')); ?></a></h3>
+                            <h3><a href="<?php echo e(Url('/')); ?>/hotels"><?php echo e(Lang::get('index.hotels_book')); ?></a></h3>
                         </div>
                     </div>
                 </div>
