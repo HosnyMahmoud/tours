@@ -10,6 +10,7 @@ use App\Travels;
 use App\AirPort;
 use App\Hotel;
 use App\Cities;
+use App\WishList;
 use Validator;
 use Session;
 use Lang;
@@ -92,7 +93,8 @@ class FrontCtrl extends Controller {
 			return redirect()->to(Url('/').'/travels/'.$id.'-'.$travel['slug_'.Session::get('local')]);
 		}
 		$images = explode('|', $travel->images);
-		return View('front.travels.travel',compact('travel','images'));
+		$isWishlist = (WishList::where('list_id',$id)->where('type',2)->where('user_id',Auth::client()->get()->id)->count() > 0);
+		return View('front.travels.travel',compact('travel','images','isWishlist'));
 	}
 
 	public function hotels(Request $request)
@@ -147,15 +149,50 @@ class FrontCtrl extends Controller {
 			return redirect()->to(Url('/').'/hotels/'.$id.'-'.$hotels['slug_'.Session::get('local')]);
 		}
 		$images = explode('|',$hotels->images);
+		$isWishlist = (WishList::where('list_id',$id)->where('type',1)->where('user_id',Auth::client()->get()->id)->count() > 0);
+		
 		$related = Hotel::where('id','!=',$id)->where('tags_ar','like','%'.$hotels->tags_ar.'%')->orWhere('tags_en','like','%'.$hotels->tags_en.'%')->take(2)->get();
-		return View('front.hotels.hotel',compact('hotels','images','related'));
+		return View('front.hotels.hotel',compact('hotels','images','related','isWishlist'));
 	}
 
 	public function hotelWishlist($id)
 	{
-
+		$isWishlist = (WishList::where('list_id',$id)->where('type',1)->where('user_id',Auth::client()->get()->id)->count() > 0);
+		if($isWishlist === false){
+			WishList::create([
+			'user_id'=>Auth::client()->get()->id,
+			'list_id'=>$id,
+			'type'=>1,
+			]);
+		}else{
+			WishList::where('list_id',$id)->where('type',1)->where('user_id',Auth::client()->get()->id)->delete();
+		}
+		return redirect()->back();
 	}
 
+	public function travelsWishlist($id)
+	{
+		$isWishlist = (WishList::where('list_id',$id)->where('type',2)->where('user_id',Auth::client()->get()->id)->count() > 0);
+		if($isWishlist === false){
+			WishList::create([
+			'user_id'=>Auth::client()->get()->id,
+			'list_id'=>$id,
+			'type'=>2,
+			]);
+		}else{
+			WishList::where('list_id',$id)->where('type',2)->where('user_id',Auth::client()->get()->id)->delete();
+		}
+		return redirect()->back();
+	}
+
+	public function reserve_hotels()
+	{
+		
+	}
+	public function reserve_travels()
+	{
+		
+	}
 
 	public function services()
 	{

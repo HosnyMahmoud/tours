@@ -35,9 +35,28 @@
                         <div class="hotel-price">
                             <span>{{$hotels->price}} {{Lang::get('hotels.le')}}</span>
                         </div>
-                        <a href="{{Url('/')}}/dashboard/travels/{{$hotels->id}}/reserve" class="btn btn-block btn-lg btn-success">{{Lang::get('hotels.reseve_now')}}</a>
+                        @if($isWishlist === true )
+                            <a id="wishlist" href="{{Url('/')}}/dashboard/wishlist/hotels/add/{{$hotels->id}}" title="Remove From wishlist" class="fa fa-heart fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        @else
+                            <a id="wishlist" href="{{Url('/')}}/dashboard/wishlist/hotels/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        @endif
                         <br>
-                        <a id="wishlist" href="{{Url('/')}}/dashboard/wishlist/hotels/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        <br>
+                            <div class="form-group col-md-12">
+                                <label>{{Lang::get('index.adults')}}</label>
+                                <input type="number" name='persons' class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{Lang::get('index.from')}}</label>
+                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="{{Lang::get('index.from')}}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{Lang::get('index.to')}}</label>
+                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="{{Lang::get('index.to')}}">
+                            </div>
+                        <button href="{{Url('/')}}/dashboard/hotels/{{$hotels->id}}/reserve" class="btn btn-block btn-lg btn-success ">{{Lang::get('hotels.reseve_now')}}</button>
+                        
+
                     </div>
                     
                     <div class="hotel-info">
@@ -109,18 +128,20 @@
                 @endforeach
             @endif
         @section('inlineJS')
-        <script type="text/javascript">
-            $('#wishlist').hover(function() {
-               $('#wishlist').addClass('fa-heart');
-               $('#wishlist').removeClass('fa-heart-o');
-              },function(){
-                $('#wishlist').removeClass('fa-heart');
-                $('#wishlist').addClass('fa-heart-o');
-              }
-            );
+         @if($isWishlist === false )
+            <script type="text/javascript">
+                $('#wishlist').hover(function() {
+                   $('#wishlist').addClass('fa-heart');
+                   $('#wishlist').removeClass('fa-heart-o');
+                  },function(){
+                    $('#wishlist').removeClass('fa-heart');
+                    $('#wishlist').addClass('fa-heart-o');
+                  }
+                );
 
-          
-        </script>
+              
+            </script>
+        @endif
         @endsection
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">

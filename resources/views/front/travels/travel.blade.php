@@ -35,6 +35,13 @@
                             <div class="hotel-price">
                                 <span>{{$travel->price}} {{Lang::get('hotels.le')}}</span>
                             </div>
+                             @if($isWishlist === true )
+                                <a id="wishlist" href="{{Url('/')}}/dashboard/wishlist/travels/add/{{$travel->id}}" title="Remove From wishlist" class="fa fa-heart fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                            @else
+                                <a id="wishlist" href="{{Url('/')}}/dashboard/wishlist/travels/add/{{$travel->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                            @endif
+                            <br>
+                            <br>
                             <a href="{{Url('/')}}/dashboard/travels/{{$travel->id}}/reserve" class="btn btn-block btn-lg btn-success">{{Lang::get('travels.reserve_now')}}</a>
                         </div>
                         
@@ -58,6 +65,21 @@
                 
             </div>
         </section>
+        @section('inlineJS')
+         @if($isWishlist === false )
+            <script type="text/javascript">
+                $('#wishlist').hover(function() {
+                   $('#wishlist').addClass('fa-heart');
+                   $('#wishlist').removeClass('fa-heart-o');
+                  },function(){
+                    $('#wishlist').removeClass('fa-heart');
+                    $('#wishlist').addClass('fa-heart-o');
+                  }
+                );
 
+              
+            </script>
+        @endif
+        @endsection
 	@endsection
 @stop

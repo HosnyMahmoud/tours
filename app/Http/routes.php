@@ -230,6 +230,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 
 	Route::get('wishlist','DashboardCtrl@wishlist');
 	Route::get('wishlist/{id}/delete','DashboardCtrl@wishlist_delete');
+	Route::get('wishlist/hotels/add/{id}','FrontCtrl@hotelWishlist');
+	Route::get('wishlist/travels/add/{id}','FrontCtrl@travelsWishlist');
 	
 	Route::get('messages','DashboardCtrl@msgs');
 	Route::post('messages','DashboardCtrl@msgsSend');
@@ -237,7 +239,6 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 	Route::get('edit_personal','DashboardCtrl@editProfile');
 	Route::post('edit_personal','DashboardCtrl@postProfile');
 
-	Route::get('wishlist/hotels/add/{id}','FrontCtrl@hotelWishlist');
 
 
 });
