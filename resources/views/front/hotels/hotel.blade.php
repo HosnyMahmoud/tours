@@ -2,126 +2,126 @@
 @section('title',$hotels['name_'.Session::get('local')])
 @section('content')
 	<section class="content">
-            <div class="container">
-                <div class="page-ttl">
-                    <h1>{!!$hotels['name_'.Session::get('local')]!!}</h1>
-                    <ol class="breadcrumb">
-                        <li><a href="{{Url('/')}}">{{Lang::get('assets.index')}}</a></li>
-                        <li><a href="{{Url('/')}}/hotels">{{Lang::get('hotels.breadcrumbs')}}</a></li>
-                        <li class="active">{!!$hotels['name_'.Session::get('local')]!!}</li>
-                    </ol>
+        <div class="container">
+            <div class="page-ttl">
+                <h1>{!!$hotels['name_'.Session::get('local')]!!}</h1>
+                <ol class="breadcrumb">
+                    <li><a href="{{Url('/')}}">{{Lang::get('assets.index')}}</a></li>
+                    <li><a href="{{Url('/')}}/hotels">{{Lang::get('hotels.breadcrumbs')}}</a></li>
+                    <li class="active">{!!$hotels['name_'.Session::get('local')]!!}</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-8 item-slides">
+                    <!-- masterslider -->
+                    <div class="master-slider ms-skin-metro" id="of-item">
+                        @foreach($images as $img)
+                            <div class="ms-slide">
+                                <img src="masterslider/blank.gif" data-src="{{Url()}}/uploads/hotels/thumb/{{$img}}" alt="{!!$hotels['name_'.Session::get('local')]!!}"/>     
+                                <div class="ms-thumb">
+                                    <img src="{{Url()}}/uploads/hotels/thumb/{{$img}}" />
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <!-- end of masterslider -->
+                </div>
+                
+                <div class="col-sm-4">
+                    <div class="hotel-booking">
+                        <h4>{{Lang::get('hotels.night_price')}}</h4>
+                        <div class="hotel-price">
+                            <span>{{$hotels->price}} {{Lang::get('hotels.le')}}</span>
+                        </div>
+                        <a href="#" class="btn btn-block btn-lg btn-success">{{Lang::get('hotels.reseve_now')}}</a>
+                        <br>
+                        <a id="wishlist" href="{{Url('/')}}/wishlist/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                    </div>
+                    
+                    <div class="hotel-info">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{Lang::get('hotels.about')}}</a></li>
+                        </ul>
+                        
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="overview">
+                                <p>{!!$hotels['desc_'.Session::get('local')]!!}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            @if(count($hotels)>0)
+                
+                <div class="page-ttl" style="margin-top: 50px;">
+                    <h1>{{ Lang::get('hotels.other_hotels')}}</h1>
                     <div class="clearfix"></div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-sm-8 item-slides">
-                        <!-- masterslider -->
-                        <div class="master-slider ms-skin-metro" id="of-item">
-                            @foreach($images as $img)
-                                <div class="ms-slide">
-                                    <img src="masterslider/blank.gif" data-src="{{Url()}}/uploads/hotels/thumb/{{$img}}" alt="{!!$hotels['name_'.Session::get('local')]!!}"/>     
-                                    <div class="ms-thumb">
-                                        <img src="{{Url()}}/uploads/hotels/thumb/{{$img}}" />
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <!-- end of masterslider -->
+                <?php $i = 1;?>
+                @foreach($related as $hotel)
+                <?php $images = explode('|',  $hotel->images); ?>
+                @if($i % 2 == 0)
+                <div class="row hotel">
+                    <div class="col-sm-6 hotel-img">
+                        <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}"><img src="{{Url('/')}}/uploads/hotels/{{$images[0]}}" alt="" class="img-responsive"></a>
                     </div>
-                    
-                    <div class="col-sm-4">
-                        <div class="hotel-booking">
-                            <h4>{{Lang::get('hotels.night_price')}}</h4>
-                            <div class="hotel-price">
-                                <span>{{$hotels->price}} {{Lang::get('hotels.le')}}</span>
-                            </div>
-                            <a href="#" class="btn btn-block btn-lg btn-success">{{Lang::get('hotels.reseve_now')}}</a>
-                            <br>
-                            <a id="wishlist" href="{{Url('/')}}/wishlist/add/{{$hotels->id}}" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
-                        </div>
-                        
-                        <div class="hotel-info">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{Lang::get('hotels.about')}}</a></li>
-                            </ul>
-                            
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="overview">
-                                    <p>{!!$hotels['desc_'.Session::get('local')]!!}</p>
+                    <div class="col-sm-6 hotel-content">
+                        <div class="content-holder">
+                            <div class="content-holder-inner">
+                                <h2 class="hotel-name"><a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}">{{$hotel['name_'.Session::get('local')]}}</a></h2>
+                                <p>{{$hotel['desc_'.Session::get('local')]}}</p>
+                                <div class="hotel-price">
+                                    <span>{{$hotel->price}} {{Lang::get('assets.le')}}</span>
+                                    <small>/{{Lang::get('hotels.night')}}</small>
                                 </div>
+                                <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}" class="show-details">{{Lang::get('hotels.details')}} <i class="{{Lang::get('hotels.arrow-left')}}"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                @if(count($hotels)>0)
-                    
-                    <div class="page-ttl" style="margin-top: 50px;">
-                        <h1>{{ Lang::get('hotels.other_hotels')}}</h1>
-                        <div class="clearfix"></div>
-                    </div>
-                    
-                    <?php $i = 1;?>
-                    @foreach($related as $hotel)
-                    <?php $images = explode('|',  $hotel->images); ?>
-                    @if($i % 2 == 0)
-                    <div class="row hotel">
-                        <div class="col-sm-6 hotel-img">
-                            <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}"><img src="{{Url('/')}}/uploads/hotels/{{$images[0]}}" alt="" class="img-responsive"></a>
-                        </div>
-                        <div class="col-sm-6 hotel-content">
-                            <div class="content-holder">
-                                <div class="content-holder-inner">
-                                    <h2 class="hotel-name"><a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}">{{$hotel['name_'.Session::get('local')]}}</a></h2>
-                                    <p>{{$hotel['desc_'.Session::get('local')]}}</p>
-                                    <div class="hotel-price">
-                                        <span>{{$hotel->price}} {{Lang::get('assets.le')}}</span>
-                                        <small>/{{Lang::get('hotels.night')}}</small>
-                                    </div>
-                                    <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}" class="show-details">{{Lang::get('hotels.details')}} <i class="{{Lang::get('hotels.arrow-left')}}"></i></a>
+                @else
+                <div class="row hotel">
+                    <div class="col-sm-6 hotel-content">
+                        <div class="content-holder">
+                            <div class="content-holder-inner">
+                                <h2 class="hotel-name"><a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}">{{$hotel['name_'.Session::get('local')]}}</a></h2>
+                                <p>{{$hotel['desc_'.Session::get('local')]}}</p>
+                                <div class="hotel-price">
+                                    <span>{{$hotel->price}} {{Lang::get('assets.le')}}</span>
+                                    <small>/{{Lang::get('hotels.night')}}</small>
                                 </div>
+                                <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}" class="show-details"><i class="{{Lang::get('hotels.arrow-right')}}"></i> {{Lang::get('hotels.details')}} </a>
                             </div>
                         </div>
                     </div>
-                    @else
-                    <div class="row hotel">
-                        <div class="col-sm-6 hotel-content">
-                            <div class="content-holder">
-                                <div class="content-holder-inner">
-                                    <h2 class="hotel-name"><a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}">{{$hotel['name_'.Session::get('local')]}}</a></h2>
-                                    <p>{{$hotel['desc_'.Session::get('local')]}}</p>
-                                    <div class="hotel-price">
-                                        <span>{{$hotel->price}} {{Lang::get('assets.le')}}</span>
-                                        <small>/{{Lang::get('hotels.night')}}</small>
-                                    </div>
-                                    <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}" class="show-details"><i class="{{Lang::get('hotels.arrow-right')}}"></i> {{Lang::get('hotels.details')}} </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 hotel-img">
-                            <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}"><img src="{{Url('/')}}/uploads/hotels/{{$images[0]}}" alt="" class="img-responsive"></a>
-                        </div>
+                    <div class="col-sm-6 hotel-img">
+                        <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}"><img src="{{Url('/')}}/uploads/hotels/{{$images[0]}}" alt="" class="img-responsive"></a>
                     </div>
-                    @endif
-                    <?php $i++; ?>
-                    @endforeach
+                </div>
                 @endif
-                @section('inlineJS')
-                <script type="text/javascript">
-                    $('#wishlist').hover(function() {
-                       $('#wishlist').addClass('fa-heart');
-                       $('#wishlist').removeClass('fa-heart-o');
-                      },function(){
-                        $('#wishlist').removeClass('fa-heart');
-                        $('#wishlist').addClass('fa-heart-o');
-                      }
-                    );
+                <?php $i++; ?>
+                @endforeach
+            @endif
+        @section('inlineJS')
+        <script type="text/javascript">
+            $('#wishlist').hover(function() {
+               $('#wishlist').addClass('fa-heart');
+               $('#wishlist').removeClass('fa-heart-o');
+              },function(){
+                $('#wishlist').removeClass('fa-heart');
+                $('#wishlist').addClass('fa-heart-o');
+              }
+            );
 
-                  
-                </script>
-                @endsection
+          
+        </script>
+        @endsection
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">
                         <div class="content-holder">

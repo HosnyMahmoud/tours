@@ -1,126 +1,126 @@
 <?php $__env->startSection('title',$hotels['name_'.Session::get('local')]); ?>
 <?php $__env->startSection('content'); ?>
 	<section class="content">
-            <div class="container">
-                <div class="page-ttl">
-                    <h1><?php echo $hotels['name_'.Session::get('local')]; ?></h1>
-                    <ol class="breadcrumb">
-                        <li><a href="<?php echo e(Url('/')); ?>"><?php echo e(Lang::get('assets.index')); ?></a></li>
-                        <li><a href="<?php echo e(Url('/')); ?>/hotels"><?php echo e(Lang::get('hotels.breadcrumbs')); ?></a></li>
-                        <li class="active"><?php echo $hotels['name_'.Session::get('local')]; ?></li>
-                    </ol>
+        <div class="container">
+            <div class="page-ttl">
+                <h1><?php echo $hotels['name_'.Session::get('local')]; ?></h1>
+                <ol class="breadcrumb">
+                    <li><a href="<?php echo e(Url('/')); ?>"><?php echo e(Lang::get('assets.index')); ?></a></li>
+                    <li><a href="<?php echo e(Url('/')); ?>/hotels"><?php echo e(Lang::get('hotels.breadcrumbs')); ?></a></li>
+                    <li class="active"><?php echo $hotels['name_'.Session::get('local')]; ?></li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-8 item-slides">
+                    <!-- masterslider -->
+                    <div class="master-slider ms-skin-metro" id="of-item">
+                        <?php foreach($images as $img): ?>
+                            <div class="ms-slide">
+                                <img src="masterslider/blank.gif" data-src="<?php echo e(Url()); ?>/uploads/hotels/thumb/<?php echo e($img); ?>" alt="<?php echo $hotels['name_'.Session::get('local')]; ?>"/>     
+                                <div class="ms-thumb">
+                                    <img src="<?php echo e(Url()); ?>/uploads/hotels/thumb/<?php echo e($img); ?>" />
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- end of masterslider -->
+                </div>
+                
+                <div class="col-sm-4">
+                    <div class="hotel-booking">
+                        <h4><?php echo e(Lang::get('hotels.night_price')); ?></h4>
+                        <div class="hotel-price">
+                            <span><?php echo e($hotels->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
+                        </div>
+                        <a href="#" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('hotels.reseve_now')); ?></a>
+                        <br>
+                        <a id="wishlist" href="<?php echo e(Url('/')); ?>/wishlist/add/<?php echo e($hotels->id); ?>" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                    </div>
+                    
+                    <div class="hotel-info">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo e(Lang::get('hotels.about')); ?></a></li>
+                        </ul>
+                        
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="overview">
+                                <p><?php echo $hotels['desc_'.Session::get('local')]; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <?php if(count($hotels)>0): ?>
+                
+                <div class="page-ttl" style="margin-top: 50px;">
+                    <h1><?php echo e(Lang::get('hotels.other_hotels')); ?></h1>
                     <div class="clearfix"></div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-sm-8 item-slides">
-                        <!-- masterslider -->
-                        <div class="master-slider ms-skin-metro" id="of-item">
-                            <?php foreach($images as $img): ?>
-                                <div class="ms-slide">
-                                    <img src="masterslider/blank.gif" data-src="<?php echo e(Url()); ?>/uploads/hotels/thumb/<?php echo e($img); ?>" alt="<?php echo $hotels['name_'.Session::get('local')]; ?>"/>     
-                                    <div class="ms-thumb">
-                                        <img src="<?php echo e(Url()); ?>/uploads/hotels/thumb/<?php echo e($img); ?>" />
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <!-- end of masterslider -->
+                <?php $i = 1;?>
+                <?php foreach($related as $hotel): ?>
+                <?php $images = explode('|',  $hotel->images); ?>
+                <?php if($i % 2 == 0): ?>
+                <div class="row hotel">
+                    <div class="col-sm-6 hotel-img">
+                        <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><img src="<?php echo e(Url('/')); ?>/uploads/hotels/<?php echo e($images[0]); ?>" alt="" class="img-responsive"></a>
                     </div>
-                    
-                    <div class="col-sm-4">
-                        <div class="hotel-booking">
-                            <h4><?php echo e(Lang::get('hotels.night_price')); ?></h4>
-                            <div class="hotel-price">
-                                <span><?php echo e($hotels->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
-                            </div>
-                            <a href="#" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('hotels.reseve_now')); ?></a>
-                            <br>
-                            <a id="wishlist" href="<?php echo e(Url('/')); ?>/wishlist/add/<?php echo e($hotels->id); ?>" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
-                        </div>
-                        
-                        <div class="hotel-info">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo e(Lang::get('hotels.about')); ?></a></li>
-                            </ul>
-                            
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="overview">
-                                    <p><?php echo $hotels['desc_'.Session::get('local')]; ?></p>
+                    <div class="col-sm-6 hotel-content">
+                        <div class="content-holder">
+                            <div class="content-holder-inner">
+                                <h2 class="hotel-name"><a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><?php echo e($hotel['name_'.Session::get('local')]); ?></a></h2>
+                                <p><?php echo e($hotel['desc_'.Session::get('local')]); ?></p>
+                                <div class="hotel-price">
+                                    <span><?php echo e($hotel->price); ?> <?php echo e(Lang::get('assets.le')); ?></span>
+                                    <small>/<?php echo e(Lang::get('hotels.night')); ?></small>
                                 </div>
+                                <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>" class="show-details"><?php echo e(Lang::get('hotels.details')); ?> <i class="<?php echo e(Lang::get('hotels.arrow-left')); ?>"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <?php if(count($hotels)>0): ?>
-                    
-                    <div class="page-ttl" style="margin-top: 50px;">
-                        <h1><?php echo e(Lang::get('hotels.other_hotels')); ?></h1>
-                        <div class="clearfix"></div>
-                    </div>
-                    
-                    <?php $i = 1;?>
-                    <?php foreach($related as $hotel): ?>
-                    <?php $images = explode('|',  $hotel->images); ?>
-                    <?php if($i % 2 == 0): ?>
-                    <div class="row hotel">
-                        <div class="col-sm-6 hotel-img">
-                            <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><img src="<?php echo e(Url('/')); ?>/uploads/hotels/<?php echo e($images[0]); ?>" alt="" class="img-responsive"></a>
-                        </div>
-                        <div class="col-sm-6 hotel-content">
-                            <div class="content-holder">
-                                <div class="content-holder-inner">
-                                    <h2 class="hotel-name"><a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><?php echo e($hotel['name_'.Session::get('local')]); ?></a></h2>
-                                    <p><?php echo e($hotel['desc_'.Session::get('local')]); ?></p>
-                                    <div class="hotel-price">
-                                        <span><?php echo e($hotel->price); ?> <?php echo e(Lang::get('assets.le')); ?></span>
-                                        <small>/<?php echo e(Lang::get('hotels.night')); ?></small>
-                                    </div>
-                                    <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>" class="show-details"><?php echo e(Lang::get('hotels.details')); ?> <i class="<?php echo e(Lang::get('hotels.arrow-left')); ?>"></i></a>
+                <?php else: ?>
+                <div class="row hotel">
+                    <div class="col-sm-6 hotel-content">
+                        <div class="content-holder">
+                            <div class="content-holder-inner">
+                                <h2 class="hotel-name"><a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><?php echo e($hotel['name_'.Session::get('local')]); ?></a></h2>
+                                <p><?php echo e($hotel['desc_'.Session::get('local')]); ?></p>
+                                <div class="hotel-price">
+                                    <span><?php echo e($hotel->price); ?> <?php echo e(Lang::get('assets.le')); ?></span>
+                                    <small>/<?php echo e(Lang::get('hotels.night')); ?></small>
                                 </div>
+                                <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>" class="show-details"><i class="<?php echo e(Lang::get('hotels.arrow-right')); ?>"></i> <?php echo e(Lang::get('hotels.details')); ?> </a>
                             </div>
                         </div>
                     </div>
-                    <?php else: ?>
-                    <div class="row hotel">
-                        <div class="col-sm-6 hotel-content">
-                            <div class="content-holder">
-                                <div class="content-holder-inner">
-                                    <h2 class="hotel-name"><a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><?php echo e($hotel['name_'.Session::get('local')]); ?></a></h2>
-                                    <p><?php echo e($hotel['desc_'.Session::get('local')]); ?></p>
-                                    <div class="hotel-price">
-                                        <span><?php echo e($hotel->price); ?> <?php echo e(Lang::get('assets.le')); ?></span>
-                                        <small>/<?php echo e(Lang::get('hotels.night')); ?></small>
-                                    </div>
-                                    <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>" class="show-details"><i class="<?php echo e(Lang::get('hotels.arrow-right')); ?>"></i> <?php echo e(Lang::get('hotels.details')); ?> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 hotel-img">
-                            <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><img src="<?php echo e(Url('/')); ?>/uploads/hotels/<?php echo e($images[0]); ?>" alt="" class="img-responsive"></a>
-                        </div>
+                    <div class="col-sm-6 hotel-img">
+                        <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><img src="<?php echo e(Url('/')); ?>/uploads/hotels/<?php echo e($images[0]); ?>" alt="" class="img-responsive"></a>
                     </div>
-                    <?php endif; ?>
-                    <?php $i++; ?>
-                    <?php endforeach; ?>
+                </div>
                 <?php endif; ?>
-                <?php $__env->startSection('inlineJS'); ?>
-                <script type="text/javascript">
-                    $('#wishlist').hover(function() {
-                       $('#wishlist').addClass('fa-heart');
-                       $('#wishlist').removeClass('fa-heart-o');
-                      },function(){
-                        $('#wishlist').removeClass('fa-heart');
-                        $('#wishlist').addClass('fa-heart-o');
-                      }
-                    );
+                <?php $i++; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php $__env->startSection('inlineJS'); ?>
+        <script type="text/javascript">
+            $('#wishlist').hover(function() {
+               $('#wishlist').addClass('fa-heart');
+               $('#wishlist').removeClass('fa-heart-o');
+              },function(){
+                $('#wishlist').removeClass('fa-heart');
+                $('#wishlist').addClass('fa-heart-o');
+              }
+            );
 
-                  
-                </script>
-                <?php $__env->stopSection(); ?>
+          
+        </script>
+        <?php $__env->stopSection(); ?>
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">
                         <div class="content-holder">
