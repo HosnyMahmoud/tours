@@ -1,0 +1,26 @@
+	<?php $__env->startSection('title',Lang::get('loginReg.titleLogin')); ?>
+	<?php $__env->startSection('content'); ?>
+		<section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="alert alert-success text-center">
+                            <h2>
+                        		<i class="fa fa-check"></i>
+                            	<?php echo e(Lang::get('assets.success_title')); ?>
+
+                            </h2>
+                           	<p>
+                           		<?php echo e(Lang::get('assets.regSuccessMsg')); ?><br>
+                           		<?php echo e(Session::get('email')); ?><br>
+                           		<?php echo Lang::get('assets.clickHereToHome'); ?>
+
+                           	</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

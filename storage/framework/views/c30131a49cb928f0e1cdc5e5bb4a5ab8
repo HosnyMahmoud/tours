@@ -1,0 +1,2 @@
+
+أضغط <a href="<?php echo e(Url('/')); ?>/verify/<?php echo e($code); ?>"> هــــنا </a> لتفعيل حسابك .
