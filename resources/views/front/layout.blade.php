@@ -49,9 +49,9 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <ul class="contact-info">
-                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> <span> {{$settings->email}}</span></li>
-                                <?php $numbers = explode('-',$settings->phone); ?>
-                                <li><i class="fa fa-phone-square" aria-hidden="true"></i> <span> {{$numbers[0]}} - {{$numbers[1]}}</span></li>
+                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> <span> {{@$settings->email}}</span></li>
+                                <?php @$numbers = explode('-',@$settings->phone); ?>
+                                <li><i class="fa fa-phone-square" aria-hidden="true"></i> <span> {{@$numbers[0]}} - {{@$numbers[1]}}</span></li>
                                 <li class="social">
                                     <a target="_blank" href="{{$settings['facebook']}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     <a target="_blank" href="{{$settings['twitter']}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
