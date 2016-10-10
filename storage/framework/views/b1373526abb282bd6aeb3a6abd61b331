@@ -18,6 +18,7 @@
 	<?php if(@$type == 'edit'): ?>
 	<?php echo Form::file('log'); ?>
 
+		<img src="<?php echo Url('/'); ?>/uploads/hotels/logo/<?php echo e($hotel->logo); ?>" style="height:150px;width:200px;padding:5px">
 	<?php else: ?>
 	<?php echo Form::file('log',['required' => 'required']); ?>
 

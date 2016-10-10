@@ -19,7 +19,6 @@ class CreateContactUsTable extends Migration {
 			$table->string('title_en') ;
 			$table->text('content_ar') ;
 			$table->text('content_en') ;
-			$table->string('icon') ;
 			$table->timestamps();
 
 		});

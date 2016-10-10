@@ -50,8 +50,7 @@
 				<?php echo $cities->render(); ?>
 
 			<?php else: ?>
-				<div class="alert alert-danger">No Record To Show .</div> 
-
+				<div class="alert alert-info">لا توجد بيانات للعرض</div> 		
 			<?php endif; ?>
 		</div>	
 	</div>

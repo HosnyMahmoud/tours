@@ -24,6 +24,8 @@
 			
 			<tr>
 				<td>{{$row->id}}</td>
+				<td>{{$row->title_ar}}</td>
+				<td>{{$row->title_en}}</td>
 				<td>
 					<a href="{!! Url('/') !!}/admin/about/{{ $row->id }}/edit" class="btn btn-info">تعديل</a>
 				</td>

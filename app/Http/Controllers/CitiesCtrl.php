@@ -39,7 +39,8 @@ class CitiesCtrl extends Controller {
 	public function store(Request $request)
 	{	
 		Cities::create($request->all()) ;
-		return redirect()->to(Url('/').'/admin/cities')->with(['msg'=>'تمت الأضافة بنجاح']) ;		
+		  
+		return redirect()->to(Url('/').'/admin/countries/'.$request->country_id)->with(['msg'=>'تمت الأضافة بنجاح']) ;		
 	}
 
 	/**
@@ -54,7 +55,7 @@ class CitiesCtrl extends Controller {
 		$countries = Countries::lists('name_ar' , 'id');
 		return view('admin.countries.cities.edit' , compact('city','countries')) ; 
 	}
-
+	
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -64,7 +65,7 @@ class CitiesCtrl extends Controller {
 	public function update(Request $request,$id)
 	{
 		Cities::findOrfail($id)->update($request->all());
-		return redirect()->to(Url('/').'/admin/cities')->with(['msg'=>'تم التعديل بنجاح']);
+		return redirect()->to(Url('/').'/admin/countries/'.$request->country_id)->with(['msg'=>'تم التعديل بنجاح']);
 	}
 
 	/**
@@ -75,8 +76,9 @@ class CitiesCtrl extends Controller {
 	 */
 	public function destroy($id)
 	{
-		Cities::findOrfail($id)->delete();
-		return redirect()->to(Url('/').'/admin/cities')->with(['msg'=>'تم الحذف بنجاح']);
+		$city = Cities::findOrfail($id);
+		$city->delete();
+		return redirect()->to(Url('/').'/admin/countries/'.$city->country_id)->with(['msg'=>'تم الحذف بنجاح']);
 	}
 
 }

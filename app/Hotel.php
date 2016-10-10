@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hotel extends Model {
 
+	protected $table = 'hotels' ;
 	protected $fillable =
 		['name_ar', 'name_en', 'desc_ar','desc_en','stars', 
 						'num_of_per','logo', 'images','price','country_id',

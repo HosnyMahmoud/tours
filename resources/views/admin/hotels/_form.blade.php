@@ -12,6 +12,7 @@
 	{!! Form::label('log', 'اضافة لوجو') !!}
 	@if(@$type == 'edit')
 	{!! Form::file('log') !!}
+		<img src="{!!Url('/')!!}/uploads/hotels/logo/{{$hotel->logo}}" style="height:150px;width:200px;padding:5px">
 	@else
 	{!! Form::file('log',['required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('log') }}</small>

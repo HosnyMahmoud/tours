@@ -78,14 +78,14 @@ class CountriesCtrl extends Controller {
 	public function update(Request $request, $id)
 	{
 
-		$validation = Validator::make($bag->all(),Countries::rules('add')) ;
+		$validation = Validator::make($request->all(),Countries::rules('add')) ;
 		if($validation->fails())
 		{
 			return redirect()->back()->withErrors($validation)->withInput() ;
 		} 
 		
 		Countries::findOrFail($id)->update($request->all()) ;
-		return redirect()->to(Url('/').'/admin/countries')->with(['msg'=> 'تمت الأضافة بنجاح']) ;
+		return redirect()->to(Url('/').'/admin/countries')->with(['msg'=> 'تمت الحفظ بنجاح']) ;
 	}
 
 	/**

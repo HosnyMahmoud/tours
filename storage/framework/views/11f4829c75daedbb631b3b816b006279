@@ -1,5 +1,4 @@
-	<?php $__env->startSection('title','عن الشركة'); ?>
-	<?php $__env->startSection('content'); ?>
+
 		
 		<?php if(Session::has('msg')): ?>
 			<div class="alert alert-success">
@@ -9,9 +8,7 @@
 		<?php endif; ?>
 
 		<div class="col-md-12">
-			
 			<div class="form-group<?php echo e($errors->has('title_ar') ? ' has-error' : ''); ?>">
-
 			    <?php echo Form::label('title_ar', 'العنوان باللغة العربية'); ?>
 
 			    <?php echo Form::text('title_ar', null, ['class' => 'form-control']); ?>
@@ -43,15 +40,8 @@
 			    <small class="text-danger"><?php echo e($errors->first('content_en')); ?></small>
 			</div>
 
-			<button type="submit" class="btn btn-primary"> <?php echo e($btnName); ?> </button>
 			
-		
 
 		</div>
 
-		
-	<?php $__env->stopSection(); ?>
-<?php $__env->stopSection(); ?>
-
-
-<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<button type="submit" class="btn btn-primary"> <?php echo e($btnName); ?> </button>

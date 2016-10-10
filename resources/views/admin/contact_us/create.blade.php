@@ -9,6 +9,7 @@
 			<div class="panel-body col-md-10">
 				{!! Form::open(['method' => 'POST', 'action'=>'ContactUsCtrl@store','class' => 'form-horizontal','files'=>true]) !!}
 					@include('admin.contact_us._form' ,[ 'btnName'=>'أضافة','type'=>'add'])
+					
 				{!! Form::close() !!}
 			</div>	
 		</div>

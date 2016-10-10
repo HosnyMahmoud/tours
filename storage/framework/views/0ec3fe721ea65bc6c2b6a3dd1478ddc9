@@ -24,6 +24,8 @@
 			
 			<tr>
 				<td><?php echo e($row->id); ?></td>
+				<td><?php echo e($row->title_ar); ?></td>
+				<td><?php echo e($row->title_en); ?></td>
 				<td>
 					<a href="<?php echo Url('/'); ?>/admin/about/<?php echo e($row->id); ?>/edit" class="btn btn-info">تعديل</a>
 				</td>

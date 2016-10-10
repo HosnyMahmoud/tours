@@ -46,8 +46,7 @@
 				</table>
 				{!!$cities->render()!!}
 			@else
-				<div class="alert alert-danger">No Record To Show .</div> 
-
+				<div class="alert alert-info">لا توجد بيانات للعرض</div> 		
 			@endif
 		</div>	
 	</div>

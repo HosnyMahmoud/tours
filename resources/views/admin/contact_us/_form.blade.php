@@ -1,6 +1,4 @@
-@extends('admin.layout')
-	@section('title','عن الشركة')
-	@section('content')
+
 		
 		@if (Session::has('msg'))
 			<div class="alert alert-success">
@@ -9,9 +7,7 @@
 		@endif
 
 		<div class="col-md-12">
-			
 			<div class="form-group{{ $errors->has('title_ar') ? ' has-error' : '' }}">
-
 			    {!! Form::label('title_ar', 'العنوان باللغة العربية') !!}
 			    {!! Form::text('title_ar', null, ['class' => 'form-control']) !!}
 			    <small class="text-danger">{{ $errors->first('title_ar') }}</small>
@@ -35,13 +31,8 @@
 			    <small class="text-danger">{{ $errors->first('content_en') }}</small>
 			</div>
 
-			<button type="submit" class="btn btn-primary"> {{$btnName}} </button>
 			
-		
 
 		</div>
 
-		
-	@endsection
-@stop
-
+<button type="submit" class="btn btn-primary"> {{$btnName}} </button>

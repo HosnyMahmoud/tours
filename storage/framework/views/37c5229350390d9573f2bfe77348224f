@@ -1,0 +1,50 @@
+<?php $__env->startSection('title','بيانات الفندق'); ?>
+	
+<?php $__env->startSection('content'); ?>
+
+<div class="panel panel-info">
+	<div class="panel panel-heading text-center">
+		تفاصيل الفندق
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+		    <thead>
+		        <tr>
+			        <th>ID # </th>
+			        <th><?php echo e($hotel->id); ?></th>
+		    	</tr>
+		        <tr>
+			        <th>أسم الفندق</th>
+			        <th><?php echo e($hotel->name_ar); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>الدولة</th>
+			        <th><?php echo e($countries->find($hotel->country_id)['name_ar']); ?></th>
+
+		    	</tr>
+		    	<tr>
+			         <th>السعر</th>
+			         <th><?php echo e($hotel->price); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>عدد النجوم</th>
+			         <th><?php echo e($hotel->stars); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th>تمت الأضافة في :</th>
+			         <th><?php echo e($hotel->created_at); ?></th>
+		    	</tr>
+		    	<tr>
+			         <th> أخر تعديل في :</th>
+			         <th><?php echo e($hotel->updated_at); ?></th>
+		    	</tr>
+		    </thead>
+		</table>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

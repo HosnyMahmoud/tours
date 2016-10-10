@@ -11,6 +11,7 @@ class ContactUsCtrl extends Controller {
 
 	public function index()
 	{	
+
 		$rows = contactUs::paginate(30);
 		return view('admin.contact_us.index' , compact('rows')) ;
 	}
@@ -48,7 +49,7 @@ class ContactUsCtrl extends Controller {
 	{
 		// Countries 
 		$row = contactUs::findOrFail($id);
-		return view('admin.countries.countries.edit' , compact('row')) ;
+		return view('admin.contact_us.edit' , compact('row')) ;
 	}
 
 	public function update(Request $request , $id)
@@ -62,8 +63,14 @@ class ContactUsCtrl extends Controller {
 		$data = $request->all();
 	    contactUs::findOrFail($id)->update($data);
 
-        return redirect()->back()->with(['msg'=>'تم حفظ التعديلات']); 
+        return redirect()->to(Url('/').'/admin/about')->with(['msg'=>'تم حفظ التعديلات']); 
 	
+	}
+
+	public function destroy($id)
+	{
+		contactUs::findOrFail($id)->delete() ;
+        return redirect()->to(Url('/').'/admin/about')->with(['msg'=>'تم الحذف بنجاح']); 
 	}
 
 		
