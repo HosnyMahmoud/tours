@@ -147,6 +147,10 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	// Users
 	Route::resource('users','UsersCtrl');
 	// Users
+
+	Route::resource('testimonials','TestimonialsCtrl');
+	Route::get('testimonials/{pid}/toggle','TestimonialsCtrl@toggle');
+
 	
 	// bookings
 	Route::get('bookings/cars','BookingsCtrl@getCars');
@@ -249,6 +253,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 	Route::get('edit_personal','DashboardCtrl@editProfile');
 	Route::post('edit_personal','DashboardCtrl@postProfile');
 
+	Route::get('new_testimonial','DashboardCtrl@new_testimonial');
+	Route::post('new_testimonial','DashboardCtrl@post_testimonial');
+	
 
 
 });

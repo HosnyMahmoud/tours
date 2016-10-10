@@ -349,9 +349,16 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 
+					<li class="{{Request::is('admin/testimonials*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/testimonials">
+						<i class="fa fa-envelope"></i>
+						<span class="title">اراء العملاء</span>
+						</a>
+					</li>
+						
 					<li class="{{Request::is('admin/messages*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/messages">
-						<i class="fa fa-info"></i>
+						<i class="fa fa-envelope"></i>
 						<span class="title">الرسائل</span>
 						</a>
 					</li>

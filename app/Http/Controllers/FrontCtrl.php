@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Airline_tickets_reserv;
 use App\HotelsReservations;
 use App\ReservTravel;
+use App\Testimonials;
 use App\Countries;
 use App\Settings;
 use App\Travels;
 use App\AirPort;
 use App\Hotel;
+use App\User;
 use App\Cities;
 use App\WishList;
 use App\contactUs;
@@ -28,8 +30,10 @@ class FrontCtrl extends Controller {
 	{
 		$travels = Travels::latest('created_at')->take(4)->get();
 		$countries = Countries::lists('name_'.Session::get('local'),'id'); 
-		//dd($travels);
-		return View('front.index',compact('travels','countries'));
+		$testimonials = Testimonials::where('status',1)->latest('created_at')->take(5)->get();
+		$users = User::all();
+		
+		return View('front.index',compact('travels','countries','testimonials','users'));
 	}
 
 	public function get_Airports($id)
@@ -51,21 +55,26 @@ class FrontCtrl extends Controller {
 	public function reserv_tickets(Request $request)
 	{
 		$rules = [
-			'airport_from'		=>'required',
-			'airport_to'		=>'required',
+			'airport_from'		=>'required|different:airport_to',
+			'airport_to'		=>'required|different:airport_from',
 			'num_persons'		=>'required|numeric',
-			'num_child'			=>'required|numeric',	
+			'num_child'			=>'numeric',	
 			'date_from'			=>'required|date',
-			'date_to'			=>'required|date',
+			'date_to'			=>'date',
 		];
 
 		$validator = Validator::make($request->all(),$rules);
 		if($validator->fails()){
 			return redirect()->back()->withErrors($validator)->withInput();
-		}else
-		{
+		}else{
 			$request->merge(['date_from'=>Carbon::parse($request->date_from)]);
-			$request->merge(['date_to'=>Carbon::parse($request->date_to)]);
+			if($request->has('date_to')){
+				$request->merge(['date_to'=>Carbon::parse($request->date_to)]);
+				$request->merge(['type'=>1]);
+			}else{
+				$request->merge(['date_to'=>NULL]);
+				$request->merge(['type'=>0]);
+			}
 			$request->merge(['user_id'=>Auth::client()->get()->id]);
 			Airline_tickets_reserv::create($request->all());
 			return redirect()->back()->with(['msg'=>Lang::get('index.done_reserv')]);
@@ -259,6 +268,7 @@ class FrontCtrl extends Controller {
 
 	public function sendContact(Request $request)
 	{
+		$settings = Settings::first();
 		$rules = [
 			'name'		=>'required',
 			'email'		=>'required|email',
@@ -276,8 +286,13 @@ class FrontCtrl extends Controller {
 			'subject' => $request->subject,
 			'msg' => $request->msg,
 		];
-		Mail::send('emails.feedback', $data, function($message) use($request) {
-		   $message->to('eng.ahmedmgad@gmail.com', 'Senior Ahmed gad')->from($request->email,$request->name)->subject($request->about);
+		Mail::send('emails.feedback', $data, function($message) use($request,$settings) {
+		   $message->subject($request->about);
+		   $message->from($request->email,$request->name);
+		   $message->to($settings->email,$settings->email);
 		});
+		$message = (Session::get('local') == 'ar') ? 'تم إرسال رسالتك بنجاح': 'Your Message Sent Suuceesfulluy';
+		return redirect()->back()->with(['msg'=>$message]);
+
 	}
 }
