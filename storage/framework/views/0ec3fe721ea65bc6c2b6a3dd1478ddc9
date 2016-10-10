@@ -1,0 +1,47 @@
+<?php $__env->startSection('title', 'عن الشركة'); ?>
+
+<?php $__env->startSection('content'); ?>
+<div>
+	<a href="<?php echo Url('/'); ?>/admin/about/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+	<br />
+	<br />
+	<?php if(Session::has('msg')): ?>
+	<div class="alert alert-success">
+		<?php echo e(Session::get('msg')); ?>
+
+	</div>
+	<?php endif; ?>
+</div>
+<div class="col-md-12">
+	<div class="panel panel-primary">
+		<table class="table table-bordered table-responsive">
+			<tr>
+				<th>#ID</th>
+				<th>الاسم باللغة باللغة العربية</th>
+				<th>الاسم باللغة باللغة الأنجليزية</th>
+			</tr>
+			<?php foreach($rows as $row): ?>
+			
+			<tr>
+				<td><?php echo e($row->id); ?></td>
+				<td>
+					<a href="<?php echo Url('/'); ?>/admin/about/<?php echo e($row->id); ?>/edit" class="btn btn-info">تعديل</a>
+				</td>
+				<td>
+					<?php echo Form::open(['method'=>'DELETE', 'action'=>['ContactUsCtrl@destroy', $row->id ]]); ?>
+
+					<?php echo Form::submit('حذف', [ 'class'=> 'btn btn-danger', 'onClick'=>'return confirm("سيتم الحذف هل انت متأكد من الحذف ؟")'] ); ?>
+
+					<?php echo Form::close(); ?>
+
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+</div>
+
+<div class="paginate"><?php echo $rows->render(); ?></div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

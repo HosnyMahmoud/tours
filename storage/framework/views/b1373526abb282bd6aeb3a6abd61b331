@@ -1,0 +1,171 @@
+<div class="form-group<?php echo e($errors->has('name_ar') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('name_ar', 'الأسم باللغة العربية'); ?>
+
+	<?php echo Form::text('name_ar', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('name_ar')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('name_en') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('name_en', 'الأسم باللغة الأنجليزية'); ?>
+
+	<?php echo Form::text('name_en', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('name_en')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('log') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('log', 'اضافة لوجو'); ?>
+
+	<?php if(@$type == 'edit'): ?>
+	<?php echo Form::file('log'); ?>
+
+	<?php else: ?>
+	<?php echo Form::file('log',['required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('log')); ?></small>
+	<?php endif; ?>
+</div>
+<div class="form-group<?php echo e($errors->has('country_id') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('country_id', 'الدولة'); ?>
+
+	<?php echo Form::select('country_id', $countries, null, ['id' => 'country_id', 'class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('country_id')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('city_id') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('city_id', 'المحافظة'); ?>
+
+	<?php echo Form::select('city_id', $cities, null, ['id' => 'city_id', 'class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('city_id')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('num_of_per') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('num_of_per', 'عدد الأشخاص '); ?>
+
+	<?php echo Form::text('num_of_per', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('num_of_per')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('desc_ar') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('desc_ar', 'الوصف باللغة العربية'); ?>
+
+	<?php echo Form::textarea('desc_ar', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('desc_ar')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('desc_en') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('desc_en', 'الوصف باللغة الأنجليزية'); ?>
+
+	<?php echo Form::textarea('desc_en', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('desc_en')); ?></small>
+</div>
+<table class="table">
+	<?php if($type == "edit"): ?>
+		<?php $images = explode('|',$hotel->images);?>
+		<?php if($hotel->images !== ''): ?>
+			<?php foreach($images as $img): ?>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+					<div class="thumbnail">
+						<a href="<?php echo e(Url('uploads/hotels/'.$img)); ?>" target="_blank">
+							<img src="<?php echo e(Url('uploads/hotels/'.$img)); ?>" style="height:100px;">
+						</a>
+						<a href="<?php echo e(Url('admin/hotels/')); ?>/delete_img/<?php echo e($hotel->id); ?>/<?php echo e($img); ?>">حذف</a>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	<?php endif; ?>
+	<tr>
+		<td>
+			<label class="control-label"  style="text-align:right">صوره الفندق</label>
+		</td>
+		<td><div  class="col-md-10">
+			<input name="image[]" type="file">
+			<small class="text-danger"></small>
+		</div></td>
+	</tr>
+	<tbody class="input_fields_wrap">
+		
+	</tbody>
+	<tr>
+		<td>
+			<a class="btn btn-primary" id="addmore">إضافه المزيد</i></a>
+		</td>
+	</tr>
+</table>
+
+<div class="form-group<?php echo e($errors->has('stars') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('stars', 'عدد النجوم'); ?>
+
+	<?php echo Form::select('stars', ['1','2','3','4','5','6','7'], null, ['id' => 'stars', 'class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('stars')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('price') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('price', 'السعر'); ?>
+
+	<?php echo Form::text('price', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('price')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('meta_desc_ar') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('meta_desc_en', 'Meta descriptions english'); ?>
+
+	<?php echo Form::textarea('meta_desc_en', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('meta_desc_ar')); ?></small>
+</div>
+<div class="form-group<?php echo e($errors->has('meta_desc_ar') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('meta_desc_ar', 'Meta descriptions arabic'); ?>
+
+	<?php echo Form::textarea('meta_desc_ar', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('meta_desc_ar')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('tags_ar') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('tags_ar', 'الكلمات الدلالية باللغة العربية'); ?>
+
+	<?php echo Form::text('tags_ar', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('tags_ar')); ?></small>
+</div>
+
+<div class="form-group<?php echo e($errors->has('tags_en') ? ' has-error' : ''); ?>">
+	<?php echo Form::label('tags_en', 'الكلمات الدلالية باللغة الأنجليزية'); ?>
+
+	<?php echo Form::text('tags_en', null, ['class' => 'form-control', 'required' => 'required']); ?>
+
+	<small class="text-danger"><?php echo e($errors->first('tags_en')); ?></small>
+</div>
+
+<button class="btn btn-info">
+	<?php if(@$btnName): ?>
+		<?php echo e($btnName); ?>
+
+	<?php endif; ?>
+</button>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	var max_fields      = 15; //maximum input boxes allowed
+	var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+	var add_button      = $("#addmore"); //Add button ID
+	
+	var x = 1; //initlal text box count
+	$(add_button).click(function(e){ //on add input button click
+	e.preventDefault();
+	if(x < max_fields){ //max input box allowed
+	x++; //text box increment
+	$(wrapper).append('<tr> <td> <label class="control-label" style="text-align:right">صوره الفندق '+ x +'  (<a class="remove_field">x</a>) </label></td> <td><div  class="col-md-11"> <input name="image[]" type="file"> <small class="text-danger"></small> </div></td> </tr>');//add input box
+	}
+	});
+	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+	
+	var remo = $(this).parent().parent().parent().hide('slow').remove();
+	x--;
+	})
+	});
+</script>

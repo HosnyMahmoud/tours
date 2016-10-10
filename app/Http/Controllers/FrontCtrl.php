@@ -192,7 +192,7 @@ class FrontCtrl extends Controller {
 		];
 
 		 Mail::send('emails.feedback', $data, function($message) use($request) {
-               $message->to('eng.ahmedmgad@gmail.com', 'Senior Ahmed gad 2r2osha')->from($request->email,$request->name)->subject($request->about);
+               $message->to('eng.ahmedmgad@gmail.com', 'Senior Ahmed gad')->from($request->email,$request->name)->subject($request->about);
           });
 
 			}

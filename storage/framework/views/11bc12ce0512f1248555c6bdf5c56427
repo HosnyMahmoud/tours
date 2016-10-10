@@ -1,0 +1,38 @@
+ 
+ 	<?php $__env->startSection('breadcrumbs'); ?>
+ 		<i class="<?php echo e(Lang::get('dashboard.arrow')); ?>"></i>
+ 		<?php echo e(Lang::get('dashboard.wishlist')); ?>
+
+ 	<?php $__env->stopSection(); ?>
+
+ 	<?php $__env->startSection('title',Lang::get('dashboard.wishlist')); ?>
+    <?php $__env->startSection('dashboard'); ?>
+    	<table class="table table-responsive table-striped table-bordered">
+    		<thead>
+    			<th>#</th>
+    			<th><?php echo e(Lang::get('dashboard.name')); ?></th>
+    			<th><?php echo e(Lang::get('dashboard.type')); ?></th>
+    			<th colspan="2" width="10%" class="text-center"><?php echo e(Lang::get('dashboard.options')); ?></th>
+    		</thead>
+    		<?php $i = ($wishlist->currentPage() * $wishlist->perPage())-$wishlist->perPage()+1; ?>
+    		<?php foreach($wishlist as $list): ?>
+    		<tr>	
+    			<td width="1%"><?php echo e($i); ?></td>
+    			<?php if($list->type == 1): ?>
+    				<td><?php echo e($hotels->find($list->list_id)['name_'.Session::get('local')]); ?></td>
+    			<?php elseif($list->type == 2): ?>
+    				<td><?php echo e($travels->find($list->list_id)['name_'.Session::get('local')]); ?></td>
+    			<?php endif; ?>
+    			<td><?php echo e($type[$list->type]); ?></td>
+    			<td><a href="<?php echo e(Url('/')); ?>/<?php echo e(($list->type == 1)?'hotels':'travels'); ?>/<?php echo e($list->list_id); ?>-<?php echo e(($list->type == 1)?$hotels->find($list->list_id)['slug_'.Session::get('local')]:$travels->find($list->list_id)['slug_'.Session::get('local')]); ?>" class="btn btn-success"><?php echo e(Lang::get('dashboard.visit')); ?></a></td>
+    			<td><a href="<?php echo e(Url('/')); ?>/dashboard/wishlist/<?php echo e($list->id); ?>/delete" class="btn btn-danger"><?php echo e(Lang::get('dashboard.delete')); ?></a></td>
+    		</tr>	
+    		<?php $i++; ?>
+    		<?php endforeach; ?>
+    	</table>
+    	<?php echo $wishlist->render(); ?>
+
+    <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('front.dashboard.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

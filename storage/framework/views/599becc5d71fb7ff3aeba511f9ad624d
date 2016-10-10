@@ -1,0 +1,65 @@
+<?php $__env->startSection('title', 'الرحلات'); ?>
+
+<?php $__env->startSection('content'); ?>
+<div>
+	<a href="<?php echo Url('/'); ?>/admin/travels/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+	<br />
+	<br />
+	<?php if(Session::has('msg')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('msg')); ?>
+
+		</div>
+	<?php endif; ?>
+</div>
+<div class="col-md-12">
+	<div class="panel panel-primary">
+		<div class="text-center panel-heading">الرحلات</div>
+		<div class="panel-body">
+			
+			<table class="table table-bordered table-responsive">
+				<tr>
+					<th>#ID</th>
+					<th>الاسم العربية</th>
+					<th>الاسم الأنجليزي</th>
+					<th>الدولة </th>
+					<th>المدينة </th>
+					<th>الفندق </th>
+					<th>السعر</th>
+					<th>تعديل</th>
+					<th>حذف</th>
+				</tr>
+				<?php foreach($travels as $travel): ?>
+				
+				<tr>
+					<td><?php echo e($travel->id); ?></td>
+					<td><?php echo e($travel->name_ar); ?></td>
+					<td><?php echo e($travel->name_en); ?></td>
+					<td><?php echo e($countries->find($travel->country_id)['name_ar']); ?></td>
+					<td><?php echo e($cities->find($travel->city_id)['name_ar']); ?></td>
+					<td><?php echo e($hotels->find($travel->hotel_id)['name_ar']); ?></td>
+					<td><?php echo e($travel->price); ?></td>
+					<td>
+						<a href="<?php echo Url('/'); ?>/admin/travels/<?php echo e($travel->id); ?>/edit" class="btn btn-info">تعديل</a>
+					</td>
+					<td>
+						<?php echo Form::open(['method'=>'DELETE', 'action'=>['TravelsCtrl@destroy', $travel->id ]]); ?>
+
+						<?php echo Form::submit('حذف', [ 'class'=> 'btn btn-danger', 'onClick'=>'return confirm(" هل انت متأكد من الحذف ؟")'] ); ?>
+
+						<?php echo Form::close(); ?>
+
+					</td>
+				</tr>
+				
+				<?php endforeach; ?>
+			</table>
+			
+		</div>
+	</div>
+</div>
+
+<div class="paginate"><?php echo $travels->render(); ?></div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -155,8 +155,6 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('bookings/special-offers','BookingsCtrl@getSpecialOffers');
 	Route::get('bookings/tickets','BookingsCtrl@getTickets');
 	Route::get('bookings/{type}/{id}','BookingsCtrl@confirmReserv');
-
-	
 	// bookings 
 
 	// contactUs
