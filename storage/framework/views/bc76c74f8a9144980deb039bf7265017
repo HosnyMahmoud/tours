@@ -34,7 +34,14 @@
                             <div class="hotel-price">
                                 <span><?php echo e($travel->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
                             </div>
-                            <a href="<?php echo e(Url('/')); ?>/travels/<?php echo e($travel->id); ?>/reserve" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('travels.reserve_now')); ?></a>
+                             <?php if($isWishlist === true ): ?>
+                                <a id="wishlist" href="<?php echo e(Url('/')); ?>/dashboard/wishlist/travels/add/<?php echo e($travel->id); ?>" title="Remove From wishlist" class="fa fa-heart fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                            <?php else: ?>
+                                <a id="wishlist" href="<?php echo e(Url('/')); ?>/dashboard/wishlist/travels/add/<?php echo e($travel->id); ?>" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                            <?php endif; ?>
+                            <br>
+                            <br>
+                            <a href="<?php echo e(Url('/')); ?>/dashboard/travels/<?php echo e($travel->id); ?>/reserve" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('travels.reserve_now')); ?></a>
                         </div>
                         
                         <div class="hotel-info">
@@ -57,7 +64,22 @@
                 
             </div>
         </section>
+        <?php $__env->startSection('inlineJS'); ?>
+         <?php if($isWishlist === false ): ?>
+            <script type="text/javascript">
+                $('#wishlist').hover(function() {
+                   $('#wishlist').addClass('fa-heart');
+                   $('#wishlist').removeClass('fa-heart-o');
+                  },function(){
+                    $('#wishlist').removeClass('fa-heart');
+                    $('#wishlist').addClass('fa-heart-o');
+                  }
+                );
 
+              
+            </script>
+        <?php endif; ?>
+        <?php $__env->stopSection(); ?>
 	<?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

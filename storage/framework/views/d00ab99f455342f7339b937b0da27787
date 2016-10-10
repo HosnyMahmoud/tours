@@ -34,9 +34,28 @@
                         <div class="hotel-price">
                             <span><?php echo e($hotels->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
                         </div>
-                        <a href="<?php echo e(Url('/')); ?>/travels/<?php echo e($hotels->id); ?>/reserve" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('hotels.reseve_now')); ?></a>
+                        <?php if($isWishlist === true ): ?>
+                            <a id="wishlist" href="<?php echo e(Url('/')); ?>/dashboard/wishlist/hotels/add/<?php echo e($hotels->id); ?>" title="Remove From wishlist" class="fa fa-heart fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        <?php else: ?>
+                            <a id="wishlist" href="<?php echo e(Url('/')); ?>/dashboard/wishlist/hotels/add/<?php echo e($hotels->id); ?>" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        <?php endif; ?>
                         <br>
-                        <a id="wishlist" href="<?php echo e(Url('/')); ?>/wishlist/hotels/add/<?php echo e($hotels->id); ?>" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                        <br>
+                            <div class="form-group col-md-12">
+                                <label><?php echo e(Lang::get('index.adults')); ?></label>
+                                <input type="number" name='persons' class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label><?php echo e(Lang::get('index.from')); ?></label>
+                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="<?php echo e(Lang::get('index.from')); ?>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label><?php echo e(Lang::get('index.to')); ?></label>
+                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="<?php echo e(Lang::get('index.to')); ?>">
+                            </div>
+                        <button href="<?php echo e(Url('/')); ?>/dashboard/hotels/<?php echo e($hotels->id); ?>/reserve" class="btn btn-block btn-lg btn-success "><?php echo e(Lang::get('hotels.reseve_now')); ?></button>
+                        
+
                     </div>
                     
                     <div class="hotel-info">
@@ -108,18 +127,20 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         <?php $__env->startSection('inlineJS'); ?>
-        <script type="text/javascript">
-            $('#wishlist').hover(function() {
-               $('#wishlist').addClass('fa-heart');
-               $('#wishlist').removeClass('fa-heart-o');
-              },function(){
-                $('#wishlist').removeClass('fa-heart');
-                $('#wishlist').addClass('fa-heart-o');
-              }
-            );
+         <?php if($isWishlist === false ): ?>
+            <script type="text/javascript">
+                $('#wishlist').hover(function() {
+                   $('#wishlist').addClass('fa-heart');
+                   $('#wishlist').removeClass('fa-heart-o');
+                  },function(){
+                    $('#wishlist').removeClass('fa-heart');
+                    $('#wishlist').addClass('fa-heart-o');
+                  }
+                );
 
-          
-        </script>
+              
+            </script>
+        <?php endif; ?>
         <?php $__env->stopSection(); ?>
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">
