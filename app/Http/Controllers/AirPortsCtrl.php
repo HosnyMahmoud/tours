@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\AirPort ;
 use App\Cities ;
+use App\Countries ;
 use Validator ;
+
 class AirPortsCtrl extends Controller {
 
 	/**
@@ -16,8 +18,10 @@ class AirPortsCtrl extends Controller {
 	 */
 	public function index()
 	{
-		$airPorts = AirPort::paginate(10) ;
-		return view('admin.air_ports.index' , compact('airPorts')) ;
+		$airPorts  = AirPort::paginate(10) ;
+		$countries = Countries::all() ;
+		$cities    = Cities::all() ;
+		return view('admin.air_ports.index' , compact('airPorts','countries','cities')) ;
 	}
 
 	/**
@@ -52,6 +56,7 @@ class AirPortsCtrl extends Controller {
 	{
 
 		$airPorts = AirPort::findOrfail($id) ;
+		
 		$cities = Cities::all() ;
 		return view('admin.air_ports.show' ,compact('airPorts','cities')) ;
 	}

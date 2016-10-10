@@ -1,0 +1,13 @@
+<?php $__env->startSection('title' , 'تعديل المطار'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<?php echo Form::model($airPort ,['method'=>'PATCH','action'=>['AirPortsCtrl@update',$airPort->id],'files'=>true]); ?>
+
+		<?php echo $__env->make('admin.air_ports._form',['btnName'=>'حفظ'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

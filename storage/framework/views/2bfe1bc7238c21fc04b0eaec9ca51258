@@ -23,14 +23,16 @@
 						<th>#</th>								
 						<th>الأسم باللغة العربية</th>								
 						<th>الأسم باللغة الأنجليزية</th>								
-							
+						<th>المنطقة</th>								
 						<th>خيارات</th>								
 					</tr>
 				<?php foreach($airPorts as $airPort): ?>
 					<tr>
 						<td><?php echo e($airPort->id); ?></td>		
-						<td><?php echo e($airPort->name_ar); ?></td>		
-						<td><?php echo e($airPort->name_en); ?></td>		
+						<td><?php echo e($airPort->name_ar); ?></td>	
+
+						<td><?php echo e($airPort->name_en); ?></td>	
+						<td><?php echo e($cities->find($airPort->city_id)['name_ar']); ?></td>		
 						<td>
 							
 							<?php echo Form::open(['method' => 'DELETE' ,'action'=>['AirPortsCtrl@destroy',$airPort->id]]); ?>

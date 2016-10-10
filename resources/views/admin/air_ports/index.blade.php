@@ -23,14 +23,16 @@
 						<th>#</th>								
 						<th>الأسم باللغة العربية</th>								
 						<th>الأسم باللغة الأنجليزية</th>								
-							
+						<th>المنطقة</th>								
 						<th>خيارات</th>								
 					</tr>
 				@foreach($airPorts as $airPort)
 					<tr>
 						<td>{{ $airPort->id }}</td>		
-						<td>{{ $airPort->name_ar }}</td>		
-						<td>{{ $airPort->name_en }}</td>		
+						<td>{{ $airPort->name_ar }}</td>	
+
+						<td>{{ $airPort->name_en }}</td>	
+						<td>{{ $cities->find($airPort->city_id)['name_ar'] }}</td>		
 						<td>
 							
 							{!! Form::open(['method' => 'DELETE' ,'action'=>['AirPortsCtrl@destroy',$airPort->id]]) !!}

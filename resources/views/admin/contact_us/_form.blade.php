@@ -35,7 +35,7 @@
 			    <small class="text-danger">{{ $errors->first('content_en') }}</small>
 			</div>
 
-			<button type="submit" class="btn btn-primary"> حفظ التعديلات </button>
+			<button type="submit" class="btn btn-primary"> {{$btnName}} </button>
 			
 		
 
