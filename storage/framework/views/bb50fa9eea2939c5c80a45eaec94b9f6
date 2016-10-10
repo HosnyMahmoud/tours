@@ -1,0 +1,64 @@
+<?php $__env->startSection('title', 'الفنادق'); ?>
+	
+<?php $__env->startSection('content'); ?>
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/hotels/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+		<br />
+		<br />
+		<?php if(Session::has('msg')): ?>
+			<div class="alert alert-success">
+				<?php echo e(Session::get('msg')); ?>
+
+			</div>
+		<?php endif; ?>
+	</div>
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="text-center panel-heading">الفنادق</div>	
+			<div class="panel-body">
+	
+			<table class="table table-bordered table-responsive">
+			<tr> 
+				<th>#ID</th>
+				<th>الاسم العربي</th>
+				<th>الاسم الأجليزي</th>
+				<th>النجوم</th>
+				<th>السعر</th>
+				<th>تعديل</th>
+				<th>حذف</th>
+			</tr>
+			<?php foreach($hotels as $hotel): ?>
+			
+			<tr>
+				<td><?php echo e($hotel->id); ?></td>
+				<td><?php echo e($hotel->name_ar); ?></td>
+				<td><?php echo e($hotel->name_en); ?></td>
+				<td><?php echo e($hotel->stars); ?></td>
+				<td><?php echo e($hotel->price); ?></td>
+				<td>
+					<a href="<?php echo Url('/'); ?>/admin/hotels/<?php echo e($hotel->id); ?>/edit" class="btn btn-info">تعديل</a>
+				</td>
+				<td>	
+					<?php echo Form::open(['method'=>'DELETE', 'action'=>['HotelsController@destroy', $hotel->id ]]); ?>
+
+						<?php echo Form::submit('حذف', [ 'class'=> 'btn btn-danger', 'onClick'=>'return confirm("سيتم حذف هذا الفندق هل انت متأكد من الحذف ؟")'] ); ?>
+
+					<?php echo Form::close(); ?>
+
+				</td>
+			</tr>
+			
+			<?php endforeach; ?>				
+		</table>
+	
+			</div>	
+		</div>
+	</div>
+		
+
+		<div class="paginate"><?php echo $hotels->render(); ?></div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

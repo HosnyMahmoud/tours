@@ -39,10 +39,21 @@ class TravelsCtrl extends Controller {
 	{
 
 		$hotels      = Hotel::lists('name_ar','id') ;
-		$countries   = Countries::lists('name_ar','id');
-		$cities      = Cities::lists('name_ar','id') ;
-
-		return view('admin.travels.create' , compact('hotels','countries','cities')) ;
+		
+		$countries_all = Countries::all();
+	    $cities_all = Cities::get();
+	    $data = [];
+	    $i = 1;
+	    foreach ($countries_all as $country) {
+	        $cities_all = Cities::where('country_id',$country->id)->get();
+	        $z = 0;
+	        foreach ($cities_all as $city) {
+	         
+	    	$data[$country['name_ar']][$city['id']] =  $city['name_ar']; 
+	            $z++;   
+	        }
+		} // End foreach
+		return view('admin.travels.create' , compact('hotels','data')) ;
 
 	}
 
@@ -108,12 +119,23 @@ class TravelsCtrl extends Controller {
 	{
 		$travel      = Travels::findOrFail($id) ;
 		$hotels      = Hotel::lists('name_ar','id') ;
-		$countries   = Countries::lists('name_ar','id');
-		$cities      = Cities::lists('name_ar','id') ;
+	
 
 		$exp = explode('|', $travel->images) ;
-
-		return view('admin.travels.edit' , compact('travel','hotels','countries','cities','exp')) ;
+		$countries_all = Countries::all();
+	    $cities_all = Cities::get();
+	    $data = [];
+	    $i = 1;
+	    foreach ($countries_all as $country) {
+	        $cities_all = Cities::where('country_id',$country->id)->get();
+	        $z = 0;
+	        foreach ($cities_all as $city) {
+	         
+	    	$data[$country['name_ar']][$city['id']] =  $city['name_ar']; 
+	            $z++;   
+	        }
+		} // End foreach
+		return view('admin.travels.edit' , compact('travel','hotels','data','exp')) ;
 	}
 
 	

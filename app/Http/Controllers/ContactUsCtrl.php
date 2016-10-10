@@ -26,7 +26,8 @@ class ContactUsCtrl extends Controller {
 				];
 	}
 	public function create()
-	{
+	{	
+		
 		return view('admin.contact_us.create') ;
 	}
 
@@ -38,6 +39,7 @@ class ContactUsCtrl extends Controller {
 			return redirect()->back()->withErrors($validation)->withInput() ;
 		}
 
+		
 		contactUs::create($bag->all());
 		return redirect()->to(Url('/').'/admin/about')->with(['msg'=>'تمت الأضافة بنجاح']) ;
  	}
