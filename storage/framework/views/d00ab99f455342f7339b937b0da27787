@@ -43,17 +43,27 @@
                         <br>
                         <?php echo Form::open(['url'=>Url('/').'/dashboard/hotels/reserv']); ?>
 
+                        
+                            <?php if(Session::has('msg')): ?>
+                                <div class="alert alert-success">
+                                    <?php echo Lang::get('assets.reserve_success'); ?>
+
+                                </div>
+                            <?php endif; ?>
+
                             <input type='hidden' name='hotel_id' value="<?php echo e($hotels->id); ?>">
+
                             <div class="form-group col-md-12">
                                 <label><?php echo e(Lang::get('index.adults')); ?></label>
                                 <input type="number" name='persons' class="form-control">
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label><?php echo e(Lang::get('index.from')); ?></label>
                                 <?php echo Form::text('date_from',null,['class'=>'form-control','id'=>'datepicker_go']); ?>
 
-
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label><?php echo e(Lang::get('index.to')); ?></label>
                                 <?php echo Form::text('date_to',null,['class'=>'form-control','id'=>'datepicker_back']); ?>

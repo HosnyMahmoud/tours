@@ -1,9 +1,28 @@
 <?php $__env->startSection('content'); ?>
+
+
+
 <div class="col-md-12">
 	<div class="table panel-primary">
 		<div class="text-center panel-heading">التحكم في أعدادات الموقع </div>
 		<div class="col-md-11 panel-body">
-			
+		
+		<?php if(Session::has('msg')): ?>
+			<div class="alert alert-success"><?php echo e(Session::get('msg')); ?></div>
+		<?php endif; ?>		
+
+		<?php if(Session::has('errors')): ?>
+			<div class="alert alert-dismissable alert-warning">
+	      <h4>Errors!</h4>
+	      <ul>
+	           <?php foreach(Session::get('errors')->all() as $error): ?>
+		           <li><?php echo $error; ?></li>
+	           <?php endforeach; ?>
+	      </ul>
+			 </div>
+		<?php endif; ?>
+
+
 			<?php echo Form::model($settings,['method'=>'PATCH' , 'action' => ['SettingsCtrl@update' , $settings->id ] ]); ?>
 
 			

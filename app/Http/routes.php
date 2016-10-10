@@ -157,6 +157,12 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	Route::get('bookings/{type}/{id}','BookingsCtrl@confirmReserv');
 	// bookings 
 
+
+	Route::resource('messages', 'MsgCtrl');
+	Route::get('messages/getMsgs/{pid}', 'MsgCtrl@getMsgs');
+	Route::post('messages/getMsgs', 'MsgCtrl@store');
+	Route::post('messages/getMsgs/{pid}', 'MsgCtrl@store');
+
 	// contactUs
 	Route::resource('about', 'ContactUsCtrl');		
 	// contactUs
@@ -193,7 +199,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 
 	Route::get('services','FrontCtrl@services');
 
-	Route::get('services','FrontCtrl@services');
+	Route::get('about','FrontCtrl@about');
 
 	Route::get('contact','FrontCtrl@contact');
 	
@@ -234,6 +240,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 	Route::get('wishlist/travels/add/{id}','FrontCtrl@travelsWishlist');
 
 	Route::post('hotels/reserv','FrontCtrl@reserve_hotels');
+	Route::post('travels/reserv','FrontCtrl@reserve_travels');
 
 	
 	Route::get('messages','DashboardCtrl@msgs');

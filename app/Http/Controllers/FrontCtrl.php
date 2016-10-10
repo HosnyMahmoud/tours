@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Airline_tickets_reserv;
 use App\HotelsReservations;
+use App\ReservTravel;
 use App\Countries;
 use App\Settings;
 use App\Travels;
@@ -12,6 +13,7 @@ use App\AirPort;
 use App\Hotel;
 use App\Cities;
 use App\WishList;
+use App\contactUs;
 use Validator;
 use Session;
 use Lang;
@@ -198,15 +200,41 @@ class FrontCtrl extends Controller {
             			->back()
                         ->withInput()
                         ->withErrors($validator);
-        }else{ 
-
+        }else{
+        	$settings = Settings::first(); 
+        	$request->merge(['user_id'=>Auth::client()->get()->id]);
+        	$request->merge(['date_from'=>Carbon::parse($request->date_from)]);
+        	$request->merge(['date_to'=>Carbon::parse($request->date_to)]);
 			$reserv = HotelsReservations::create($request->all());
+			$code = "hotels_".$reserv->id;
+			$data = ['code'=>$code];
+			Mail::send('emails.reserve', $data, function($message) use($request,$settings) {
+			   $message->subject('تأكيد الحجز');
+			   $message->from($settings->email,$settings->name);
+			   $message->to(Auth::client()->get()->email, Auth::client()->get()->name);
+			});
+			return redirect()->back()->with(['msg'=>'success']);
+
+
 		}
 	}
-	public function reserve_travels()
+	public function reserve_travels(Request $request)
 	{
-		$reserv = HotelsReservations::create($request->all());
-		
+		$settings = Settings::first();
+    	$request->merge(['travel_id'=>Auth::client()->get()->id]);
+    	$request->merge(['user_id'=>Auth::client()->get()->id]);
+    	$request->merge(['date_from'=>Carbon::parse($request->date_from)]);
+    	$request->merge(['date_to'=>Carbon::parse($request->date_to)]);
+		$reserv = ReservTravel::create($request->all());
+		$code = "travels_".$reserv->id;
+		$data = ['code'=>$code];
+		Mail::send('emails.reserve', $data, function($message) use($request,$settings) {
+		   $message->subject('تأكيد الحجز');
+		   $message->from($settings->email,$settings->name);
+		   $message->to(Auth::client()->get()->email, Auth::client()->get()->name);
+		});
+		return redirect()->back()->with(['msg'=>'success']);
+
 	}
 
 	public function services()
@@ -214,6 +242,12 @@ class FrontCtrl extends Controller {
 		return View('front.services.index');
 	}
 
+	public function about()
+	{
+		$settings = Settings::first();
+		$abouts = contactUs::take(6)->get();
+		return View('front.about.index',compact('settings','abouts'));
+	}
 	public function contact()
 	{
 		$settings = Settings::first();
@@ -242,10 +276,8 @@ class FrontCtrl extends Controller {
 			'subject' => $request->subject,
 			'msg' => $request->msg,
 		];
-
-		 Mail::send('emails.feedback', $data, function($message) use($request) {
-               $message->to('eng.ahmedmgad@gmail.com', 'Senior Ahmed gad')->from($request->email,$request->name)->subject($request->about);
-          });
-
-			}
+		Mail::send('emails.feedback', $data, function($message) use($request) {
+		   $message->to('eng.ahmedmgad@gmail.com', 'Senior Ahmed gad')->from($request->email,$request->name)->subject($request->about);
+		});
+	}
 }

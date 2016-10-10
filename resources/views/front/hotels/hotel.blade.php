@@ -43,16 +43,25 @@
                         <br>
                         <br>
                         {!!Form::open(['url'=>Url('/').'/dashboard/hotels/reserv'])!!}
+                        
+                            @if(Session::has('msg'))
+                                <div class="alert alert-success">
+                                    {!!Lang::get('assets.reserve_success')!!}
+                                </div>
+                            @endif
+
                             <input type='hidden' name='hotel_id' value="{{$hotels->id}}">
+
                             <div class="form-group col-md-12">
                                 <label>{{Lang::get('index.adults')}}</label>
                                 <input type="number" name='persons' class="form-control">
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label>{{Lang::get('index.from')}}</label>
                                 {!!Form::text('date_from',null,['class'=>'form-control','id'=>'datepicker_go'])!!}
-
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label>{{Lang::get('index.to')}}</label>
                                 {!!Form::text('date_to',null,['class'=>'form-control','id'=>'datepicker_back'])!!}

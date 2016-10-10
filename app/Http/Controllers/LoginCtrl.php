@@ -46,7 +46,7 @@ class LoginCtrl extends Controller {
         }else{    
 		    $field = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 		    $request->merge([$field => $request->input('email')]);
-		    if ($this->auth->attempt($request->only($field, 'password')))
+		    if ($this->auth->attempt($request->only($field, 'password'),true))
 		    {
 		    	if($this->auth->get()->verification_code !== '1'){
 		    		$this->auth->logout();

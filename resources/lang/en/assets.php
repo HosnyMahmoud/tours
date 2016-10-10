@@ -37,4 +37,6 @@ return [
 	'mustVerify'			=> 	"Your Account Must Be Verified",
 	'mustVerifyMsg'			=> 	"you need to Verify your account before login",
 	/**************** wrong login ***************/
+	'reserve_success'		=> 'Reservation Success',
+
 ];

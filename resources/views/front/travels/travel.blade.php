@@ -42,7 +42,15 @@
                             @endif
                             <br>
                             <br>
-                            <a href="{{Url('/')}}/dashboard/travels/{{$travel->id}}/reserve" class="btn btn-block btn-lg btn-success">{{Lang::get('travels.reserve_now')}}</a>
+                            {!!Form::open(['url'=>Url('/').'/dashboard/travels/reserv'])!!}
+                                @if(Session::has('msg'))
+                                    <div class="alert alert-success">
+                                        {!!Lang::get('assets.reserve_success')!!}
+                                    </div>
+                                @endif
+                                <input type='hidden' name='travel_id' value="{{$travel->id}}">
+                                <button href="{{Url('/')}}/dashboard/travels/{{$travel->id}}/reserve" class="btn btn-block btn-lg btn-success">{{Lang::get('travels.reserve_now')}}</button>
+                            {!!Form::close()!!}
                         </div>
                         
                         <div class="hotel-info">

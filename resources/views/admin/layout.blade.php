@@ -348,6 +348,13 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="title">عن الشركه</span>
 						</a>
 					</li>
+
+					<li class="{{Request::is('admin/messages*') ? 'active' : ''}}">
+						<a href="{!!Url('/')!!}/admin/messages">
+						<i class="fa fa-info"></i>
+						<span class="title">الرسائل</span>
+						</a>
+					</li>
 						
 
 																															
@@ -572,10 +579,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
       });
 	
-	
-
 </script>
-
+@yield('inlineJS')
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

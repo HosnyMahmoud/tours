@@ -103,7 +103,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img src="{{Url('/')}}/front/images/logo.png" alt=""></a>
+                        <a class="navbar-brand" href="{{Url('/')}}"><img src="{{Url('/')}}/front/images/logo.png" alt=""></a>
                     </div>
                     
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -144,7 +144,7 @@
                     <div class="row">
                         <div class="col-md-4 about">
                             <img src="{{Url('/')}}/front/images/logo.png" alt="">
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي</p>
+                            <p>{{$settings['site_desc_'.Session::get('local')]}}</p>
                             
                         </div>
                         
