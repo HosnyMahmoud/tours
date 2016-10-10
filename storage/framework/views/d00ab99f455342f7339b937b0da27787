@@ -18,9 +18,9 @@
                     <div class="master-slider ms-skin-metro" id="of-item">
                         <?php foreach($images as $img): ?>
                             <div class="ms-slide">
-                                <img src="masterslider/blank.gif" data-src="<?php echo e(Url()); ?>/uploads/hotels/thumb/<?php echo e($img); ?>" alt="<?php echo $hotels['name_'.Session::get('local')]; ?>"/>     
+                                <img src="masterslider/blank.gif" data-src="<?php echo e(Url()); ?>/uploads/hotels/<?php echo e($img); ?>" alt="<?php echo $hotels['name_'.Session::get('local')]; ?>"/>     
                                 <div class="ms-thumb">
-                                    <img src="<?php echo e(Url()); ?>/uploads/hotels/thumb/<?php echo e($img); ?>" />
+                                    <img src="<?php echo e(Url()); ?>/uploads/hotels/<?php echo e($img); ?>" />
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -41,19 +41,27 @@
                         <?php endif; ?>
                         <br>
                         <br>
+                        <?php echo Form::open(['url'=>Url('/').'/dashboard/hotels/reserv']); ?>
+
+                            <input type='hidden' name='hotel_id' value="<?php echo e($hotels->id); ?>">
                             <div class="form-group col-md-12">
                                 <label><?php echo e(Lang::get('index.adults')); ?></label>
                                 <input type="number" name='persons' class="form-control">
                             </div>
                             <div class="form-group col-md-6">
                                 <label><?php echo e(Lang::get('index.from')); ?></label>
-                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="<?php echo e(Lang::get('index.from')); ?>">
+                                <?php echo Form::text('date_from',null,['class'=>'form-control','id'=>'datepicker_go']); ?>
+
+
                             </div>
                             <div class="form-group col-md-6">
                                 <label><?php echo e(Lang::get('index.to')); ?></label>
-                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="<?php echo e(Lang::get('index.to')); ?>">
+                                <?php echo Form::text('date_to',null,['class'=>'form-control','id'=>'datepicker_back']); ?>
+
                             </div>
-                        <button href="<?php echo e(Url('/')); ?>/dashboard/hotels/<?php echo e($hotels->id); ?>/reserve" class="btn btn-block btn-lg btn-success "><?php echo e(Lang::get('hotels.reseve_now')); ?></button>
+                           <button href="<?php echo e(Url('/')); ?>/dashboard/hotels/<?php echo e($hotels->id); ?>/reserve" class="btn btn-block btn-lg btn-success "><?php echo e(Lang::get('hotels.reseve_now')); ?></button>
+                        <?php echo Form::close(); ?>
+
                         
 
                     </div>
@@ -73,10 +81,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <?php if(count($hotels)>0): ?>
                 
-                <div class="page-ttl" style="margin-top: 50px;">
+                <div class="page-ttl hidden" style="margin-top: 50px;">
                     <h1><?php echo e(Lang::get('hotels.other_hotels')); ?></h1>
                     <div class="clearfix"></div>
                 </div>
@@ -85,7 +93,7 @@
                 <?php foreach($related as $hotel): ?>
                 <?php $images = explode('|',  $hotel->images); ?>
                 <?php if($i % 2 == 0): ?>
-                <div class="row hotel">
+                <div class="row hotel hidden">
                     <div class="col-sm-6 hotel-img">
                         <a href="<?php echo e(Url('/')); ?>/hotels/<?php echo e($hotel->id); ?>-<?php echo e($hotel['slug_'.Session::get('local')]); ?>"><img src="<?php echo e(Url('/')); ?>/uploads/hotels/<?php echo e($images[0]); ?>" alt="" class="img-responsive"></a>
                     </div>
@@ -104,7 +112,7 @@
                     </div>
                 </div>
                 <?php else: ?>
-                <div class="row hotel">
+                <div class="row hotel hidden">
                     <div class="col-sm-6 hotel-content">
                         <div class="content-holder">
                             <div class="content-holder-inner">
@@ -125,7 +133,8 @@
                 <?php endif; ?>
                 <?php $i++; ?>
                 <?php endforeach; ?>
-            <?php endif; ?>
+            <?php endif; ?> 
+             
         <?php $__env->startSection('inlineJS'); ?>
          <?php if($isWishlist === false ): ?>
             <script type="text/javascript">
@@ -137,10 +146,41 @@
                     $('#wishlist').addClass('fa-heart-o');
                   }
                 );
-
-              
             </script>
         <?php endif; ?>
+        <script type="text/javascript">
+             $(document).ready(function(){
+                var dateFormat = "yy-mm-dd",
+                  from = $( "#datepicker_go" )
+                    .datepicker({
+                      defaultDate: "+1w",
+                      changeMonth: true,
+                      numberOfMonths: 1,
+                    })
+                    .on( "change", function() {
+                      to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                  to = $( "#datepicker_back" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                  })
+                  .on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                  });
+                function getDate( element ) {
+                  var date;
+                  try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                  } catch( error ) {
+                    date = null;
+                  }
+                  return date;
+                }
+
+                $('button.ui-datepicker-trigger').addClass('input-group-addon glyphicon glyphicon-calendar');
+            });
+        </script>
         <?php $__env->stopSection(); ?>
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">

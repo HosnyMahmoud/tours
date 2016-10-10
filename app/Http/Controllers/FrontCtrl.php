@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Airline_tickets_reserv;
+use App\HotelsReservations;
 use App\Countries;
 use App\Settings;
 use App\Travels;
@@ -17,7 +18,6 @@ use Lang;
 use Mail;
 use Auth;
 use Carbon\Carbon;
-
 
 class FrontCtrl extends Controller {
 	
@@ -185,12 +185,27 @@ class FrontCtrl extends Controller {
 		return redirect()->back();
 	}
 
-	public function reserve_hotels()
+	public function reserve_hotels(Request $request)
 	{
-		
+		$validator =  Validator::make($request->all(), [
+			'persons'	=>		'required|numeric|min:1',
+			'date_from'	=>		'required|date',
+			'date_to'	=>		'required|date',
+
+		]);
+		if ($validator->fails()) {
+            return redirect()
+            			->back()
+                        ->withInput()
+                        ->withErrors($validator);
+        }else{ 
+
+			$reserv = HotelsReservations::create($request->all());
+		}
 	}
 	public function reserve_travels()
 	{
+		$reserv = HotelsReservations::create($request->all());
 		
 	}
 

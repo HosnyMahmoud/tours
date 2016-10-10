@@ -19,9 +19,9 @@
                     <div class="master-slider ms-skin-metro" id="of-item">
                         @foreach($images as $img)
                             <div class="ms-slide">
-                                <img src="masterslider/blank.gif" data-src="{{Url()}}/uploads/hotels/thumb/{{$img}}" alt="{!!$hotels['name_'.Session::get('local')]!!}"/>     
+                                <img src="masterslider/blank.gif" data-src="{{Url()}}/uploads/hotels/{{$img}}" alt="{!!$hotels['name_'.Session::get('local')]!!}"/>     
                                 <div class="ms-thumb">
-                                    <img src="{{Url()}}/uploads/hotels/thumb/{{$img}}" />
+                                    <img src="{{Url()}}/uploads/hotels/{{$img}}" />
                                 </div>
                             </div>
                         @endforeach
@@ -42,19 +42,23 @@
                         @endif
                         <br>
                         <br>
+                        {!!Form::open(['url'=>Url('/').'/dashboard/hotels/reserv'])!!}
+                            <input type='hidden' name='hotel_id' value="{{$hotels->id}}">
                             <div class="form-group col-md-12">
                                 <label>{{Lang::get('index.adults')}}</label>
                                 <input type="number" name='persons' class="form-control">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>{{Lang::get('index.from')}}</label>
-                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="{{Lang::get('index.from')}}">
+                                {!!Form::text('date_from',null,['class'=>'form-control','id'=>'datepicker_go'])!!}
+
                             </div>
                             <div class="form-group col-md-6">
                                 <label>{{Lang::get('index.to')}}</label>
-                                <input type='text' name='date_from' class="form-control" id="datepicker_go" placeholder="{{Lang::get('index.to')}}">
+                                {!!Form::text('date_to',null,['class'=>'form-control','id'=>'datepicker_back'])!!}
                             </div>
-                        <button href="{{Url('/')}}/dashboard/hotels/{{$hotels->id}}/reserve" class="btn btn-block btn-lg btn-success ">{{Lang::get('hotels.reseve_now')}}</button>
+                           <button href="{{Url('/')}}/dashboard/hotels/{{$hotels->id}}/reserve" class="btn btn-block btn-lg btn-success ">{{Lang::get('hotels.reseve_now')}}</button>
+                        {!!Form::close()!!}
                         
 
                     </div>
@@ -74,10 +78,10 @@
                     </div>
                 </div>
             </div>
-            
+
             @if(count($hotels)>0)
                 
-                <div class="page-ttl" style="margin-top: 50px;">
+                <div class="page-ttl hidden" style="margin-top: 50px;">
                     <h1>{{ Lang::get('hotels.other_hotels')}}</h1>
                     <div class="clearfix"></div>
                 </div>
@@ -86,7 +90,7 @@
                 @foreach($related as $hotel)
                 <?php $images = explode('|',  $hotel->images); ?>
                 @if($i % 2 == 0)
-                <div class="row hotel">
+                <div class="row hotel hidden">
                     <div class="col-sm-6 hotel-img">
                         <a href="{{Url('/')}}/hotels/{{$hotel->id}}-{{$hotel['slug_'.Session::get('local')]}}"><img src="{{Url('/')}}/uploads/hotels/{{$images[0]}}" alt="" class="img-responsive"></a>
                     </div>
@@ -105,7 +109,7 @@
                     </div>
                 </div>
                 @else
-                <div class="row hotel">
+                <div class="row hotel hidden">
                     <div class="col-sm-6 hotel-content">
                         <div class="content-holder">
                             <div class="content-holder-inner">
@@ -126,7 +130,8 @@
                 @endif
                 <?php $i++; ?>
                 @endforeach
-            @endif
+            @endif 
+             
         @section('inlineJS')
          @if($isWishlist === false )
             <script type="text/javascript">
@@ -138,10 +143,41 @@
                     $('#wishlist').addClass('fa-heart-o');
                   }
                 );
-
-              
             </script>
         @endif
+        <script type="text/javascript">
+             $(document).ready(function(){
+                var dateFormat = "yy-mm-dd",
+                  from = $( "#datepicker_go" )
+                    .datepicker({
+                      defaultDate: "+1w",
+                      changeMonth: true,
+                      numberOfMonths: 1,
+                    })
+                    .on( "change", function() {
+                      to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                  to = $( "#datepicker_back" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                  })
+                  .on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                  });
+                function getDate( element ) {
+                  var date;
+                  try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                  } catch( error ) {
+                    date = null;
+                  }
+                  return date;
+                }
+
+                $('button.ui-datepicker-trigger').addClass('input-group-addon glyphicon glyphicon-calendar');
+            });
+        </script>
         @endsection
                 <!-- <div class="row hotel">
                     <div class="col-sm-6 hotel-content">
