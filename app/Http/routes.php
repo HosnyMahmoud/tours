@@ -100,7 +100,7 @@ Route::group(['prefix'=>'admin','middleware'=>'authAdmin'],function(){
 	
 	Route::get('/',function()
 	{
-		return View('admin.layout');
+		return View('admin.index');
 	});
 
 	// Countries and cities .

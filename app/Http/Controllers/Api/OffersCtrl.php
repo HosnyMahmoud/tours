@@ -14,9 +14,6 @@ use App\CarsModels;
 use Validator ;
 use Auth ;
 
-
-
-
 class OffersCtrl extends Controller {
 
 	

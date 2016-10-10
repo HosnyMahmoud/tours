@@ -7,7 +7,7 @@
 
 	<div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
 	    {!! Form::label('brand_id', 'اسم البراند') !!}
-	    {!! Form::select('brand_id', $brands, null, ['id' => 'brand_id', 'class' => 'form-control']) !!}
+	    {!! Form::select('brand_id', $brands, null, ['id' => 'brand_id', 'class' => 'form-control','required' => 'required']) !!}
 	    <small class="text-danger">{{ $errors->first('brand_id') }}</small>
 	</div>
 	

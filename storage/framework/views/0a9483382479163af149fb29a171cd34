@@ -1,0 +1,85 @@
+	<?php $__env->startSection('title',$travel['name_'.Session::get('local')]); ?>
+	<?php $__env->startSection('content'); ?>
+		<section class="content">
+            <div class="container">
+                <div class="page-ttl">
+                    <h1><?php echo e($travel['name_'.Session::get('local')]); ?></h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo e(Url('/')); ?>/"><?php echo e(Lang::get('assets.index')); ?></a></li>
+                        <li><a href="<?php echo e(Url('/')); ?>/travels"><?php echo e(Lang::get('travels.breadcamp')); ?></a></li>
+                        <li class="active"><?php echo e($travel['name_'.Session::get('local')]); ?></li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-8 item-slides">
+                        <!-- masterslider -->
+                        <div class="master-slider ms-skin-metro" id="of-item">
+                           <?php foreach($images as $img): ?> 
+                            <div class="ms-slide">
+                                <img src="<?php echo e(Url('/')); ?>/front/masterslider/blank.gif" data-src="<?php echo e(Url('/')); ?>/uploads/travels/<?php echo e($img); ?>" alt="lorem ipsum dolor sit"/>     
+                                <div class="ms-thumb">
+                                    <img src="<?php echo e(Url('/')); ?>/uploads/travels/<?php echo e($img); ?>" />
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- end of masterslider -->
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="hotel-booking">
+                            <h4><?php echo e(Lang::get('travels.travel_price')); ?></h4>
+                            <div class="hotel-price">
+                                <span><?php echo e($travel->price); ?> <?php echo e(Lang::get('hotels.le')); ?></span>
+                            </div>
+                             <?php if($isWishlist === true ): ?>
+                                <a id="wishlist" href="<?php echo e(Url('/')); ?>/dashboard/wishlist/travels/add/<?php echo e($travel->id); ?>" title="Remove From wishlist" class="fa fa-heart fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                            <?php else: ?>
+                                <a id="wishlist" href="<?php echo e(Url('/')); ?>/dashboard/wishlist/travels/add/<?php echo e($travel->id); ?>" title="Add To wishlist" class="fa fa-heart-o fa-3x" style="text-decoration:none;color:#eb0000"></a>
+                            <?php endif; ?>
+                            <br>
+                            <br>
+                            <a href="<?php echo e(Url('/')); ?>/dashboard/travels/<?php echo e($travel->id); ?>/reserve" class="btn btn-block btn-lg btn-success"><?php echo e(Lang::get('travels.reserve_now')); ?></a>
+                        </div>
+                        
+                        <div class="hotel-info">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo e(Lang::get('travels.about')); ?></a></li>
+                            </ul>
+                            
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="overview">
+                                    <p><?php echo e($travel['desc_'.Session::get('local')]); ?> </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        <?php $__env->startSection('inlineJS'); ?>
+         <?php if($isWishlist === false ): ?>
+            <script type="text/javascript">
+                $('#wishlist').hover(function() {
+                   $('#wishlist').addClass('fa-heart');
+                   $('#wishlist').removeClass('fa-heart-o');
+                  },function(){
+                    $('#wishlist').removeClass('fa-heart');
+                    $('#wishlist').addClass('fa-heart-o');
+                  }
+                );
+
+              
+            </script>
+        <?php endif; ?>
+        <?php $__env->stopSection(); ?>
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

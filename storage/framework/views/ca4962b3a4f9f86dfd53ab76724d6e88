@@ -1,0 +1,15 @@
+<?php $__env->startSection('title'); ?>
+		تعديل الموديل
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<?php echo Form::model($model ,['method'=>'PATCH','action'=>['CarsModelsCtrl@update',$model->id],'files'=>true]); ?>
+
+		<?php echo $__env->make('admin.cars.cars_models._form',['btnName'=>'حفظ'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

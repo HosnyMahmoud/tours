@@ -1,0 +1,15 @@
+<?php $__env->startSection('title'); ?>
+	اضافة نوع جديد
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	
+	<?php echo Form::open(['action'=>'CarsBrandCtrl@store','class'=>'form-horizontal']); ?>
+
+		<?php echo $__env->make('admin.cars.cars_brand._form',['btnName'=>'إضافه'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo Form::close(); ?>
+
+	
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

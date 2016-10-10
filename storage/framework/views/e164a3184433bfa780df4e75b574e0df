@@ -1,0 +1,51 @@
+ 
+ 	<?php $__env->startSection('breadcrumbs'); ?>
+ 		<i class="<?php echo e(Lang::get('dashboard.arrow')); ?>"></i>
+ 		<?php echo e(Lang::get('dashboard.reservations')); ?>
+
+ 	<?php $__env->stopSection(); ?>
+
+ 	<?php $__env->startSection('title',Lang::get('dashboard.reservations')); ?>
+    <?php $__env->startSection('dashboard'); ?>
+    <?php if(Session::has('error')): ?>
+		<div class="alert alert-danger booking-status" role="alert">
+	        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+	        	<?php echo e(Session::get('error')); ?>
+
+	    </div>  
+    <?php endif; ?>
+
+  	<?php if(Session::has('status')): ?>
+  		<?php if(Session::get('status') == 0): ?>
+		    <div class="alert alert-warning booking-status" role="alert">
+			    <i class="fa fa-frown-o" aria-hidden="true"></i>
+			    <?php echo e(lang::get('dashboard.reserv_notConfirmed')); ?>
+
+			</div>  
+		<?php elseif(Session::get('status') == 1): ?>
+			<div class="alert alert-success booking-status" role="alert">
+			    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+			    <?php echo e(lang::get('dashboard.reserv_success')); ?>
+
+			</div>
+		<?php else: ?>
+			<div class="alert alert-danger booking-status" role="alert">
+			    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+			    <?php echo e(lang::get('dashboard.reserv_canceled')); ?>
+
+			</div>
+		<?php endif; ?>
+	<?php endif; ?>
+
+
+    	<div class="status-request">
+           	<?php echo Form::open(); ?>
+
+                <input type="text" name="reserv_code" class="form-control input-lg" dir="<?php echo e(Lang::get('dashboard.dir')); ?>" placeholder="<?php echo e(Lang::get('dashboard.insert_code')); ?>">
+                <button type="submit" class="btn btn-lg btn-success btn-block"><?php echo e(Lang::get('dashboard.check_code')); ?></button>
+           	<?php echo Form::close(); ?>
+
+        </div>
+    <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.dashboard.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
