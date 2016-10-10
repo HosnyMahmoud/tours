@@ -232,6 +232,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
 	Route::get('wishlist/{id}/delete','DashboardCtrl@wishlist_delete');
 	Route::get('wishlist/hotels/add/{id}','FrontCtrl@hotelWishlist');
 	Route::get('wishlist/travels/add/{id}','FrontCtrl@travelsWishlist');
+
+	Route::post('hotels/reserv','FrontCtrl@reserve_hotels');
+
 	
 	Route::get('messages','DashboardCtrl@msgs');
 	Route::post('messages','DashboardCtrl@msgsSend');
