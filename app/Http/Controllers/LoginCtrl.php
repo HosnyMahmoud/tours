@@ -13,6 +13,7 @@ use Input;
 use Mail;
 use Auth;
 use Session;
+use App\Settings;
 use Lang;
 class LoginCtrl extends Controller {
 
@@ -106,8 +107,17 @@ class LoginCtrl extends Controller {
 				$request->file('img')->move($dest,$file_name);
 				$request->merge(['image'=>$file_name]);
         	}   
+			$code = md5(time()) ;
+			$request->merge(['verification_code'=>$code]);
 			$request->merge(['password'=>bcrypt($request->password)]);
-			$request->merge(['verification_code'=>md5(time())]);
+			$data = ['code'=>$code]  ;
+
+			$settings = Settings::first();
+			Mail::send('emails.verify', $data, function($message) use($request,$settings) {
+			   $message->subject('تفعيل بريدك الإلكتروني ');
+			   $message->from($settings->email,$settings->email);
+			   $message->to($request->email, $request->name);
+			});
 
 			User::create($request->all());
 
