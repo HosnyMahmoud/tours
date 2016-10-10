@@ -1,36 +1,36 @@
 <div class="form-group{{ $errors->has('offer_name_ar') ? ' has-error' : '' }}">
 	{!! Form::label('offer_name_ar', 'الأسم باللغة العربية') !!}
-	{!! Form::text('offer_name_ar', null, ['class' => 'form-control']) !!}
+	{!! Form::text('offer_name_ar', null, ['class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('offer_name_ar') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('offer_name_en') ? ' has-error' : '' }}">
 	{!! Form::label('offer_name_en', 'الأسم باللغة الأنجليزية') !!}
-	{!! Form::text('offer_name_en', null, ['class' => 'form-control']) !!}
+	{!! Form::text('offer_name_en', null, ['class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('offer_name_en') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
 	{!! Form::label('brand_id', 'نوع السيارة') !!}
-	{!! Form::select('brand_id', $brands, null, ['id' => 'brand_id', 'class' => 'form-control']) !!}
+	{!! Form::select('brand_id', $brands, null, ['id' => 'brand_id', 'class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('brand_id') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('model_id') ? ' has-error' : '' }}">
 	{!! Form::label('model_id', 'الموديل') !!}
-	{!! Form::select('model_id', $models, null, ['id' => 'model_id', 'class' => 'form-control']) !!}
+	{!! Form::select('model_id', $models, null, ['id' => 'model_id', 'class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('model_id') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
 	{!! Form::label('country_id', 'الدولة') !!}
-	{!! Form::select('country_id', $countries, null, ['id' => 'country_id', 'class' => 'form-control']) !!}
+	{!! Form::select('country_id', $countries, null, ['id' => 'country_id', 'class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('country_id') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
 	{!! Form::label('city_id', 'المحافظة') !!}
-	{!! Form::select('city_id', $cities, null, ['id' => 'city_id', 'class' => 'form-control']) !!}
+	{!! Form::select('city_id', $cities, null, ['id' => 'city_id', 'class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('city_id') }}</small>
 </div>
 
@@ -45,24 +45,24 @@
 
 <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
     {!! Form::label('color', 'لون السيارة') !!}
-    {!! Form::text('color', null, ['class' => 'form-control']) !!}
+    {!! Form::text('color', null, ['class' => 'form-control','required' => 'required']) !!}
     <small class="text-danger">{{ $errors->first('color') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('offer_desc_ar') ? ' has-error' : '' }}">
 	{!! Form::label('offer_desc_ar', 'الوصف باللغة العربية') !!}
-	{!! Form::textarea('offer_desc_ar', null, ['class' => 'form-control']) !!}
+	{!! Form::textarea('offer_desc_ar', null, ['class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('offer_desc_ar') }}</small>
 </div>
 <div class="form-group{{ $errors->has('offer_desc_en') ? ' has-error' : '' }}">
 	{!! Form::label('offer_desc_en', 'الوصف باللغة الأنجليزية') !!}
-	{!! Form::textarea('offer_desc_en', null, ['class' => 'form-control']) !!}
+	{!! Form::textarea('offer_desc_en', null, ['class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('offer_desc_en') }}</small>
 </div>
 
 <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
 	{!! Form::label('price', 'السعر') !!}
-	{!! Form::text('price', null, ['class' => 'form-control']) !!}
+	{!! Form::text('price', null, ['class' => 'form-control','required' => 'required']) !!}
 	<small class="text-danger">{{ $errors->first('price') }}</small>
 </div>
 

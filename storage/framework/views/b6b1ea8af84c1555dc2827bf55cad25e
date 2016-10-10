@@ -1,0 +1,64 @@
+	<?php $__env->startSection('title',Lang::get('assets.contact')); ?>
+	<?php $__env->startSection('content'); ?>
+		<section class="content">
+            <div class="container">
+                <div class="page-ttl">
+                    <h1><?php echo e(Lang::get('assets.contact')); ?></h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><?php echo e(Lang::get('assets.index')); ?></a></li>
+                        <li class="active"><?php echo e(Lang::get('assets.contact')); ?></li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="contact-wrap">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="contact-form">
+                                <?php echo Form::open(); ?>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label><?php echo e(Lang::get('contact.name')); ?></label>
+                                            <input type="text" name="name" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label><?php echo e(Lang::get('contact.email')); ?></label>
+                                            <input type="email" name="email" class="form-control">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label><?php echo e(Lang::get('contact.subject')); ?></label>
+                                            <input type="text" name="subject" class="form-control">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label><?php echo e(Lang::get('contact.msg')); ?></label>
+                                            <textarea name="msg" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-info"><?php echo e(Lang::get('contact.send')); ?> <i class="<?php echo e(Lang::get('contact.arrow')); ?>" aria-hidden="true"></i></button>
+                                <?php echo Form::close(); ?>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="contact-method">
+                                <div class="icon"><i class="glyphicon glyphicon-headphones" aria-hidden="true"></i></div>
+                                <h2><?php echo e($phone[0]); ?></h2>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="icon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></div>
+                                <h2><?php echo e($settings->email); ?></h2>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="icon"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i></div>
+                                <h2><?php echo e($settings['address_'.Session::get('local')]); ?></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

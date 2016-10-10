@@ -1,0 +1,64 @@
+<?php $__env->startSection('title'); ?>
+		الموديلات
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div>
+		<a href="<?php echo Url('/'); ?>/admin/cars_models/create" class="btn btn-success btn-icon-only"><i class="fa fa-plus"></i></a>
+		
+	</div>
+
+	<br>
+	<?php if(Session::has('msg')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('msg')); ?>
+
+		</div>
+	<?php endif; ?>
+	<div class="panel panel-primary">
+		<div class="panel-heading">جميع الموديلات</div>
+		<div class="panel-body">
+			<?php if($models->total() > 0): ?>
+				<table class="table table-bordered">
+					<tr>
+						<th>اسم الموديل</th>								
+						<th>الدولة</th>								
+						<th>المحافظة</th>								
+						<th>السعر</th>								
+						<th>خيارات</th>								
+					</tr>
+				<?php foreach($models as $model): ?>
+					<tr>
+						<td><?php echo e($model->model_name); ?></td>								
+						<td><?php echo e($countries->find($model->country_id)->name_ar); ?></td>			
+						<td><?php echo e($cities->find($model->city_id)->name_ar); ?></td>	
+						<td><?php echo e($model->price); ?></td>								
+						<td>
+							<?php echo Form::open(['method' => 'DELETE' ,'action'=>['CarsModelsCtrl@destroy',$model->id]]); ?>
+
+								<a href="<?php echo Url('/'); ?>/admin/cars_models/<?php echo e($model->id); ?>/edit" class="btn btn-info">تعديل</a>
+									
+									<?php echo Form::submit('حذف' , ['class'=>'btn btn-danger','onClick' =>'return confirm("سيتم حذف الموديل هل انت متأكد من الحذف ؟")']); ?>
+
+							<?php echo Form::close(); ?>
+
+						</td>								
+					</tr>
+				<?php endforeach; ?>
+				</table>
+				<?php echo $models->render(); ?>
+
+			<?php else: ?>
+				<div class="alert alert-danger">No Record To Show .</div> 
+
+			<?php endif; ?>
+		</div>	
+	</div>
+	
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

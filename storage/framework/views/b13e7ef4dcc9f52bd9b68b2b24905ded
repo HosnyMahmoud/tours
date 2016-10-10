@@ -1,71 +1,71 @@
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">الإسم</label>
-							<div class="col-md-6">
-								<?php echo Form::text('name',null,['class'=>'form-control']); ?>
+	<div class="form-group">
+		<label class="col-md-4 control-label">الإسم</label>
+		<div class="col-md-6">
+			<?php echo Form::text('name',null,['class'=>'form-control','required' => 'required']); ?>
 
-							</div>
-						</div>
+		</div>
+	</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">البريد الإلكترونى</label>
-							<div class="col-md-6">
-								<?php echo Form::email('email',null,['class'=>'form-control']); ?>
+	<div class="form-group">
+		<label class="col-md-4 control-label">البريد الإلكترونى</label>
+		<div class="col-md-6">
+			<?php echo Form::email('email',null,['class'=>'form-control','required' => 'required']); ?>
 
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-4 control-label">كلمه المرور</label>
-							<div class="col-md-6">
-								<?php echo Form::password('password',['class'=>'form-control']); ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-4 control-label">كلمه المرور</label>
+		<div class="col-md-6">
+			<?php echo Form::password('password',['class'=>'form-control','required' => 'required']); ?>
 
-								<?php if(@$help): ?>
-								<?php echo $help; ?>
+			<?php if(@$help): ?>
+			<?php echo $help; ?>
 
-								<?php endif; ?>
-							</div>
-						</div>
+			<?php endif; ?>
+		</div>
+	</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">الصلاحيات</label>
-							<div class="col-md-6 col-md-offset-4">
-								<?php if($type == 'add'): ?>							
-									<input type="checkbox" name="pre[]" value="settings">
-									<?php echo Form::label('settings',' الأعدادات '); ?>
+	<div class="form-group">
+		<label class="col-md-4 control-label">الصلاحيات</label>
+		<div class="col-md-6 col-md-offset-4">
+			<?php if($type == 'add'): ?>							
+				<input type="checkbox" name="pre[]" value="settings">
+				<?php echo Form::label('settings',' الأعدادات '); ?>
 
-									<br>
+				<br>
 
-									<input type="checkbox" name="pre[]" value="users">
-									<?php echo Form::label('users',' الأعضاء '); ?>		
-									<br>
-									
-									<input type="checkbox" name="pre[]" value="admins">
-									<?php echo Form::label('admins',' المديرين '); ?>		
-									<br>
-								<?php else: ?>
-									<input type="checkbox" <?php echo e((in_array('settings',$pre))?"checked" : ""); ?> name="pre[]" value="settings">
-									<?php echo Form::label('settings',' الأعدادات '); ?>
+				<input type="checkbox" name="pre[]" value="users">
+				<?php echo Form::label('users',' الأعضاء '); ?>		
+				<br>
+				
+				<input type="checkbox" name="pre[]" value="admins">
+				<?php echo Form::label('admins',' المديرين '); ?>		
+				<br>
+			<?php else: ?>
+				<input type="checkbox" <?php echo e((in_array('settings',$pre))?"checked" : ""); ?> name="pre[]" value="settings">
+				<?php echo Form::label('settings',' الأعدادات '); ?>
 
-									<br>
+				<br>
 
-									<input type="checkbox" <?php echo e((in_array('users',$pre))?"checked" : ""); ?> name="pre[]" value="users">
-									<?php echo Form::label('users',' الأعضاء '); ?>		
-									<br>
-									
-									<input type="checkbox" <?php echo e((in_array('admins',$pre))?"checked" : ""); ?> name="pre[]" value="admins">
-									<?php echo Form::label('admins',' المديرين '); ?>		
-								
+				<input type="checkbox" <?php echo e((in_array('users',$pre))?"checked" : ""); ?> name="pre[]" value="users">
+				<?php echo Form::label('users',' الأعضاء '); ?>		
+				<br>
+				
+				<input type="checkbox" <?php echo e((in_array('admins',$pre))?"checked" : ""); ?> name="pre[]" value="admins">
+				<?php echo Form::label('admins',' المديرين '); ?>		
+			
 
-								<?php endif; ?>	
-							</div>
-						</div>
+			<?php endif; ?>	
+		</div>
+	</div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									<?php echo $text; ?>
+	<div class="form-group">
+		<div class="col-md-6 col-md-offset-4">
+			<button type="submit" class="btn btn-primary">
+				<?php echo $text; ?>
 
-								</button>
-							</div>
-						</div>
-					</form>
+			</button>
+		</div>
+	</div>
+</form>
