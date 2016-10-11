@@ -38,7 +38,9 @@ class UsersCtrl extends Controller {
 	 */
 	public function store(Request $request)
 	{
-	
+		
+		//dd($request->all()) ;
+
 		$request->merge(['password'=>bcrypt($request->password)]);
 		$user =  User::create($request->all());
 		return redirect()->to('admin/users')->with(['msg'=>'تمت الأضافة بنجاح.']);			

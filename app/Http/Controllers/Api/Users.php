@@ -22,13 +22,13 @@ class Users extends Controller {
 	{
 		if(Auth::client()->check() == true)
 		{
-				return response()->json(['status' => '400','message'=>'Bad Request : Already Logged In'],400);
+			return response()->json(['status' => '400','message'=>'Bad Request : Already Logged In'],400);
 		}
 		
 		$validator =  Validator::make($bag->all(), [
 						//'source' 	=> 'required',
 						'name'   	=> 'required',
-						'email' 	=> 'email|unique:users',
+						'email' 	=> 'required|email|unique:users',
 						'password' 	=> 'required|min:5',
 						'mobile' 	=> 'required|unique:users',
 		]);
