@@ -110,6 +110,7 @@ class TravelsCtrl extends Controller {
 		$bag->merge(['slug_ar'=>$this->make_slug($bag->name_ar)]);		
 		$bag->merge(['slug_en'=>$this->make_slug($bag->name_en)]);
 
+		dd($bag->all()) ;
 		Travels::create($bag->all()) ;
 		return redirect()->to(Url('/').'/admin/travels')->with(['msg'=>'تمت الأضافة بنجاح']) ;
 	}

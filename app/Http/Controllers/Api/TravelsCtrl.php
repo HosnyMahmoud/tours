@@ -91,9 +91,11 @@ class TravelsCtrl extends Controller {
 		$i++ ; // increment counter ..
 
 	}
-
-
 	rsort($data) ;
+	if(!count($data) > 0 )
+	{
+		return response()->json(['status'=>'401' , 'message'=>'No data found!'] , 401);
+	}
 	return response()->json(['status'=>'200' , 'data'=>$data] , 200);
 			
 	}
