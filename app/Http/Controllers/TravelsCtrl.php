@@ -39,8 +39,9 @@ class TravelsCtrl extends Controller {
 	{
 
 		$hotels      = Hotel::lists('name_ar','id') ;
-		
-		$countries_all = Countries::all();
+		$countries   = Countries::lists('name_ar','id');
+		$cities      = Cities::lists('name_ar','id');
+		/*$countries_all = Countries::all();
 	    $cities_all = Cities::get();
 	    $data = [];
 	    $i = 1;
@@ -52,8 +53,8 @@ class TravelsCtrl extends Controller {
 	    	$data[$country['name_ar']][$city['id']] =  $city['name_ar']; 
 	            $z++;   
 	        }
-		} // End foreach
-		return view('admin.travels.create' , compact('hotels','data')) ;
+		} // End foreach*/
+		return view('admin.travels.create' , compact('hotels','countries','cities')) ;
 
 	}
 
@@ -110,7 +111,6 @@ class TravelsCtrl extends Controller {
 		$bag->merge(['slug_ar'=>$this->make_slug($bag->name_ar)]);		
 		$bag->merge(['slug_en'=>$this->make_slug($bag->name_en)]);
 
-		dd($bag->all()) ;
 		Travels::create($bag->all()) ;
 		return redirect()->to(Url('/').'/admin/travels')->with(['msg'=>'تمت الأضافة بنجاح']) ;
 	}
@@ -120,10 +120,11 @@ class TravelsCtrl extends Controller {
 	{
 		$travel      = Travels::findOrFail($id) ;
 		$hotels      = Hotel::lists('name_ar','id') ;
-	
-
+		$countries   = Countries::lists('name_ar','id');
+		$cities      = Cities::lists('name_ar','id');
 		$exp = explode('|', $travel->images) ;
-		$countries_all = Countries::all();
+	
+		/*$countries_all = Countries::all();
 	    $cities_all = Cities::get();
 	    $data = [];
 	    $i = 1;
@@ -135,8 +136,8 @@ class TravelsCtrl extends Controller {
 	    	$data[$country['name_ar']][$city['id']] =  $city['name_ar']; 
 	            $z++;   
 	        }
-		} // End foreach
-		return view('admin.travels.edit' , compact('travel','hotels','data','exp')) ;
+		} // End foreach*/
+		return view('admin.travels.edit' , compact('travel','hotels','countries','cities','exp')) ;
 	}
 
 	

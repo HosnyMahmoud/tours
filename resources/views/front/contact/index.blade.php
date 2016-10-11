@@ -16,6 +16,9 @@
                         <div class="col-sm-8">
                             <div class="contact-form">
                                 {!!Form::open()!!}
+                                @if(Session::has('msg'))
+                                    <div class="alert alert-success">{{Session::get('msg')}}</div>
+                                @endif
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label>{{Lang::get('contact.name')}}</label>

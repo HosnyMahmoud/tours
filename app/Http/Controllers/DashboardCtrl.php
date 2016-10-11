@@ -9,6 +9,7 @@ use App\HotelsReservations;
 use App\SpecialOfferReserv;
 use App\Cars_Reservation;
 use App\ReservTravel;
+use App\Testimonials;
 use App\Countries;
 use App\WishList;
 use App\Messages;
@@ -152,4 +153,17 @@ class DashboardCtrl extends Controller {
 		} 
 
 	}
+	public function new_testimonial()
+	{
+		return View('front.dashboard.testimonials.index');
+	}
+
+	public function post_testimonial(Request $request)
+	{
+		$request->merge(['user_id'=>Auth::client()->get()->id]);
+		Testimonials::create($request->all());
+		return redirect()->back()->with(['msg'=>Lang::get('dashboard.submit_success')]);
+		
+	}
+	
 }

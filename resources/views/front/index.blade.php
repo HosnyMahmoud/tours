@@ -109,7 +109,7 @@
                                                 </div>
                                                 <div class="col-sm-6 {{ $errors->has('num_child') ? ' has-error' : '' }}">
                                                     <label>{{Lang::get('index.kids')}}</label>
-                                                    <input type="number" name="num_child" class="form-control" placeholder="">
+                                                    <input type="number" name="num_child" class="form-control" value="0" placeholder="">
                                                      <small class="text-danger">{{ $errors->first('num_child') }}</small>
                                                 </div>
                                             </div>
@@ -239,7 +239,7 @@
                 </div>
             </div>
         </section><!-- #home-offers -->
-        
+        @if($testimonials->count() > 0)
         <section id="testimonials" class="section">
             <div class="container">
                 <div class="row">
@@ -254,34 +254,24 @@
                 <div class="row wow fadeInUp" data-wow-delay="1s">
                     <div class="col-md-8 col-md-offset-2">
                         <div id="owl-demo" class="owl-carousel owl-theme" style="direction: ltr;">
+                            @foreach($testimonials as $test)
                             <div class="item">
                                 <div class="testimonial-container">
                                     <blockquote>
-                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء</p>
+                                        <p>{{$test->text}}</p>
                                     </blockquote>
                                 </div>
                                 <div class="client-info">
-                                    <img src="{{Url('/')}}/front/images/client.jpg" alt="">
-                                    <span><strong>ميريل ستريب</strong><br>ممثلة أمريكية </span>
+                                    <span><strong>{{@$users->find($test->user_id)->name}}</strong></span>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="testimonial-container">
-                                    <blockquote>
-                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء</p>
-                                    </blockquote>
-                                </div>
-                                <div class="client-info">
-                                    <img src="{{Url('/')}}/front/images/client.jpg" alt="">
-                                    <span><strong>ميريل ستريب</strong><br>ممثلة أمريكية </span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </section><!-- #testimonials -->
-        
+        @endif
         
         @section('inlineJS')
         <script type="text/javascript">

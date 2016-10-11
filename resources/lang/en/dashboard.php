@@ -11,6 +11,7 @@ return [
 	'wishlist'				=> 'Wishlist',
 	'messages'				=> 'Messages',
 	'edit_personal'			=> 'Edit Personal informations',
+	'openion'				=> 'Your Opinion About Us',
 	'logout'				=> 'Logout',
 	/**************** Dashboard NavBar ****************/
 
@@ -39,10 +40,8 @@ return [
 	'send'					=> 'Send',
 	/**************** messages ****************/
 	'save'					=> 'Save',
-
-
 	'saved_success'			=> 'Profile Saved Succeessfully',
-
+	'submit_success'		=> 'Your Opinion Submitted Succeessfully',
 
 
 ];

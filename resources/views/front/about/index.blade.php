@@ -7,7 +7,7 @@
                 <div class="page-ttl">
                     <h1>{!!Lang::get('about.title')!!}</h1>
                     <ol class="breadcrumb">
-                        <li><a href="{{Url('/')}}">الرئيسية</a></li>
+                        <li><a href="{{Url('/')}}">{!!Lang::get('index.title')!!}</a></li>
                         <li class="active">{!!Lang::get('about.title')!!}</li>
                     </ol>
                     <div class="clearfix"></div>

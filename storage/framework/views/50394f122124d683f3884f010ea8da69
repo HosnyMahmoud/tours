@@ -16,6 +16,9 @@
                             <div class="contact-form">
                                 <?php echo Form::open(); ?>
 
+                                <?php if(Session::has('msg')): ?>
+                                    <div class="alert alert-success"><?php echo e(Session::get('msg')); ?></div>
+                                <?php endif; ?>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label><?php echo e(Lang::get('contact.name')); ?></label>

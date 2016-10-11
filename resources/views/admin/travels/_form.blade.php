@@ -16,9 +16,14 @@
     <small class="text-danger">{{ $errors->first('hotel_id') }}</small>
 </div>
 
+<div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
+    {!! Form::label('country_id', 'يرجي تحديد الدولة') !!}
+    {!! Form::select('country_id', $countries, null, ['id' => 'country_id', 'class' => 'form-control']) !!}
+    <small class="text-danger">{{ $errors->first('hotel_id') }}</small>
+</div>
 <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
     {!! Form::label('city_id', 'يرجي تحديد المنطقة') !!}
-    {!! Form::select('city_id', $data, null, ['id' => 'city_id', 'class' => 'form-control']) !!}
+    {!! Form::select('city_id', $cities, null, ['id' => 'city_id', 'class' => 'form-control']) !!}
     <small class="text-danger">{{ $errors->first('hotel_id') }}</small>
 </div>
 
