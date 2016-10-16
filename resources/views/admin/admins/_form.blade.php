@@ -15,7 +15,7 @@
 	<div class="form-group">
 		<label class="col-md-4 control-label">كلمه المرور</label>
 		<div class="col-md-6">
-			{!! Form::password('password',['class'=>'form-control','required' => 'required'])!!}
+			{!! Form::password('password',['class'=>'form-control'])!!}
 			@if(@$help)
 			{!!$help!!}
 			@endif

@@ -1,0 +1,37 @@
+<?php $__env->startSection('title',Lang::get('about.title')); ?>
+<?php $__env->startSection('content'); ?>
+
+     <section class="content">
+            <div class="container">
+                <div class="page-ttl">
+                    <h1><?php echo Lang::get('about.title'); ?></h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo e(Url('/')); ?>"><?php echo Lang::get('index.title'); ?></a></li>
+                        <li class="active"><?php echo Lang::get('about.title'); ?></li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="about-wrap">
+                    <p><?php echo e($settings['site_desc_'.Session::get('local')]); ?></p>
+                    <br><br>
+                    <div class="row">
+                        <?php foreach($abouts as $about): ?>
+                        <div class="col-sm-4">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                            <h3><?php echo e($about['title_'.Session::get('local')]); ?></h3>
+                            <p><?php echo e($about['content_'.Session::get('local')]); ?></p>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </section>
+        
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="panel panel-info">
-	<div class="panel-heading text-center">حجوزات الفنادق</div>
+	<div class="panel-heading text-center">حجوزات الرحلات</div>
 	<div class="panel-body">
 		<table class="table table-bordered table-responsive table-hover table-condensed">
 			<tr>

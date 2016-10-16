@@ -53,7 +53,7 @@ class SpecialOffersApi extends Controller {
 				
 				foreach ($images as $image)
 				{
-					$data[$i]['images'][$z] = Url('/').'/upload/special_offers/'.$image ;
+					$data[$i]['images'][$z] = Url('/').'/uploads/special_offers/'.$image ;
 					$z++ ;
 				}
 				$reserved  = SpecialOfferReserv::where('user_id',Auth::client()->get()->id)->where('special_offer_id',$s_offer['id'])->get();

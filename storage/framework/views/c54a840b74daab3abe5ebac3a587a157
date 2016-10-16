@@ -1,0 +1,62 @@
+<?php $__env->startSection('title','حجوزات السيارات'); ?>
+<?php $__env->startSection('content'); ?>
+<?php echo Html::style('https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'); ?>
+
+
+<div class="panel panel-info">
+	<div class="panel-heading text-center">حجوزات السيارات</div>
+	<div class="panel-body">
+		<table id="table" class="table table-bordered table-responsive table-hover table-condensed">		
+			<tr>
+				<th>اسم المستخدم</th>
+				<th>اسم المنطقة</th>
+				<th>اسم الموديل</th>
+				<th>من</th>
+				<th>الي</th>
+				<th>العرض</th>
+				<th>السعر</th>
+				<th>خيارات</th>
+			</tr>
+			
+			<?php if(count($allCarsReserv) > 0): ?>
+				<?php foreach($allCarsReserv as $carsReserv): ?>
+					<tr>
+						<td><a href=""><?php echo e($users->find($carsReserv->user_id)['name']); ?></a></td>
+						<td><?php echo e($citis->find($carsReserv->city_id)['name_ar']); ?></td>
+						<td><?php echo e($carsModels->find($carsReserv->model_id)['model_name']); ?></td>
+						<td><?php echo e($carsReserv->date_from); ?></td>
+						<td><?php echo e($carsReserv->date_to); ?></td>
+						<td><?php echo e($carsOffers->find($carsReserv->offer_id)['offer_name_ar']); ?></td>
+						<td><?php echo e($carsOffers->find($carsReserv->offer_id)['price']); ?></td>
+						<td>
+							<?php if($carsReserv->status !== 2): ?>
+							<a href="<?php echo e(Url('/')); ?>/admin/bookings/Cars_Reservation/<?php echo e($carsReserv->id); ?>" class="btn btn-<?php echo e(($carsReserv->status == 0)?'success':'danger'); ?>">
+								<?php echo e(($carsReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'); ?>
+
+							</a>
+							<?php endif; ?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			<?php else: ?>
+			<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php endif; ?>
+		</table>
+	</div>
+</div>
+<!-- Latest compiled and minified CSS & JS -->
+<script src="http://code.jquery.com/jquery-1.12.3.js"></script>
+<?php echo Html::script('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'); ?>
+
+<?php echo Html::script("back/assets/global/scripts/datatable/jquery.dataTables.min.js"); ?>
+
+
+<script>
+$(document).ready(function(){
+    $('#table').DataTable();
+});
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

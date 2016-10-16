@@ -28,6 +28,7 @@ class Users extends Controller {
 		$validator =  Validator::make($bag->all(), [
 						//'source' 	=> 'required',
 						'name'   	=> 'required',
+						'username'  => 'required|unique:users',
 						'email' 	=> 'required|email|unique:users',
 						'password' 	=> 'required|min:5',
 						'mobile' 	=> 'required|unique:users',

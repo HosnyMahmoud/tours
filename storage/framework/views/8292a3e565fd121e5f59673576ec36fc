@@ -1,0 +1,49 @@
+<?php $__env->startSection('title','حجوزات الفنادق'); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="panel panel-info">
+	<div class="panel-heading text-center">حجوزات الفنادق</div>
+	<div class="panel-body">
+		<table class="table table-bordered table-responsive table-hover table-condensed">
+			<tr>
+				<th>#ID</th>
+				<th>اسم المستخدم</th>
+				<th>اسم الرحلة</th>
+				<th>خيارات</th>
+			</tr>
+			<?php if(count($AllTravelsReserv) > 0): ?>
+				<?php foreach($AllTravelsReserv as $travelReserv): ?>
+					<tr>
+						<td><?php echo e($travelReserv->id); ?></td>
+						<td>
+							<a href="<?php echo Url('/'); ?>/admin/users/<?php echo e($travelReserv->user_id); ?>" class='btn btn-info' title="عرض تفاصيل المستخدم">
+								<?php echo e($users->find($travelReserv->user_id)['name']); ?>
+
+							</a>
+						</td>
+						<td>
+							<a href="<?php echo Url('/'); ?>/admin/travels/<?php echo e($travelReserv->travel_id); ?>" class='btn btn-info' title="عرض تفاصيل الرحلة">
+							<?php echo e($travels->find($travelReserv->travel_id)['name_ar']); ?>
+
+							</a>
+						</td>
+						<td>
+							<?php if($travelReserv->status !== 2): ?>
+							<a href="<?php echo e(Url('/')); ?>/admin/bookings/ReservTravel/<?php echo e($travelReserv->id); ?>" class="btn btn-<?php echo e(($travelReserv->status == 0)?'success':'danger'); ?>">
+								<?php echo e(($travelReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'); ?>
+
+							</a>
+							<?php endif; ?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+				<?php else: ?>
+					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php endif; ?>
+			
+		</table>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

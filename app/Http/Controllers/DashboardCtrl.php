@@ -70,7 +70,7 @@ class DashboardCtrl extends Controller {
 	public function wishlist()
 	{
 		$wishlist = WishList::where('user_id',Auth::client()->get()->id)->where('type','!=',0)->where('type','!=',3)->paginate(5);
-		$hotels = Hotel::get();
+		$hotels   = Hotel::get();
 		$travels = Travels::get();
 		$type = [1 =>Lang::get('dashboard.hotel'),2 =>Lang::get('dashboard.travel')];
 		return View('front.dashboard.wishlist.index',compact('wishlist','hotels','travels','type'));

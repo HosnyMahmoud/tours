@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
@@ -239,7 +238,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<li class="{{Request::is('admin/users*') ? 'active' : ''}}">
 						<a href="{!!Url('/')!!}/admin/users">
 						<i class="fa fa-users" aria-hidden="true"></i>
-						<span class="title">الإعضاء</span>
+						<span class="title">الأعضاء</span>
 						</a>
 					</li>
 					<!-- End Members -->

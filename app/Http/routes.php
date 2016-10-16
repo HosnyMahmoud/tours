@@ -25,6 +25,10 @@ Route::group(['prefix'=>'api'],function(){
 		Route::get('locations/countries','Api\LocationsCtrl@getCountries');
 		Route::get('locations/cities','Api\LocationsCtrl@getCities');
 		Route::get('settings/get','Api\getSettings@getSettings');
+		Route::get('contact_us','Api\getSettings@ContactUs');
+		Route::post('review','Api\getSettings@review');
+		Route::post('unWishList','Api\getSettings@unWishlist');
+		Route::get('myReservation','Api\getSettings@myReservation');
 	//global APIs
 	
 	//User APIs

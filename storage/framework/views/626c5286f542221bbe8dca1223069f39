@@ -1,0 +1,49 @@
+<?php $__env->startSection('title','حجوزات العروض الخاصة'); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="panel panel-info">
+	<div class="panel-heading text-center">حجوزات العروض الخاصة</div>
+	<div class="panel-body">
+		<table class="table table-bordered table-responsive table-hover table-condensed">
+			<tr>
+				<th>#ID</th>
+				<th>اسم المستخدم</th>
+				<th>اسم العرض</th>
+				<th>خيارات</th>
+			</tr>
+			<?php if($allSpecialOffersReserv->total() > 0): ?>
+				<?php foreach($allSpecialOffersReserv as $specialOfferReserv): ?>
+					<tr>
+						<td><?php echo e($specialOfferReserv->id); ?></td>
+						<td>
+							<a href="<?php echo Url('/'); ?>/admin/users/<?php echo e($specialOfferReserv->user_id); ?>" class='btn btn-info' title="عرض تفاصيل المستخدم">
+								<?php echo e($users->find($specialOfferReserv->user_id)['name']); ?>
+
+							</a>
+						</td>
+						<td>
+						<a href="<?php echo Url('/'); ?>/admin/special-offers/<?php echo e($specialOfferReserv->special_offer_id); ?>" class='btn btn-info' title="تفاصيل العرض الخاص">
+							<?php echo e($specialOffers->find($specialOfferReserv->id)['name_ar']); ?>
+
+							</a>
+						</td>
+						<td>
+							<?php if($specialOfferReserv->status !== 2): ?>
+							<a href="<?php echo e(Url('/')); ?>/admin/bookings/SpecialOfferReserv/<?php echo e($specialOfferReserv->id); ?>" class="btn btn-<?php echo e(($specialOfferReserv->status == 0)?'success':'danger'); ?>">
+								<?php echo e(($specialOfferReserv->status == 0)?'تأكيد الحجز':'إلغاء الحجز'); ?>
+
+							</a>
+							<?php endif; ?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+				<?php else: ?>
+					<div class="alert alert-info">عفوآ , لا توجد بيانات .</div>
+			<?php endif; ?>
+			
+		</table>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

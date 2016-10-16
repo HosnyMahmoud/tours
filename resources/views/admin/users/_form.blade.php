@@ -5,6 +5,12 @@
     <small class="text-danger">{{ $errors->first('name') }}</small>
 </div>
 
+<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+    {!! Form::label('username', 'اسم المستخدم') !!}
+    {!! Form::text('username', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    <small class="text-danger">{{ $errors->first('username') }}</small>
+</div>
+
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     {!! Form::label('email', 'البريد الألكتروني') !!}
     {!! Form::text('email', null, ['class' => 'form-control', 'required' => 'required']) !!}

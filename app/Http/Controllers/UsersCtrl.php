@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\User;
+use Validator ;
 
 class UsersCtrl extends Controller {
 
@@ -31,18 +32,30 @@ class UsersCtrl extends Controller {
 		return View('admin.users.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	private function rules($type , $id = null){
+		/* Make rules inputs by type parameter with ID */
+		return [
+					'username' => ($type == 'add')?'required|unique:users':"required|unique:users,username,$id",
+					'email'    => ($type == 'add')?'required|email|unique:users':"required|email|unique:users,email,$id",
+					'mobile'   => 'required|min:11|numeric',
+					'password' => ($type == 'add')?'required':'',
+					
+				];
+
+	}
+
 	public function store(Request $request)
 	{
-		
-		//dd($request->all()) ;
+		$validation = Validator::make($request->all(),$this->rules('add')) ;
+		if($validation->fails())
+		{
+			return redirect()->back()->withErrors($validation)->withInput() ;
+		}
 
+		//$request->merge(['username'=>'someWord']);
 		$request->merge(['password'=>bcrypt($request->password)]);
 		$user =  User::create($request->all());
+		//dd($request->all()) ;
 		return redirect()->to('admin/users')->with(['msg'=>'تمت الأضافة بنجاح.']);			
 	
 	}
@@ -54,7 +67,7 @@ class UsersCtrl extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Request $request,$id)
 	{
 		$user = User::findOrFail($id);
 		return View('admin.users.edit',compact('user'));
@@ -75,7 +88,13 @@ class UsersCtrl extends Controller {
 	 * @return Response
 	 */
 	public function update(Request $request,$id)
-	{
+	{	
+		$validation = Validator::make($request->all(),$this->rules('edit',$id)) ;
+		if($validation->fails())
+		{
+			return redirect()->back()->withErrors($validation)->withInput() ;
+		}
+
 		$user = User::findOrFail($id);
 		
 		if($request->password !== "")

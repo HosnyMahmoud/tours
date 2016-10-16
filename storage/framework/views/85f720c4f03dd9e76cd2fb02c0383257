@@ -1,9 +1,6 @@
-<?php $__env->startSection('title'); ?>
-	اضافة عضو جديد
-<?php $__env->stopSection(); ?>
-
+<?php $__env->startSection('title' , 'تعديل العضو'); ?>
+		
 <?php $__env->startSection('content'); ?>
-	
 	<?php if(Session::get('errors')): ?>
      <div class="alert alert-dismissable alert-warning">
           <h4>Uwaga!</h4>
@@ -15,12 +12,12 @@
      </div>
      <?php endif; ?>
 
-	<?php echo Form::open(['action'=>'UsersCtrl@store','class'=>'form-horizontal']); ?>
+	<?php echo Form::model($user ,['method'=>'PATCH','action'=>['UsersCtrl@update',$user->id],'files'=>true]); ?>
 
-		<?php echo $__env->make('admin.users._form',['btnName'=>'إضافه'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('admin.users._form',['btnName'=>'حفظ', 'alert'=>'<small class="text-warning">Leave Blank to keep it</small>','type'=>'edit'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	<?php echo Form::close(); ?>
 
-	
+
 <?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

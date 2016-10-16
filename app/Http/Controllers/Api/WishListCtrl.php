@@ -51,13 +51,16 @@ class WishListCtrl extends Controller {
 				$data[$i]['item_id'] 	    = $getTable['id'];
 				$data[$i]['name']	        = $getTable['offer_name_'.$bag->lang];			
 				$data[$i]['type']	        = 'Cars Offers';			
+				$data[$i]['type_int']	    =  0;			
 			}
 			
 			if ($rec->type == 1) {
 				$getTable = Hotel::where('id',$rec->list_id)->first();
 				$data[$i]['item_id'] 	    = $getTable['id'];
 				$data[$i]['name']	        = $getTable['name_'.$bag->lang];	
-				$data[$i]['type']	        = 'Hotels';			
+				$data[$i]['type']	        = 'Hotels';	
+				$data[$i]['type_int']	    =  1;			
+
 			}
 
 			if ($rec->type == 2) {
@@ -65,6 +68,7 @@ class WishListCtrl extends Controller {
 				$data[$i]['item_id'] 	    = $getTable['id'];
 				$data[$i]['name']	        = $getTable['name_'.$bag->lang];	
 				$data[$i]['type']	        = 'Travel';			
+				$data[$i]['type_int']	    =  2;
 			}
 
 			if ($rec->type == 3) { // offers
@@ -72,6 +76,7 @@ class WishListCtrl extends Controller {
 				$data[$i]['item_id'] 	    = $getTable['id'];
 				$data[$i]['name']	        = $getTable['name_'.$bag->lang];	
 				$data[$i]['type']	        = 'Travel';			
+				$data[$i]['type_int']	    = 3 ;			
 			}		
 
 			/*if ($rec->type == 3) { // air lines

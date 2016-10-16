@@ -13,6 +13,7 @@
                                     <li class="<?php echo e((Request::is('dashboard/wishlist*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/wishlist"><i class="fa fa-heart fa-fw"></i> <?php echo e(Lang::get('dashboard.wishlist')); ?></a></li>
                                     <li class="<?php echo e((Request::is('dashboard/messages*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/messages"><i class="fa fa-envelope fa-fw"></i> <?php echo e(Lang::get('dashboard.messages')); ?></a></li>
                                     <li class="<?php echo e((Request::is('dashboard/edit_personal*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/edit_personal"><i class="fa fa-gear fa-fw"></i> <?php echo e(Lang::get('dashboard.edit_personal')); ?></a></li>
+                                    <li class="<?php echo e((Request::is('dashboard/new_testimonial*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/new_testimonial"><i class="fa fa-comments fa-fw"></i> <?php echo e(Lang::get('dashboard.openion')); ?></a></li>
                                     <li class="<?php echo e((Request::is('dashboard/logout*'))?'active':''); ?>"><a href="<?php echo e(Url('/')); ?>/dashboard/logout"><i class="fa fa-sign-out fa-fw"></i> <?php echo e(Lang::get('dashboard.logout')); ?></a></li>
                                 </ul>
                             </div>

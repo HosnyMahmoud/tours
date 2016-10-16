@@ -62,9 +62,10 @@ class LoginCtrl extends Controller {
 
 	public function showClientReg()
 	{	
+
 		if(Auth::client()->check() == false)
 		{
-			$regions = [''=>Lang::get('hotels.choose_city')];
+			@$regions = [''=>Lang::get('hotels.choose_city')];
 			$countries = Countries::all();
 			$cities = Cities::get();
 			$i = 1;
@@ -87,6 +88,8 @@ class LoginCtrl extends Controller {
 	}
 	public function postClientReg(Request $request)
 	{
+		//dd($request->all());
+
 		$validator =  Validator::make($request->all(), [
 			'name'     => 'required',
 			'img'      => 'required|image',
@@ -100,6 +103,7 @@ class LoginCtrl extends Controller {
                         ->withInput()
                         ->withErrors($validator);
         }else{ 
+
         	if($request->hasFile('img')){
         		$time = time();
 				$dest = 'uploads/users/';
@@ -112,11 +116,13 @@ class LoginCtrl extends Controller {
 			$request->merge(['password'=>bcrypt($request->password)]);
 			$data = ['code'=>$code]  ;
 
+			$email = $request->email ;
+			//dd($email);
 			$settings = Settings::first();
-			Mail::send('emails.verify', $data, function($message) use($request,$settings) {
+			Mail::send('emails.verify', $data, function($message) use($request,$settings,$email) {
 			   $message->subject('تفعيل بريدك الإلكتروني ');
 			   $message->from($settings->email,$settings->email);
-			   $message->to($request->email, $request->name);
+			   $message->to($email,$request->name);
 			});
 
 			User::create($request->all());
